@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-//Son 
+//Thao Nguyen
 // Đăng ký UserService (Scoped)
 builder.Services.AddScoped<IUserService, UserService>();
 var app = builder.Build();
@@ -33,35 +33,18 @@ app.MapControllerRoute(
 
 // Hue Nhu
 // Middleware kiem tra url hop le
-app.Use(async (context, next) => {
+app.Use(async (context, next) =>
+{
     await next();
-    if(context.Response.StatusCode == 404) {
+    if (context.Response.StatusCode == 404)
+    {
         context.Response.Redirect("/Home/Error");
-    };
+    }
+    ;
 });
 
-
-
-
-
-
-
-
-
-
 // Thao Nguyen
-
-
-
-
-
-
-
-
-
-
-
-
+app.UseUserLoading();
 
 // Mong Kieu
 
@@ -76,8 +59,6 @@ app.Use(async (context, next) => {
 
 
 // Ngoc Son
-// Gọi Middleware load user
-app.UseUserLoading();
 
 
 
@@ -85,3 +66,6 @@ app.UseUserLoading();
 
 
 app.Run();
+
+
+
