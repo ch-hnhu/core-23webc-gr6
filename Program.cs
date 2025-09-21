@@ -1,8 +1,13 @@
+﻿using core_group_ex_01.Middlewares;
+using core_group_ex_01.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+//Son 
+// Đăng ký UserService (Scoped)
+builder.Services.AddScoped<IUserService, UserService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,6 +28,8 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
 
 // Hue Nhu
 // Middleware kiem tra url hop le
@@ -69,11 +76,8 @@ app.Use(async (context, next) => {
 
 
 // Ngoc Son
-
-
-
-
-
+// Gọi Middleware load user
+app.UseUserLoading();
 
 
 
