@@ -22,7 +22,7 @@
                             <table class="table table-striped table-hover">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th scope="col">#</th>
+                                        <th scope="col">STT</th>
                                         <th scope="col">Tên đăng nhập</th>
                                         <th scope="col">Mật khẩu</th>
                                         <th scope="col">Vai trò</th>
@@ -38,24 +38,10 @@
                                                 <strong>@Model[i].Username</strong>
                                             </td>
                                             <td>
-                                                <span class="text-muted">••••••••</span>
+                                                <span>@Model[i].Password</span>
                                             </td>
                                             <td>
-                                                @switch (Model[i].Role)
-                                                {
-                                                    case 1:
-                                                        @:Admin
-                                                        break;
-                                                    case 2:
-                                                        @:Staff
-                                                        break;
-                                                    case 3:
-                                                        @:Guest
-                                                        break;
-                                                    default:
-                                                        @:Unknown
-                                                        break;
-                                                }
+                                                <span>@Model[i].Role</span>
                                             </td>
                                         </tr>
                                     }

@@ -48,7 +48,6 @@ app.Use(async (context, next) =>
     {
         context.Response.Redirect("/Home/Error");
     }
-    ;
 });
 
 // Thao Nguyen
