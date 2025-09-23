@@ -18,7 +18,7 @@ namespace core_group_ex_01.Controllers
         }
 
         // GET: UsersController
-        public IActionResult Index()
+        public IActionResult Index(int pageNumber = 1, int limit = 5)
         {
             //Kieu
             //Kiem tra IP co trong danh sach IP cho phep hay khong
@@ -31,8 +31,21 @@ namespace core_group_ex_01.Controllers
                 ViewBag.Message = "IP của bạn bị cấm.";
                 return View("Error");
             }
-            var users = _userService.GetAllUsers();
-            return View(users);
+            
+            var allUsers = _userService.GetAllUsers();
+
+            var totalUsers = allUsers.Count;
+            var totalPages = (int)Math.Ceiling((double)totalUsers / limit);
+
+            // Đảm bảo pageNumber nằm trong phạm vi hợp lệ
+            pageNumber = Math.Max(1, Math.Min(pageNumber, totalPages == 0 ? 1 : totalPages));
+
+            var usersOnPage = allUsers.Skip((pageNumber - 1) * limit).Take(limit).ToList();
+
+            ViewBag.PageNumber = pageNumber;
+            ViewBag.TotalPages = totalPages;
+
+            return View(usersOnPage);
         }
     }
 }
