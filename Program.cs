@@ -1,11 +1,19 @@
 ﻿using core_group_ex_01.Middlewares;
+using core_group_ex_01.Models;
 using core_group_ex_01.Services;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//Kieu
+// dang ky cau hinh AppConfig de su dung trong toan bo ung dung
+builder.Services.AddOptions<AppConfig>().Bind(builder.Configuration.GetSection("AppConfig")).ValidateDataAnnotations().ValidateOnStart();
+// dang ky singleton de co the inject AppConfig vao trong controller
+builder.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<AppConfig>>().Value);
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-//Son 
+//Thao Nguyen
 // Đăng ký UserService (Scoped)
 builder.Services.AddScoped<IUserService, UserService>();
 var app = builder.Build();
@@ -33,11 +41,24 @@ app.MapControllerRoute(
 
 // Hue Nhu
 // Middleware kiem tra url hop le
-app.Use(async (context, next) => {
+app.Use(async (context, next) =>
+{
     await next();
-    if(context.Response.StatusCode == 404) {
+    if (context.Response.StatusCode == 404)
+    {
         context.Response.Redirect("/Home/Error");
-    };
+    }
+    ;
+});
+
+// Thao Nguyen
+app.UseUserLoading();
+
+// Mong Kieu
+//Test config có đọc được không
+app.MapGet("/config", (AppConfig config) =>
+{
+    return Results.Json(config);
 });
 
 
@@ -49,35 +70,7 @@ app.Use(async (context, next) => {
 
 
 
-// Thao Nguyen
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Mong Kieu
-
-
-
-
-
-
-
-
-
-
-
 // Ngoc Son
-// Gọi Middleware load user
-app.UseUserLoading();
 
 
 
@@ -85,3 +78,6 @@ app.UseUserLoading();
 
 
 app.Run();
+
+
+
