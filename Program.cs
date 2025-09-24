@@ -48,7 +48,6 @@ app.Use(async (context, next) =>
     {
         context.Response.Redirect("/Home/Error");
     }
-    ;
 });
 
 // Thao Nguyen
@@ -75,7 +74,7 @@ app.MapGet("/config", (AppConfig config) =>
 
 
 // Quoc Nam
-
+app.UseRequestLogging(); 
 
 app.Run();
 
