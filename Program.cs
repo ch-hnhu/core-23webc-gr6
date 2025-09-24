@@ -74,7 +74,7 @@ app.MapGet("/config", (AppConfig config) =>
 
 
 // Quoc Nam
-
+app.UseRequestLogging(); 
 
 app.Run();
 
