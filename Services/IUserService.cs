@@ -1,7 +1,7 @@
-﻿//PNSon
-using core_group_ex_01.Models;
+﻿// PNSon
+using core_23webc_gr6.Models;
 
-namespace core_group_ex_01.Services
+namespace core_23webc_gr6.Services
 {
     public interface IUserService
     {
@@ -9,4 +9,4 @@ namespace core_group_ex_01.Services
         void SetUsers(List<User> users);
     }
 }
-//endPNSon
+// endPNSon

@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using core_group_ex_01.Services;
-using core_group_ex_01.Models; //su dung AppConfig
+using core_23webc_gr6.Services;
+using core_23webc_gr6.Models; //su dung AppConfig
 
-namespace core_group_ex_01.Controllers
+namespace core_23webc_gr6.Controllers
 {
     public class UsersController : Controller
     {

@@ -1,7 +1,7 @@
 //Quoc Nam 
 using System.Text;
 
-namespace core_group_ex_01.Middlewares
+namespace core_23webc_gr6.Middlewares
 {
     public class RequestLoggingMiddleware
     {

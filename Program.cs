@@ -1,6 +1,6 @@
-﻿using core_group_ex_01.Middlewares;
-using core_group_ex_01.Models;
-using core_group_ex_01.Services;
+﻿using core_23webc_gr6.Models;
+using core_23webc_gr6.Middlewares;
+using core_23webc_gr6.Services;
 using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,13 +33,22 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+// CHNhu
+// Định nghĩa route khi có area, đặt route cụ thể lên trên route mặc định
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+);
+// endCHNhu
+
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+);
 
 
 
-// Hue Nhu
+// CHNhu
 // Middleware kiem tra url hop le
 app.Use(async (context, next) =>
 {
@@ -49,6 +58,7 @@ app.Use(async (context, next) =>
         context.Response.Redirect("/Home/Error");
     }
 });
+// endCHNhu
 
 // Thao Nguyen
 app.UseUserLoading();

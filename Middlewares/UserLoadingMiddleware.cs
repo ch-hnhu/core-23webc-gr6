@@ -1,14 +1,14 @@
 ﻿//PNSon
 using System.Text.Json;
-using core_group_ex_01.Models;
-using core_group_ex_01.Services;
+using core_23webc_gr6.Models;
+using core_23webc_gr6.Services;
 
-namespace core_group_ex_01.Middlewares
+namespace core_23webc_gr6.Middlewares
 {
     public class UserLoadingMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly string _userFile = "Data/users.json";
+        private readonly string _userFile = "Data/Seeds/users.json";
 
         public UserLoadingMiddleware(RequestDelegate next)
         {

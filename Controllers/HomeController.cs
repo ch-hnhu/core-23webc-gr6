@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using core_group_ex_01.Models;
+using core_23webc_gr6.Models;
 
-namespace core_group_ex_01.Controllers;
+namespace core_23webc_gr6.Controllers;
 
 public class HomeController : Controller
 {

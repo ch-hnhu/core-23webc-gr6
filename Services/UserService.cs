@@ -1,8 +1,8 @@
-﻿//PNSon
-using core_group_ex_01.Models;
+﻿// PNSon
+using core_23webc_gr6.Models;
 using System.Text.Json;
 
-namespace core_group_ex_01.Services
+namespace core_23webc_gr6.Services
 {
     public class UserService : IUserService
     {
@@ -38,4 +38,4 @@ namespace core_group_ex_01.Services
         }
     }
 }
-//endPNSon
+// endPNSon

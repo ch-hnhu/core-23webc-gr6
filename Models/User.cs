@@ -1,5 +1,5 @@
 ﻿//PNson
-namespace core_group_ex_01.Models
+namespace core_23webc_gr6.Models
 {
     public class User
     {
