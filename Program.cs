@@ -13,9 +13,10 @@ builder.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<AppConfig>>()
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-//Thao Nguyen
+// NTNguyen
 // Đăng ký UserService (Scoped)
 builder.Services.AddScoped<IUserService, UserService>();
+// endNTNguyen
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -60,8 +61,9 @@ app.Use(async (context, next) =>
 });
 // endCHNhu
 
-// Thao Nguyen
+// NTNguyen
 app.UseUserLoading();
+// endNTNguyen
 
 // Mong Kieu
 //Test config có đọc được không
@@ -84,7 +86,7 @@ app.MapGet("/config", (AppConfig config) =>
 
 
 // Quoc Nam
-app.UseRequestLogging(); 
+app.UseRequestLogging();
 
 app.Run();
 
