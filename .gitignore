@@ -1,4 +1,6 @@
+# CHNhu
 bin/
 .vs/
 obj/
-request.log
+/request.log
+# endCHNhu
