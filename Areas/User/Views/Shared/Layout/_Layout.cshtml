@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="~/assets/user/style.css">
     <link rel="stylesheet" href="~/assets/user/css/responsive.css">
 
+    <!-- Render Section Style -->
+    @RenderSection("Style", required: false)
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -61,6 +64,9 @@
     
     <!-- Main Script -->
     <script src="~/assets/user/js/main.js"></script>
+
+    <!-- Render Section Script -->
+    @RenderSection("Script", required: false)
   </body>
 </html>
 <!-- endCHNhu -->
