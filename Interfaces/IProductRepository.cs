@@ -1,0 +1,14 @@
+﻿using core_23webc_gr6.Models;
+
+namespace core_23webc_gr6.Interfaces
+{
+
+    //LTMKieu
+    public interface IProductRepository
+    {
+        List<Product> GetAllProducts();
+        Product? GetProductById(string id);
+        void AddProduct(Product product);
+    }
+    //endLTMKieu
+}

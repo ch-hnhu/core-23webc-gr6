@@ -1,16 +1,20 @@
-﻿using core_23webc_gr6.Models;
+﻿using core_23webc_gr6.Interfaces;
 using core_23webc_gr6.Middlewares;
+using core_23webc_gr6.Models;
+using core_23webc_gr6.Repositories;
 using core_23webc_gr6.Services;
 using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//Kieu
+//LTMKieu
 // dang ky cau hinh AppConfig de su dung trong toan bo ung dung
 builder.Services.AddOptions<AppConfig>().Bind(builder.Configuration.GetSection("AppConfig")).ValidateDataAnnotations().ValidateOnStart();
 // dang ky singleton de co the inject AppConfig vao trong controller
 builder.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<AppConfig>>().Value);
 
+builder.Services.AddSingleton<IProductRepository, ProductRepository>();
+//endLTMKieu
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 //Thao Nguyen
@@ -63,12 +67,13 @@ app.Use(async (context, next) =>
 // Thao Nguyen
 app.UseUserLoading();
 
-// Mong Kieu
+// LTMKieu
 //Test config có đọc được không
 app.MapGet("/config", (AppConfig config) =>
 {
     return Results.Json(config);
 });
+//endLTMKieu
 
 
 
