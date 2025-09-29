@@ -67,6 +67,10 @@ app.Use(async (context, next) =>
 // Thao Nguyen
 app.UseUserLoading();
 
+//NTNguyen - Load products from JSON
+app.UseProductMiddleware();
+//endNTNguyen
+
 // LTMKieu
 //Test config có đọc được không
 app.MapGet("/config", (AppConfig config) =>

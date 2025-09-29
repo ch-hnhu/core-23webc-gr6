@@ -11,11 +11,14 @@ namespace core_23webc_gr6.Repositories
         //    // Khởi tạo danh sách sản phẩm rong
         //    _products = new List<Product>();
         //}
-        private readonly List<Product> _products = new()
-        {
-            new Product { MaSP = "Ma1", TenSP = "Laptop", DonGia = 1200 },
-            new Product { MaSP = "Ma2", TenSP = "Smartphone", DonGia = 800 }
-        };
+        // private readonly List<Product> _products = new()
+        // {
+        //     new Product { MaSP = "Ma1", TenSP = "Laptop", DonGia = 1200 },
+        //     new Product { MaSP = "Ma2", TenSP = "Smartphone", DonGia = 800 }
+        // };
+         //NTNguyen
+        private List<Product> _products = new();
+        //endNTNguyen
         public List<Product> GetAllProducts()
         {
             return _products;
@@ -28,6 +31,14 @@ namespace core_23webc_gr6.Repositories
         {
             _products.Add(product);
         }
+
+        //NTNguyen
+        public void SetProducts(List<Product> products)
+        {
+            _products.Clear();
+            _products.AddRange(products);
+        }
+        //endNTNguyen
         //endLTMKieu
     
     }
