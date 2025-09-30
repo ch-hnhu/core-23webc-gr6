@@ -1,102 +1,286 @@
-[
-  {
-    "Username": "admin",
-    "Password": "123",
-    "Role": 1
-  },
-  {
-    "Username": "staff",
-    "Password": "123",
-    "Role": 2
-  },
-  {
-    "Username": "guest",
-    "Password": "123",
-    "Role": 3
-  },
-  {
-    "Username": "user4",
-    "Password": "123",
-    "Role": 3
-  },
-  {
-    "Username": "user5",
-    "Password": "123",
-    "Role": 3
-  },
-  {
-    "Username": "user6",
-    "Password": "123",
-    "Role": 3
-  },
-  {
-    "Username": "user7",
-    "Password": "123",
-    "Role": 3
-  },
-  {
-    "Username": "user8",
-    "Password": "123",
-    "Role": 3
-  },
-  {
-    "Username": "user9",
-    "Password": "123",
-    "Role": 3
-  },
-  {
-    "Username": "user10",
-    "Password": "123",
-    "Role": 3
-  },
-  {
-    "Username": "user11",
-    "Password": "123",
-    "Role": 3
-  },
-  {
-    "Username": "user12",
-    "Password": "123",
-    "Role": 3
-  },
-  {
-    "Username": "user13",
-    "Password": "123",
-    "Role": 3
-  },
-  {
-    "Username": "user14",
-    "Password": "123",
-    "Role": 3
-  },
-  {
-    "Username": "user15",
-    "Password": "123",
-    "Role": 3
-  },
-  {
-    "Username": "user16",
-    "Password": "123",
-    "Role": 3
-  },
-  {
-    "Username": "user17",
-    "Password": "123",
-    "Role": 3
-  },
-  {
-    "Username": "user18",
-    "Password": "123",
-    "Role": 3
-  },
-  {
-    "Username": "user19",
-    "Password": "123",
-    "Role": 3
-  },
-  {
-    "Username": "user20",
-    "Password": "123",
-    "Role": 3
-  }
-]
+{
+  "users": [
+    {
+      "Username": "admin",
+      "Password": "123",
+      "Role": 1
+    },
+    {
+      "Username": "staff",
+      "Password": "123",
+      "Role": 2
+    },
+    {
+      "Username": "guest",
+      "Password": "123",
+      "Role": 3
+    },
+    {
+      "Username": "user4",
+      "Password": "123",
+      "Role": 3
+    },
+    {
+      "Username": "user5",
+      "Password": "123",
+      "Role": 3
+    },
+    {
+      "Username": "user6",
+      "Password": "123",
+      "Role": 3
+    },
+    {
+      "Username": "user7",
+      "Password": "123",
+      "Role": 3
+    },
+    {
+      "Username": "user8",
+      "Password": "123",
+      "Role": 3
+    },
+    {
+      "Username": "user9",
+      "Password": "123",
+      "Role": 3
+    },
+    {
+      "Username": "user10",
+      "Password": "123",
+      "Role": 3
+    },
+    {
+      "Username": "user11",
+      "Password": "123",
+      "Role": 3
+    },
+    {
+      "Username": "user12",
+      "Password": "123",
+      "Role": 3
+    },
+    {
+      "Username": "user13",
+      "Password": "123",
+      "Role": 3
+    },
+    {
+      "Username": "user14",
+      "Password": "123",
+      "Role": 3
+    },
+    {
+      "Username": "user15",
+      "Password": "123",
+      "Role": 3
+    },
+    {
+      "Username": "user16",
+      "Password": "123",
+      "Role": 3
+    },
+    {
+      "Username": "user17",
+      "Password": "123",
+      "Role": 3
+    },
+    {
+      "Username": "user18",
+      "Password": "123",
+      "Role": 3
+    },
+    {
+      "Username": "user19",
+      "Password": "123",
+      "Role": 3
+    },
+    {
+      "Username": "user20",
+      "Password": "123",
+      "Role": 3
+    }
+  ],
+  "products": [
+    {
+      "MaSP": "SP001",
+      "TenSP": "iPhone 15 Pro Max",
+      "DonGia": 35000000,
+      "DonGiaKhuyenMai": 33000000,
+      "HinhAnh": "iphone15pro.jpg",
+      "MoTa": "Điện thoại Apple cao cấp nhất năm 2023",
+      "LoaiSP": "Điện thoại"
+    },
+    {
+      "MaSP": "SP002",
+      "TenSP": "Samsung Galaxy S23 Ultra",
+      "DonGia": 29000000,
+      "DonGiaKhuyenMai": 27000000,
+      "HinhAnh": "galaxyS23.jpg",
+      "MoTa": "Điện thoại Samsung với camera 200MP",
+      "LoaiSP": "Điện thoại"
+    },
+    {
+      "MaSP": "SP003",
+      "TenSP": "Xiaomi 13 Pro",
+      "DonGia": 18000000,
+      "DonGiaKhuyenMai": 16500000,
+      "HinhAnh": "xiaomi13pro.jpg",
+      "MoTa": "Flagship Xiaomi cấu hình mạnh, giá hợp lý",
+      "LoaiSP": "Điện thoại"
+    },
+    {
+      "MaSP": "SP004",
+      "TenSP": "MacBook Pro 14inch M3",
+      "DonGia": 52000000,
+      "DonGiaKhuyenMai": 49000000,
+      "HinhAnh": "macbookpro14.jpg",
+      "MoTa": "Laptop Apple với chip M3 mạnh mẽ",
+      "LoaiSP": "Laptop"
+    },
+    {
+      "MaSP": "SP005",
+      "TenSP": "Dell XPS 13",
+      "DonGia": 28000000,
+      "DonGiaKhuyenMai": 26000000,
+      "HinhAnh": "dellxps13.jpg",
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop"
+    },
+    {
+      "MaSP": "SP006",
+      "TenSP": "Dell XPS 13",
+      "DonGia": 28000000,
+      "DonGiaKhuyenMai": 26000000,
+      "HinhAnh": "dellxps13.jpg",
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop"
+    },
+    {
+      "MaSP": "SP007",
+      "TenSP": "Dell XPS 13",
+      "DonGia": 28000000,
+      "DonGiaKhuyenMai": 26000000,
+      "HinhAnh": "dellxps13.jpg",
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop"
+    },
+    {
+      "MaSP": "SP008",
+      "TenSP": "Dell XPS 13",
+      "DonGia": 28000000,
+      "DonGiaKhuyenMai": 26000000,
+      "HinhAnh": "dellxps13.jpg",
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop"
+    },
+    {
+      "MaSP": "SP009",
+      "TenSP": "Dell XPS 13",
+      "DonGia": 28000000,
+      "DonGiaKhuyenMai": 26000000,
+      "HinhAnh": "dellxps13.jpg",
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop"
+    },
+    {
+      "MaSP": "SP010",
+      "TenSP": "Dell XPS 13",
+      "DonGia": 28000000,
+      "DonGiaKhuyenMai": 26000000,
+      "HinhAnh": "dellxps13.jpg",
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop"
+    },
+    {
+      "MaSP": "SP011",
+      "TenSP": "Dell XPS 13",
+      "DonGia": 28000000,
+      "DonGiaKhuyenMai": 26000000,
+      "HinhAnh": "dellxps13.jpg",
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop"
+    },
+    {
+      "MaSP": "SP012",
+      "TenSP": "Dell XPS 13",
+      "DonGia": 28000000,
+      "DonGiaKhuyenMai": 26000000,
+      "HinhAnh": "dellxps13.jpg",
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop"
+    },
+    {
+      "MaSP": "SP013",
+      "TenSP": "Dell XPS 13",
+      "DonGia": 28000000,
+      "DonGiaKhuyenMai": 26000000,
+      "HinhAnh": "dellxps13.jpg",
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop"
+    },
+    {
+      "MaSP": "SP014",
+      "TenSP": "Dell XPS 13",
+      "DonGia": 28000000,
+      "DonGiaKhuyenMai": 26000000,
+      "HinhAnh": "dellxps13.jpg",
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop"
+    },
+    {
+      "MaSP": "SP015",
+      "TenSP": "Dell XPS 13",
+      "DonGia": 28000000,
+      "DonGiaKhuyenMai": 26000000,
+      "HinhAnh": "dellxps13.jpg",
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop"
+    },
+    {
+      "MaSP": "SP016",
+      "TenSP": "Dell XPS 13",
+      "DonGia": 28000000,
+      "DonGiaKhuyenMai": 26000000,
+      "HinhAnh": "dellxps13.jpg",
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop"
+    },
+    {
+      "MaSP": "SP017",
+      "TenSP": "Dell XPS 13",
+      "DonGia": 28000000,
+      "DonGiaKhuyenMai": 26000000,
+      "HinhAnh": "dellxps13.jpg",
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop"
+    },
+    {
+      "MaSP": "SP018",
+      "TenSP": "Dell XPS 13",
+      "DonGia": 28000000,
+      "DonGiaKhuyenMai": 26000000,
+      "HinhAnh": "dellxps13.jpg",
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop"
+    },
+    {
+      "MaSP": "SP019",
+      "TenSP": "Dell XPS 13",
+      "DonGia": 28000000,
+      "DonGiaKhuyenMai": 26000000,
+      "HinhAnh": "dellxps13.jpg",
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop"
+    },
+    {
+      "MaSP": "SP020",
+      "TenSP": "Dell XPS 13",
+      "DonGia": 28000000,
+      "DonGiaKhuyenMai": 26000000,
+      "HinhAnh": "dellxps13.jpg",
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop"
+    }
+  ]
+}

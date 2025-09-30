@@ -7,20 +7,21 @@ namespace core_23webc_gr6.Controllers
     public class UsersController : Controller
     {
         private readonly IUserService _userService;
-        //Kieu
+        //LTMKieu
         private readonly AppConfig _config;
-
+        //endLTMKieu
         public UsersController(IUserService userService, AppConfig config)
         {
             _userService = userService;
-            //Kieu
+            //LTMKieu
             _config = config;
+            //endLTMKieu
         }
 
         // GET: UsersController
         public IActionResult Index(int pageNumber = 1, int limit = 5)
         {
-            //Kieu
+            //LTMKieu
             //Kiem tra IP co trong danh sach IP cho phep hay khong
             //HttpContext.Connection.RemoteIpAddress se tra ve IP cua nguoi dung dang truy cap
             // ?. la neu khong null thi goi tiep, null thi tra ve null
@@ -31,7 +32,7 @@ namespace core_23webc_gr6.Controllers
                 ViewBag.Message = "IP của bạn bị cấm.";
                 return View("Error");
             }
-            
+            //endLTMKieu
             var allUsers = _userService.GetAllUsers();
 
             var totalUsers = allUsers.Count;
