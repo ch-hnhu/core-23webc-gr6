@@ -1,44 +1,32 @@
-﻿using core_23webc_gr6.Interfaces;
+﻿using Microsoft.AspNetCore.Mvc;
+using core_23webc_gr6.Interfaces;
 using core_23webc_gr6.Models;
-using Microsoft.AspNetCore.Mvc;
+using core_23webc_gr6.Repositories;
 
 namespace core_23webc_gr6.Controllers
 {
-    //LTMKieu
-    [ApiController]
-    [Route("api/[controller]")]
-    public class ProductController : ControllerBase
+    public class ProductController : Controller
     {
-        public readonly IProductRepository _productRepository;
+        private readonly IProductRepository _productRepository;
+
         public ProductController(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
-
-        //phuong thuc GET
-        [HttpGet]
-        public ActionResult<List<Product>> GetAllProduct()
+        public IActionResult Index()
         {
-            return _productRepository.GetAllProducts();
+            var products = _productRepository.GetAllProducts();
+            return View(products);
         }
-        //phuong thuc GET theo id
-        [HttpGet("{id}")]
-        public ActionResult<Product> GetProductById(string id)
+        public IActionResult Details(string id)
         {
             var product = _productRepository.GetProductById(id);
             if (product == null)
             {
                 return NotFound();
             }
-            return product;
+            return View(product);
         }
-        //phuong thuc POST
-        [HttpPost]
-        public ActionResult AddProduct(Product product)
-        {
-            _productRepository.AddProduct(product);
-            return Ok();
-        }
+        
     }
-    //endLTMKieu
 }
