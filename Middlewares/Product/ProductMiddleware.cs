@@ -8,24 +8,26 @@ namespace core_23webc_gr6.Middlewares
     public class ProductMiddleware
     {
         private readonly RequestDelegate _next;
+        private readonly string _productFile = "Data/Seeds/db.json";
 
         public ProductMiddleware(RequestDelegate next)
         {
             _next = next;
         }
 
-        public async Task InvokeAsync(HttpContext context, IServiceProvider serviceProvider)
+        public async Task InvokeAsync(HttpContext context, IProductRepository productRepository)
         {
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "Seeds", "db.json");
-            if (File.Exists(filePath))
+            // Chỉ load nếu repo chưa có dữ liệu
+            if (!productRepository.GetAllProducts().Any())
             {
-                var json = await File.ReadAllTextAsync(filePath);
-                var doc = JsonDocument.Parse(json);
-                var products = JsonSerializer.Deserialize<List<Product>>(doc.RootElement.GetProperty("products"));
+                if (File.Exists(_productFile))
+                {
+                    var json = await File.ReadAllTextAsync(_productFile);
+                    var doc = JsonDocument.Parse(json);
+                    var products = JsonSerializer.Deserialize<List<Product>>(doc.RootElement.GetProperty("products"));
 
-                // Đưa vào DI thông qua ProductRepository
-                var repo = serviceProvider.GetRequiredService<IProductRepository>();
-                repo.SetProducts(products!);
+                    productRepository.SetProducts(products ?? new List<Product>());
+                }
             }
 
             await _next(context);
@@ -40,4 +42,4 @@ namespace core_23webc_gr6.Middlewares
         }
     }
 }
-//endNTNguyen
+//endNTNguyen cấu trúc nó giống nhau không 
