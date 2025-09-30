@@ -1,0 +1,79 @@
+﻿@*PNSon*@
+@model core_23webc_gr6.Models.Product
+@{
+    // Đặt tiêu đề trang
+    ViewData["Title"] = "Thêm sản phẩm";
+}
+<style>
+    /* CSS cho phần nội dung chính */
+    #page-wrapper {
+        margin-left: 220px;
+        padding: 20px;
+        min-height: 100vh;
+        background: #f8f9fa;
+    }
+</style>
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <h2>Thêm sản phẩm mới</h2>
+        @* Hiển thị lỗi nếu ModelState không hợp lệ *@
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                @* Lặp qua tất cả lỗi và hiển thị *@
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <div>@error.ErrorMessage</div>
+                }
+            </div>
+        }
+        @* Form thêm sản phẩm, sử dụng enctype để upload file *@
+        <form asp-action="AddProduct" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>Mã SP</label>
+                @* Trường mã sản phẩm, chỉ đọc *@
+                <input asp-for="MaSP" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <label>Tên SP</label>
+                @* Tên sản phẩm, bắt buộc nhập *@
+                <input asp-for="TenSP" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label>Đơn Giá</label>
+                @* Đơn giá, chỉ nhận số, tối thiểu 1 *@
+                <input asp-for="DonGia" class="form-control" required type="number" min="1" />
+            </div>
+            <div class="form-group">
+                <label>Đơn Giá Khuyến Mãi</label>
+                @* Đơn giá khuyến mãi, chỉ nhận số, tối thiểu 0 *@
+                <input asp-for="DonGiaKhuyenMai" class="form-control" required type="number" min="0" />
+            </div>
+            <div class="form-group">
+                <label>Hình Ảnh</label>
+                @* Trường upload file ảnh *@
+                <input type="file" name="HinhAnhFile" class="form-control" accept=".jpg,.jpeg,.png,.gif" />
+                @* Nếu đã có ảnh, hiển thị tên file và ảnh *@
+                @if (!string.IsNullOrEmpty(Model.HinhAnh))
+                {
+                    <input asp-for="HinhAnh" class="form-control mt-2" readonly />
+                    <img src="~/img/@Model.HinhAnh" alt="Ảnh sản phẩm" style="max-width:120px;margin-top:10px;" />
+                }
+            </div>
+            <div class="form-group">
+                <label>Mô Tả</label>
+                @* Mô tả sản phẩm *@
+                <input asp-for="MoTa" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Loại SP</label>
+                @* Loại sản phẩm, bắt buộc nhập *@
+                <input asp-for="LoaiSP" class="form-control" required />
+            </div>
+            @* Nút submit và quay lại danh sách *@
+            <button type="submit" class="btn btn-success">Thêm sản phẩm</button>
+            <a class="btn btn-secondary" href="@Url.Action("Index", "Product", new { area = "Admin" })">Quay lại</a>
+        </form>
+    </div>
+</div>
+@*endPNSon*@

@@ -21,9 +21,9 @@ namespace core_23webc_gr6.Middlewares
             {
                 if (File.Exists(_userFile))
                 {
-                    var json = await File.ReadAllTextAsync(_userFile);
-                    var users = JsonSerializer.Deserialize<List<User>>(doc.RootElement.GetProperty("users"));
-                    userService.SetUsers(users ?? new List<User>());
+                    //var json = await File.ReadAllTextAsync(_userFile);
+                    //var users = JsonSerializer.Deserialize<List<User>>(doc.RootElement.GetProperty("users"));
+                    //userService.SetUsers(users ?? new List<User>());
                     // //NTNguyen - Fix for new JSON structure with users and products
                     // var doc = JsonDocument.Parse(json);
                     // //endNTNguyen
