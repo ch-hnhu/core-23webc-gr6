@@ -3,4 +3,5 @@ bin/
 .vs/
 obj/
 /request.log
+.vscode
 # endCHNhu

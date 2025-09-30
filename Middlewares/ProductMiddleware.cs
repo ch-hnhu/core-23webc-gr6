@@ -16,7 +16,7 @@ namespace core_23webc_gr6.Middlewares
 
         public async Task InvokeAsync(HttpContext context, IServiceProvider serviceProvider)
         {
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "Seeds", "Users.json");
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "Seeds", "db.json");
             if (File.Exists(filePath))
             {
                 var json = await File.ReadAllTextAsync(filePath);

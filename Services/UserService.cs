@@ -11,7 +11,7 @@ namespace core_23webc_gr6.Services
 
         public UserService()
         {
-            _jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "Users.json");
+            _jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "Seeds", "db.json");
             LoadUsersFromJson();
         }
 
@@ -32,7 +32,7 @@ namespace core_23webc_gr6.Services
             catch (Exception ex)
             {
                 // Log error nếu có lỗi khi đọc file
-                Console.WriteLine($"Lỗi khi đọc file Users.json: {ex.Message}");
+                Console.WriteLine($"Lỗi khi đọc file db.json: {ex.Message}");
                 _users = new List<User>();
             }
         }

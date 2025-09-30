@@ -8,7 +8,7 @@ namespace core_23webc_gr6.Middlewares
     public class UserLoadingMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly string _userFile = "Data/Seeds/users.json";
+        private readonly string _userFile = "Data/Seeds/db.json";
 
         public UserLoadingMiddleware(RequestDelegate next)
         {
@@ -22,11 +22,11 @@ namespace core_23webc_gr6.Middlewares
                 if (File.Exists(_userFile))
                 {
                     var json = await File.ReadAllTextAsync(_userFile);
-                    //NTNguyen - Fix for new JSON structure with users and products
-                    var doc = JsonDocument.Parse(json);
                     var users = JsonSerializer.Deserialize<List<User>>(doc.RootElement.GetProperty("users"));
-                    //endNTNguyen
                     userService.SetUsers(users ?? new List<User>());
+                    // //NTNguyen - Fix for new JSON structure with users and products
+                    // var doc = JsonDocument.Parse(json);
+                    // //endNTNguyen
                 }
             }
 
