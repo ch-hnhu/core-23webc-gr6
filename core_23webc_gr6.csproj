@@ -7,4 +7,8 @@
     <RootNamespace>core_23webc_gr6</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\Products\" />
+  </ItemGroup>
+
 </Project>

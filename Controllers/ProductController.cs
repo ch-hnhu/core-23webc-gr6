@@ -25,6 +25,9 @@ namespace core_23webc_gr6.Controllers
             {
                 return NotFound();
             }
+            
+            ViewData["Area"] = "";// Gửi thông tin area xuống view PNSon thêm để view biết nó đang ở area nào
+
             return View(product);
         }
         

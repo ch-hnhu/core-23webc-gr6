@@ -107,7 +107,7 @@
       "TenSP": "iPhone 15 Pro Max",
       "DonGia": 35000000,
       "DonGiaKhuyenMai": 33000000,
-      "HinhAnh": "iphone15pro.jpg",
+      "HinhAnh": "/img/iphone15pro.jpg",
       "MoTa": "\u0110i\u1EC7n tho\u1EA1i Apple cao c\u1EA5p nh\u1EA5t n\u0103m 2023",
       "LoaiSP": "\u0110i\u1EC7n tho\u1EA1i"
     },
@@ -116,7 +116,7 @@
       "TenSP": "Samsung Galaxy S23 Ultra",
       "DonGia": 29000000,
       "DonGiaKhuyenMai": 27000000,
-      "HinhAnh": "galaxyS23.jpg",
+      "HinhAnh": "/img/galaxyS23.jpg",
       "MoTa": "\u0110i\u1EC7n tho\u1EA1i Samsung v\u1EDBi camera 200MP",
       "LoaiSP": "\u0110i\u1EC7n tho\u1EA1i"
     },
@@ -125,7 +125,7 @@
       "TenSP": "Xiaomi 13 Pro",
       "DonGia": 18000000,
       "DonGiaKhuyenMai": 16500000,
-      "HinhAnh": "xiaomi13pro.jpg",
+      "HinhAnh": "/img/xiaomi13pro.jpg",
       "MoTa": "Flagship Xiaomi c\u1EA5u h\u00ECnh m\u1EA1nh, gi\u00E1 h\u1EE3p l\u00FD",
       "LoaiSP": "\u0110i\u1EC7n tho\u1EA1i"
     },
@@ -134,7 +134,7 @@
       "TenSP": "MacBook Pro 14inch M3",
       "DonGia": 52000000,
       "DonGiaKhuyenMai": 49000000,
-      "HinhAnh": "macbookpro14.jpg",
+      "HinhAnh": "/img/macbookpro14.jpg",
       "MoTa": "Laptop Apple v\u1EDBi chip M3 m\u1EA1nh m\u1EBD",
       "LoaiSP": "Laptop"
     },
@@ -143,7 +143,7 @@
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
+      "HinhAnh": "/img/dellxps13.jpg",
       "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
       "LoaiSP": "Laptop"
     },
@@ -152,7 +152,7 @@
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
+      "HinhAnh": "/img/dellxps13.jpg",
       "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
       "LoaiSP": "Laptop"
     },
@@ -161,7 +161,7 @@
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
+      "HinhAnh": "/img/dellxps13.jpg",
       "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
       "LoaiSP": "Laptop"
     },
@@ -170,7 +170,7 @@
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
+      "HinhAnh": "/img/dellxps13.jpg",
       "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
       "LoaiSP": "Laptop"
     },
@@ -179,7 +179,7 @@
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
+      "HinhAnh": "/img/dellxps13.jpg",
       "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
       "LoaiSP": "Laptop"
     },
@@ -188,7 +188,7 @@
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
+      "HinhAnh": "/img/dellxps13.jpg",
       "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
       "LoaiSP": "Laptop"
     },
@@ -197,7 +197,7 @@
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
+      "HinhAnh": "/img/dellxps13.jpg",
       "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
       "LoaiSP": "Laptop"
     },
@@ -206,7 +206,7 @@
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
+      "HinhAnh": "/img/dellxps13.jpg",
       "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
       "LoaiSP": "Laptop"
     },
@@ -215,7 +215,7 @@
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
+      "HinhAnh": "/img/dellxps13.jpg",
       "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
       "LoaiSP": "Laptop"
     },
@@ -224,7 +224,7 @@
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
+      "HinhAnh": "/img/dellxps13.jpg",
       "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
       "LoaiSP": "Laptop"
     },
@@ -233,7 +233,7 @@
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
+      "HinhAnh": "/img/dellxps13.jpg",
       "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
       "LoaiSP": "Laptop"
     },
@@ -242,7 +242,7 @@
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
+      "HinhAnh": "/img/dellxps13.jpg",
       "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
       "LoaiSP": "Laptop"
     },
@@ -251,7 +251,7 @@
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
+      "HinhAnh": "/img/dellxps13.jpg",
       "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
       "LoaiSP": "Laptop"
     },
@@ -260,7 +260,7 @@
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
+      "HinhAnh": "/img/dellxps13.jpg",
       "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
       "LoaiSP": "Laptop"
     },
@@ -269,7 +269,7 @@
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
+      "HinhAnh": "/img/dellxps13.jpg",
       "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
       "LoaiSP": "Laptop"
     },
@@ -278,18 +278,18 @@
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
+      "HinhAnh": "/img/dellxps13.jpg",
       "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
       "LoaiSP": "Laptop"
     },
     {
-      "MaSP": "SP755006",
+      "MaSP": "SP290469",
       "TenSP": "test 1",
-      "DonGia": 111,
-      "DonGiaKhuyenMai": 1111,
-      "HinhAnh": "36078e7d535145b288b8f71c67ec53f1.jpg",
-      "MoTa": "1111",
-      "LoaiSP": "1111"
+      "DonGia": 10000,
+      "DonGiaKhuyenMai": 10000,
+      "HinhAnh": "/img/Products/30a67ba181564ddf847ca8de2e015e6e.jpg",
+      "MoTa": "\u0111\u1EB9p",
+      "LoaiSP": "Th\u1EED nghi\u1EC7m"
     }
   ]
 }
