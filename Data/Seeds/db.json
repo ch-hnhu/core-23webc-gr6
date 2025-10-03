@@ -107,35 +107,35 @@
       "TenSP": "iPhone 15 Pro Max",
       "DonGia": 35000000,
       "DonGiaKhuyenMai": 33000000,
-      "HinhAnh": "/img/iphone15pro.jpg",
-      "MoTa": "\u0110i\u1EC7n tho\u1EA1i Apple cao c\u1EA5p nh\u1EA5t n\u0103m 2023",
-      "LoaiSP": "\u0110i\u1EC7n tho\u1EA1i"
+      "HinhAnh": "/img/Products/ip_15.jpg",
+      "MoTa": "iPhone 15 Pro Max là mẫu điện thoại cao cấp nhất của Apple năm 2023, với khung titan siêu bền, chip A17 Pro mạnh mẽ, màn hình Super Retina XDR sắc nét và hệ thống camera chất lượng điện ảnh.",
+      "LoaiSP": "Điện thoại"
     },
     {
       "MaSP": "SP002",
       "TenSP": "Samsung Galaxy S23 Ultra",
       "DonGia": 29000000,
       "DonGiaKhuyenMai": 27000000,
-      "HinhAnh": "/img/galaxyS23.jpg",
-      "MoTa": "\u0110i\u1EC7n tho\u1EA1i Samsung v\u1EDBi camera 200MP",
-      "LoaiSP": "\u0110i\u1EC7n tho\u1EA1i"
+      "HinhAnh": "/img/Products/ss23ultra.jpg",
+      "MoTa": "Samsung Galaxy S23 Ultra sở hữu camera 200MP, màn hình AMOLED 120Hz sống động, hiệu năng mạnh mẽ từ Snapdragon 8 Gen 2 và bút S Pen tiện lợi cho làm việc lẫn giải trí.",
+      "LoaiSP": "Điện thoại"
     },
     {
       "MaSP": "SP003",
       "TenSP": "Xiaomi 13 Pro",
       "DonGia": 18000000,
       "DonGiaKhuyenMai": 16500000,
-      "HinhAnh": "/img/xiaomi13pro.jpg",
-      "MoTa": "Flagship Xiaomi c\u1EA5u h\u00ECnh m\u1EA1nh, gi\u00E1 h\u1EE3p l\u00FD",
-      "LoaiSP": "\u0110i\u1EC7n tho\u1EA1i"
+      "HinhAnh": "/img/Products/xiaomi_15.jpg",
+      "MoTa": "Xiaomi 13 Pro kết hợp hiệu năng mạnh mẽ của Snapdragon 8 Gen 2 với hệ thống camera Leica chuyên nghiệp. Máy có màn hình AMOLED 2K và sạc nhanh 120W.",
+      "LoaiSP": "Điện thoại"
     },
     {
       "MaSP": "SP004",
       "TenSP": "MacBook Pro 14inch M3",
       "DonGia": 52000000,
       "DonGiaKhuyenMai": 49000000,
-      "HinhAnh": "/img/macbookpro14.jpg",
-      "MoTa": "Laptop Apple v\u1EDBi chip M3 m\u1EA1nh m\u1EBD",
+      "HinhAnh": "/img/Products/Mackbookpro_14.png",
+      "MoTa": "MacBook Pro 14 inch M3 với chip Apple M3 mới, màn hình Liquid Retina XDR siêu nét, thời lượng pin dài và thiết kế nhôm nguyên khối sang trọng.",
       "LoaiSP": "Laptop"
     },
     {
@@ -143,153 +143,144 @@
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "/img/dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
+      "HinhAnh": "/img/Products/Dell_XPS_13.jpg",
+      "MoTa": "Dell XPS 13 siêu mỏng nhẹ với viền màn hình InfinityEdge, chip Intel thế hệ mới và pin lâu bền. Phù hợp cho công việc văn phòng và di động.",
       "LoaiSP": "Laptop"
     },
     {
       "MaSP": "SP006",
-      "TenSP": "Dell XPS 13",
-      "DonGia": 28000000,
-      "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "/img/dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
+      "TenSP": "Asus ROG Zephyrus G14",
+      "DonGia": 42000000,
+      "DonGiaKhuyenMai": 39500000,
+      "HinhAnh": "/img/Products/Asus_G14.jpg",
+      "MoTa": "Laptop gaming Asus ROG Zephyrus G14 được trang bị Ryzen 9, GPU RTX mạnh mẽ, màn hình 165Hz, phù hợp cho game thủ và sáng tạo nội dung.",
       "LoaiSP": "Laptop"
     },
     {
       "MaSP": "SP007",
-      "TenSP": "Dell XPS 13",
-      "DonGia": 28000000,
-      "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "/img/dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
+      "TenSP": "HP Spectre x360",
+      "DonGia": 34000000,
+      "DonGiaKhuyenMai": 31500000,
+      "HinhAnh": "/img/Products/HP_360.jpg",
+      "MoTa": "HP Spectre x360 là laptop 2 trong 1 cao cấp, thiết kế sang trọng, màn hình cảm ứng xoay gập 360 độ, phù hợp cho cả làm việc và giải trí.",
       "LoaiSP": "Laptop"
     },
     {
       "MaSP": "SP008",
-      "TenSP": "Dell XPS 13",
-      "DonGia": 28000000,
-      "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "/img/dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "TenSP": "iPad Pro 12.9 M2",
+      "DonGia": 32000000,
+      "DonGiaKhuyenMai": 30000000,
+      "HinhAnh": "/img/Products/iPad_M2.jpg",
+      "MoTa": "iPad Pro 12.9 M2 với màn hình Liquid Retina XDR, chip M2 mạnh mẽ, hỗ trợ Apple Pencil và bàn phím Magic Keyboard, biến iPad thành một công cụ sáng tạo tuyệt vời.",
+      "LoaiSP": "Máy tính bảng"
     },
     {
       "MaSP": "SP009",
-      "TenSP": "Dell XPS 13",
+      "TenSP": "Samsung Galaxy Tab S9 Ultra",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "/img/dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "HinhAnh": "/img/Products/ss23ultra.jpg",
+      "MoTa": "Galaxy Tab S9 Ultra có màn hình AMOLED 14.6 inch cực lớn, chip Snapdragon 8 Gen 2, bút S Pen kèm theo, mang lại trải nghiệm học tập và làm việc tối ưu.",
+      "LoaiSP": "Máy tính bảng"
     },
     {
       "MaSP": "SP010",
-      "TenSP": "Dell XPS 13",
-      "DonGia": 28000000,
-      "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "/img/dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "TenSP": "Sony WH-1000XM5",
+      "DonGia": 9500000,
+      "DonGiaKhuyenMai": 8900000,
+      "HinhAnh": "/img/Products/sony_wh.jpg",
+      "MoTa": "Tai nghe chống ồn Sony WH-1000XM5 mang lại chất âm tuyệt hảo, khả năng chống ồn chủ động hàng đầu và pin lên tới 30 giờ nghe nhạc liên tục.",
+      "LoaiSP": "Tai nghe"
     },
     {
       "MaSP": "SP011",
-      "TenSP": "Dell XPS 13",
-      "DonGia": 28000000,
-      "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "/img/dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "TenSP": "AirPods Pro 2",
+      "DonGia": 7500000,
+      "DonGiaKhuyenMai": 6990000,
+      "HinhAnh": "/img/Products/airpods-pro-2.jpg",
+      "MoTa": "AirPods Pro 2 mang đến trải nghiệm âm thanh sống động, chống ồn chủ động thế hệ mới và kết nối liền mạch với hệ sinh thái Apple.",
+      "LoaiSP": "Tai nghe"
     },
     {
       "MaSP": "SP012",
-      "TenSP": "Dell XPS 13",
-      "DonGia": 28000000,
-      "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "/img/dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "TenSP": "Apple Watch Ultra",
+      "DonGia": 22000000,
+      "DonGiaKhuyenMai": 21000000,
+      "HinhAnh": "/img/Products/apple_watch.jpg",
+      "MoTa": "Apple Watch Ultra thiết kế bền bỉ, chống nước, màn hình sáng hơn, pin lâu hơn, tích hợp nhiều tính năng theo dõi sức khỏe và thể thao chuyên nghiệp.",
+      "LoaiSP": "Đồng hồ"
     },
     {
       "MaSP": "SP013",
-      "TenSP": "Dell XPS 13",
-      "DonGia": 28000000,
-      "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "/img/dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "TenSP": "Samsung Galaxy Watch 6",
+      "DonGia": 9000000,
+      "DonGiaKhuyenMai": 8500000,
+      "HinhAnh": "/img/Products/Samsung_Galaxy_Watch_6.jpg",
+      "MoTa": "Galaxy Watch 6 với màn hình AMOLED sắc nét, nhiều tính năng theo dõi sức khỏe, tập luyện và khả năng kết nối chặt chẽ với điện thoại Samsung.",
+      "LoaiSP": "Đồng hồ"
     },
     {
       "MaSP": "SP014",
-      "TenSP": "Dell XPS 13",
-      "DonGia": 28000000,
-      "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "/img/dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "TenSP": "Kindle Paperwhite 11",
+      "DonGia": 4000000,
+      "DonGiaKhuyenMai": 3700000,
+      "HinhAnh": "/img/Products/Kindle_Paperwhite_11.jpg",
+      "MoTa": "Kindle Paperwhite thế hệ 11 dành cho những ai yêu sách, với màn hình e-ink chống chói, pin dùng hàng tuần và bộ nhớ lưu trữ hàng nghìn cuốn sách.",
+      "LoaiSP": "Thiết bị đọc sách"
     },
     {
       "MaSP": "SP015",
-      "TenSP": "Dell XPS 13",
-      "DonGia": 28000000,
-      "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "/img/dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "TenSP": "GoPro Hero 11",
+      "DonGia": 12000000,
+      "DonGiaKhuyenMai": 11500000,
+      "HinhAnh": "/img/Products/gopro-11-may-quay.jpeg",
+      "MoTa": "GoPro Hero 11 là camera hành trình nhỏ gọn, quay video 5.3K siêu sắc nét, chống nước và hỗ trợ chống rung HyperSmooth mới nhất.",
+      "LoaiSP": "Camera"
     },
     {
       "MaSP": "SP016",
-      "TenSP": "Dell XPS 13",
-      "DonGia": 28000000,
-      "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "/img/dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "TenSP": "Sony A7 IV",
+      "DonGia": 55000000,
+      "DonGiaKhuyenMai": 53000000,
+      "HinhAnh": "/img/Products/sony-alpha-a7m4-16-500x500.jpg",
+      "MoTa": "Sony A7 IV là máy ảnh full-frame cho nhiếp ảnh gia chuyên nghiệp, hỗ trợ quay phim 4K, lấy nét AI và dải tương phản động rộng.",
+      "LoaiSP": "Máy ảnh"
     },
     {
       "MaSP": "SP017",
-      "TenSP": "Dell XPS 13",
-      "DonGia": 28000000,
-      "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "/img/dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "TenSP": "Nintendo Switch OLED",
+      "DonGia": 9500000,
+      "DonGiaKhuyenMai": 9200000,
+      "HinhAnh": "/img/Products/Nintendo_Switch_OLED.jpeg",
+      "MoTa": "Nintendo Switch OLED phiên bản nâng cấp với màn hình OLED rực rỡ, âm thanh cải tiến, bộ nhớ trong 64GB, mang lại trải nghiệm chơi game di động tuyệt vời.",
+      "LoaiSP": "Máy chơi game"
     },
     {
       "MaSP": "SP018",
-      "TenSP": "Dell XPS 13",
-      "DonGia": 28000000,
-      "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "/img/dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "TenSP": "PlayStation 5",
+      "DonGia": 15500000,
+      "DonGiaKhuyenMai": 15000000,
+      "HinhAnh": "/img/Products/PlayStation_5.jpg",
+      "MoTa": "PlayStation 5 với hiệu năng vượt trội, đồ họa chân thực, hỗ trợ ray-tracing và kho game độc quyền hấp dẫn, là máy chơi game hàng đầu hiện nay.",
+      "LoaiSP": "Máy chơi game"
     },
     {
       "MaSP": "SP019",
-      "TenSP": "Dell XPS 13",
-      "DonGia": 28000000,
-      "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "/img/dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "TenSP": "Xbox Series X",
+      "DonGia": 14500000,
+      "DonGiaKhuyenMai": 14000000,
+      "HinhAnh": "/img/Products/Xbox_Series_X.jpg",
+      "MoTa": "Xbox Series X mang lại hiệu năng mạnh mẽ, khả năng chơi game 4K mượt mà, thiết kế tối giản và thư viện game phong phú từ Xbox Game Pass.",
+      "LoaiSP": "Máy chơi game"
     },
     {
       "MaSP": "SP020",
-      "TenSP": "Dell XPS 13",
-      "DonGia": 28000000,
-      "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "/img/dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
-    },
-    {
-      "MaSP": "SP290469",
-      "TenSP": "test 1",
-      "DonGia": 10000,
-      "DonGiaKhuyenMai": 10000,
-      "HinhAnh": "/img/Products/30a67ba181564ddf847ca8de2e015e6e.jpg",
-      "MoTa": "\u0111\u1EB9p",
-      "LoaiSP": "Th\u1EED nghi\u1EC7m"
+      "TenSP": "Logitech MX Master 3S",
+      "DonGia": 3200000,
+      "DonGiaKhuyenMai": 2990000,
+      "HinhAnh": "/img/Products/Logitech_MX_Master_3S.jpg",
+      "MoTa": "Chuột không dây Logitech MX Master 3S với cảm biến chính xác, cuộn siêu nhanh, pin lâu và thiết kế công thái học thoải mái cho công việc văn phòng.",
+      "LoaiSP": "Phụ kiện"
     }
   ]
 }
