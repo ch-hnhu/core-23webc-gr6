@@ -107,189 +107,180 @@
       "TenSP": "iPhone 15 Pro Max",
       "DonGia": 35000000,
       "DonGiaKhuyenMai": 33000000,
-      "HinhAnh": "iphone15pro.jpg",
-      "MoTa": "\u0110i\u1EC7n tho\u1EA1i Apple cao c\u1EA5p nh\u1EA5t n\u0103m 2023",
-      "LoaiSP": "\u0110i\u1EC7n tho\u1EA1i"
+      "MoTa": "Điện thoại Apple cao cấp nhất năm 2023",
+      "LoaiSP": "Điện thoại",
+      "HinhAnh": "iphone15pro.jpg"
     },
     {
       "MaSP": "SP002",
       "TenSP": "Samsung Galaxy S23 Ultra",
       "DonGia": 29000000,
       "DonGiaKhuyenMai": 27000000,
-      "HinhAnh": "galaxyS23.jpg",
-      "MoTa": "\u0110i\u1EC7n tho\u1EA1i Samsung v\u1EDBi camera 200MP",
-      "LoaiSP": "\u0110i\u1EC7n tho\u1EA1i"
+      "MoTa": "Điện thoại Samsung với camera 200MP",
+      "LoaiSP": "Điện thoại",
+      "HinhAnh": "galaxyS23.jpg"
     },
     {
       "MaSP": "SP003",
       "TenSP": "Xiaomi 13 Pro",
       "DonGia": 18000000,
       "DonGiaKhuyenMai": 16500000,
-      "HinhAnh": "xiaomi13pro.jpg",
-      "MoTa": "Flagship Xiaomi c\u1EA5u h\u00ECnh m\u1EA1nh, gi\u00E1 h\u1EE3p l\u00FD",
-      "LoaiSP": "\u0110i\u1EC7n tho\u1EA1i"
+      "MoTa": "Flagship Xiaomi cấu hình mạnh, giá hợp lý",
+      "LoaiSP": "Điện thoại",
+      "HinhAnh": "xiaomi13pro.jpg"
     },
     {
       "MaSP": "SP004",
       "TenSP": "MacBook Pro 14inch M3",
       "DonGia": 52000000,
       "DonGiaKhuyenMai": 49000000,
-      "HinhAnh": "macbookpro14.jpg",
-      "MoTa": "Laptop Apple v\u1EDBi chip M3 m\u1EA1nh m\u1EBD",
-      "LoaiSP": "Laptop"
+      "MoTa": "Laptop Apple với chip M3 mạnh mẽ",
+      "LoaiSP": "Laptop",
+      "HinhAnh": "macbookpro14.jpg"
     },
     {
       "MaSP": "SP005",
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop",
+      "HinhAnh": "dellxps13.jpg"
     },
     {
       "MaSP": "SP006",
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop",
+      "HinhAnh": "dellxps13.jpg"
     },
     {
       "MaSP": "SP007",
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop",
+      "HinhAnh": "dellxps13.jpg"
     },
     {
       "MaSP": "SP008",
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop",
+      "HinhAnh": "dellxps13.jpg"
     },
     {
       "MaSP": "SP009",
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop",
+      "HinhAnh": "dellxps13.jpg"
     },
     {
       "MaSP": "SP010",
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop",
+      "HinhAnh": "dellxps13.jpg"
     },
     {
       "MaSP": "SP011",
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop",
+      "HinhAnh": "dellxps13.jpg"
     },
     {
       "MaSP": "SP012",
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop",
+      "HinhAnh": "dellxps13.jpg"
     },
     {
       "MaSP": "SP013",
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop",
+      "HinhAnh": "dellxps13.jpg"
     },
     {
       "MaSP": "SP014",
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop",
+      "HinhAnh": "dellxps13.jpg"
     },
     {
       "MaSP": "SP015",
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop",
+      "HinhAnh": "dellxps13.jpg"
     },
     {
       "MaSP": "SP016",
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop",
+      "HinhAnh": "dellxps13.jpg"
     },
     {
       "MaSP": "SP017",
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop",
+      "HinhAnh": "dellxps13.jpg"
     },
     {
       "MaSP": "SP018",
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop",
+      "HinhAnh": "dellxps13.jpg"
     },
     {
       "MaSP": "SP019",
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop",
+      "HinhAnh": "dellxps13.jpg"
     },
     {
       "MaSP": "SP020",
       "TenSP": "Dell XPS 13",
       "DonGia": 28000000,
       "DonGiaKhuyenMai": 26000000,
-      "HinhAnh": "dellxps13.jpg",
-      "MoTa": "Laptop Dell si\u00EAu m\u1ECFng, hi\u1EC7u n\u0103ng cao",
-      "LoaiSP": "Laptop"
-    },
-    {
-      "MaSP": "SP388E78",
-      "TenSP": "test 2",
-      "DonGia": 222,
-      "DonGiaKhuyenMai": 222,
-      "HinhAnh": "474f760a54ff4f09b0a7ebfb12a2cac3.jpg",
-      "MoTa": "V\u00F4 tri",
-      "LoaiSP": "Th\u1EED nghi\u1EC7m"
+      "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
+      "LoaiSP": "Laptop",
+      "HinhAnh": "dellxps13.jpg"
     }
   ]
 }

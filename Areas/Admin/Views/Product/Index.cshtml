@@ -11,6 +11,13 @@
 <!-- PNSon 4/10/2024 -->
 <div id="page-wrapper">
     <div class="container-fluid">
+        <!-- Thông báo -->
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["Message"]
+            </div>
+        }
         <!-- Tiêu đề -->
         <div class="row">
             <div class="col-lg-12">

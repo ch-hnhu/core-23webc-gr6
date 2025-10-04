@@ -2,6 +2,9 @@
 using core_23webc_gr6.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
+//Thêm using để cấu hình encoder cho Unicode
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 
 namespace core_23webc_gr6.Areas.Admin.Controllers
 {
@@ -36,11 +39,11 @@ namespace core_23webc_gr6.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult AddProduct(Product model, IFormFile? HinhAnhFile)
         {
-            if (!IsValidProduct(model, out string error))
+            if (!ModelState.IsValid)   // Dùng DataAnnotations để validate
             {
-                ModelState.AddModelError(string.Empty, error);
                 return View(model);
             }
+
 
             if (HinhAnhFile != null && HinhAnhFile.Length > 0)
             {
@@ -61,7 +64,7 @@ namespace core_23webc_gr6.Areas.Admin.Controllers
                     HinhAnhFile.CopyTo(stream);
                 }
 
-                // ❌ Không lưu đường dẫn dài, chỉ lưu tên file
+                //  Không lưu đường dẫn dài, chỉ lưu tên file
                 model.HinhAnh = fileName;
             }
 
@@ -89,7 +92,7 @@ namespace core_23webc_gr6.Areas.Admin.Controllers
             var productsJson = data?["products"]?.ToString();
             var products = JsonSerializer.Deserialize<List<Product>>(productsJson ?? "[]");
 
-            // ❌ Không tự động chỉnh sửa HinhAnh nữa
+            //  Không tự động chỉnh sửa HinhAnh nữa
             return products ?? new List<Product>();
         }
 
@@ -107,7 +110,13 @@ namespace core_23webc_gr6.Areas.Admin.Controllers
                 data = new Dictionary<string, object>();
             }
             data["products"] = products;
-            var newJson = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
+            // cho phép ghi Unicode không escape 4/10/2024
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)
+            };
+            var newJson = JsonSerializer.Serialize(data, options);
             System.IO.File.WriteAllText(jsonPath, newJson);
         }
 
@@ -125,27 +134,6 @@ namespace core_23webc_gr6.Areas.Admin.Controllers
         private string GenerateMaSP()
         {
             return "SP" + new Random().Next(100, 999) + Guid.NewGuid().ToString("N")[..3].ToUpper();
-        }
-
-        private bool IsValidProduct(Product model, out string error)
-        {
-            error = "";
-            if (string.IsNullOrWhiteSpace(model.TenSP) || !System.Text.RegularExpressions.Regex.IsMatch(model.TenSP, @"^[\p{L}\d\s]+$"))
-            {
-                error = "Tên sản phẩm chỉ được nhập chữ, số và khoảng trắng, không chứa ký tự đặc biệt.";
-                return false;
-            }
-            if (model.DonGia <= 0 || model.DonGiaKhuyenMai < 0)
-            {
-                error = "Đơn giá phải là số lớn hơn 0, đơn giá khuyến mãi phải là số không âm.";
-                return false;
-            }
-            if (string.IsNullOrWhiteSpace(model.LoaiSP) || !System.Text.RegularExpressions.Regex.IsMatch(model.LoaiSP, @"^[\p{L}\d\s]+$"))
-            {
-                error = "Loại sản phẩm chỉ được nhập chữ, số và khoảng trắng, không chứa ký tự đặc biệt.";
-                return false;
-            }
-            return true;
         }
     }
 }
