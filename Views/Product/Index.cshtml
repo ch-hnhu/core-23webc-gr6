@@ -3,8 +3,10 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    var area = ViewData["Area"] as string ?? "";// kiểm tra gọi từ Admin hay Public PNSon thêm 4/10/2024
+}
     <h2>Danh sách sản phẩm</h2>
-    <table>
+<table class="product-table">
         <thead>
             <tr>
                 <th>Mã sản phẩm</th>
@@ -25,13 +27,57 @@
                 <td>@product.DonGia.ToString()</td>
                 <td>@product.DonGiaKhuyenMai.ToString()</td>
                 <td>
-                    <img src="@product.HinhAnh" alt="@product.TenSP" width="100" />
+                <img src="~/img/Products/@product.HinhAnh" alt="@product.TenSP" width="100" />
                 </td>
                 <td>@product.MoTa</td>
                 <td>@product.LoaiSP</td>
-                <td>| <a asp-controller="Product" asp-action="Details" asp-route-id="@product.MaSP">Xem chi tiết</a></td>
+                <td>| <a asp-area="@area asp-controller="Product" asp-action="Details" asp-route-id="@product.MaSP">Xem chi tiết</a></td>
             </tr>
         }
         
     </table>
-}
+
+
+
+<style>
+    /*  PNSon thêm 4/10/2024 Định dạng bảng chỉ áp dụng cho class product-table */
+    .product-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 14px;
+        text-align: center;
+        table-layout: auto;
+    }
+        /* Header */
+        .product-table thead th {
+            background-color: #343a40;
+            color: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+            white-space: nowrap;
+        }
+        /* Ô dữ liệu */
+        .product-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            vertical-align: middle;
+            word-wrap: break-word;
+            max-width: 250px;
+        }
+            /* Ảnh sản phẩm */
+            .product-table td img {
+                display: block;
+                margin: 0 auto;
+                border-radius: 6px;
+            }
+        /* Tô màu xen kẽ */
+        .product-table tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        /* Hover */
+        .product-table tbody tr:hover {
+            background-color: #e9ecef;
+            transition: 0.2s;
+        }
+</style>

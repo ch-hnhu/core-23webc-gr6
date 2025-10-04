@@ -283,13 +283,13 @@
       "LoaiSP": "Laptop"
     },
     {
-      "MaSP": "SP755006",
-      "TenSP": "test 1",
-      "DonGia": 111,
-      "DonGiaKhuyenMai": 1111,
-      "HinhAnh": "36078e7d535145b288b8f71c67ec53f1.jpg",
-      "MoTa": "1111",
-      "LoaiSP": "1111"
+      "MaSP": "SP388E78",
+      "TenSP": "test 2",
+      "DonGia": 222,
+      "DonGiaKhuyenMai": 222,
+      "HinhAnh": "474f760a54ff4f09b0a7ebfb12a2cac3.jpg",
+      "MoTa": "V\u00F4 tri",
+      "LoaiSP": "Th\u1EED nghi\u1EC7m"
     }
   ]
 }
