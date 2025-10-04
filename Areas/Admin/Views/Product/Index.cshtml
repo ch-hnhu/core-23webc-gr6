@@ -1,93 +1,67 @@
-﻿@*PNSon*@
-@model List<core_23webc_gr6.Models.Product>
+﻿@using core_23webc_gr6.Models
+@model List<Product>
+
 @{
-    // Đặt tiêu đề trang
-    ViewData["Title"] = "Danh sách sản phẩm";
-    // Lấy thông báo từ TempData nếu có
-    var message = TempData["Message"] as string;
-    // Lấy số trang hiện tại và tổng số trang từ ViewBag
-    int page = ViewBag.Page ?? 1;
-    int totalPages = ViewBag.TotalPages ?? 1;
+    ViewData["Title"] = "Quản lý sản phẩm (Admin)";
+    ViewData["Area"] = "Admin";   // dòng này để phân biệt admin
+    var page = ViewBag.Page as int? ?? 1;
+    var totalPages = ViewBag.TotalPages as int? ?? 1;
 }
-<style>
-    /* CSS cho phần nội dung chính */
-    #page-wrapper {
-        margin-left: 220px;
-        padding: 20px;
-        min-height: 100vh;
-        background: #f8f9fa;
-    }
-    /* CSS cho ảnh trong bảng */
-    .table img {
-        max-width: 80px;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-    }
-    /* CSS cho phân trang */
-    .pagination {
-        margin-top: 20px;
-    }
-</style>
+
+<!-- PNSon 4/10/2024 -->
 <div id="page-wrapper">
     <div class="container-fluid">
-        <h2>Danh sách sản phẩm</h2>
-        @* Hiển thị thông báo thành công nếu có *@
-        @if (!string.IsNullOrEmpty(message))
-        {
-            <div class="alert alert-success">@message</div>
-        }
-        @* Bảng hiển thị danh sách sản phẩm *@
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Mã SP</th>
-                    <th>Tên SP</th>
-                    <th>Đơn Giá</th>
-                    <th>Đơn Giá KM</th>
-                    <th>Hình Ảnh</th>
-                    <th>Mô Tả</th>
-                    <th>Loại SP</th>
-                </tr>
-            </thead>
-            <tbody>
-                @* Lặp qua từng sản phẩm trong Model *@
-                @foreach (var sp in Model)
-                {
-                    <tr>
-                        <td>@sp.MaSP</td>
-                        <td>@sp.TenSP</td>
-                        <td>@sp.DonGia.ToString("N0")</td>
-                        <td>@sp.DonGiaKhuyenMai.ToString("N0")</td>
-                        <td>
-                            <img src="~/img/@sp.HinhAnh" alt="@sp.TenSP" />
-                        </td>
-                        <td>@sp.MoTa</td>
-                        <td>@sp.LoaiSP</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-        @* Phân trang *@
-        <nav>
-            <ul class="pagination">
-                <li class="page-item @(page == 1 ? "disabled" : "")">
-                    <a class="page-link" href="@Url.Action("Index", "Product", new { area = "Admin", page = page - 1 })">«</a>
-                </li>
-                @for (int i = 1; i <= totalPages; i++)
-                {
-                    <li class="page-item @(i == page ? "active" : "")">
-                        <a class="page-link" href="@Url.Action("Index", "Product", new { area = "Admin", page = i })">@i</a>
-                    </li>
-                }
-                <li class="page-item @(page == totalPages ? "disabled" : "")">
-                    <a class="page-link" href="@Url.Action("Index", "Product", new { area = "Admin", page = page + 1 })">»</a>
-                </li>
-            </ul>
-            <span>Trang @(page) / @(totalPages)</span>
-        </nav>
-        @* Nút chuyển sang trang thêm sản phẩm *@
-        <a class="btn btn-primary" href="@Url.Action("AddProduct", "Product", new { area = "Admin" })">Thêm sản phẩm</a>
+        <!-- Tiêu đề -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Quản lý sản phẩm (Admin)</h1>
+            </div>
+        </div>
+
+        <!-- Danh sách sản phẩm -->
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Gọi partial hiển thị bảng danh sách -->
+                @await Html.PartialAsync("~/Views/Product/Index.cshtml", Model)
+            </div>
+        </div>
+
+        <!-- Phân trang -->
+        <div class="row" style="margin-top:20px;">
+            <div class="col-lg-12 text-center">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        @if (page > 1)
+                        {
+                            <li class="page-item">
+                                <a class="page-link" asp-area="Admin" asp-controller="Product" asp-action="Index" asp-route-page="@(page - 1)">«</a>
+                            </li>
+                        }
+                        @for (int i = 1; i <= totalPages; i++)
+                        {
+                            <li class="page-item @(i == page ? "active" : "")">
+                                <a class="page-link" asp-area="Admin" asp-controller="Product" asp-action="Index" asp-route-page="@i">@i</a>
+                            </li>
+                        }
+                        @if (page < totalPages)
+                        {
+                            <li class="page-item">
+                                <a class="page-link" asp-area="Admin" asp-controller="Product" asp-action="Index" asp-route-page="@(page + 1)">»</a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Nút thêm sản phẩm -->
+        <div class="row" style="margin-top:20px;">
+            <div class="col-lg-12 text-center">
+                <a asp-area="Admin" asp-controller="Product" asp-action="AddProduct" class="btn btn-primary">
+                    + Thêm sản phẩm
+                </a>
+            </div>
+        </div>
     </div>
 </div>
-@*endPNSon*@
+<!-- endPNSon -->

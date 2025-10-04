@@ -25,6 +25,7 @@ namespace core_23webc_gr6.Controllers
             {
                 return NotFound();
             }
+            ViewData["Area"] = "";//PNSon 4/10/2024 Gửi thông tin area xuống view PNSon 4/10/2024 thêm để view biết nó đang ở area nào
             return View(product);
         }
         
