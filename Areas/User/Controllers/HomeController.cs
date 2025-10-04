@@ -27,7 +27,7 @@ namespace core_23webc_gr6.Areas.User.Controllers
 
             var products = JsonSerializer.Deserialize<List<Product>>(productsElement.GetRawText());
 
-            // Lấy 5 sản phẩm đầu tiên
+            // Lấy 6 sản phẩm đầu tiên
             var latestProducts = products?.Take(6).ToList() ?? new List<Product>();
 
             return View(latestProducts);

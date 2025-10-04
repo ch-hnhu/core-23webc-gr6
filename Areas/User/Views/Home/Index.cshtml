@@ -1,4 +1,5 @@
-@model List<core_23webc_gr6.Models.Product>//Nam 4/10/2025
+
+@model List<core_23webc_gr6.Models.Product>//Nam 4/10/2025 sửa LateProduct
 
 
 <div class="slider-area">
@@ -79,33 +80,34 @@
     </div>
 </div> <!-- End promo area -->
 
-<div class="maincontent-area">
+<div class="maincontent-area"></div> <!--VqNam 4/10/2025 -->
+
     <div class="zigzag-bottom"></div>
       <div class="container">
         <div class="row">
             <div class="col-md-12">
                <div class="latest-product">
-    <h2 class="section-title">Latest Products</h2>
-    <div class="product-carousel">
-        @{
-            int index = 1; // đếm số thứ tự ảnh
-        }
-        @foreach (var item in Model)
-        {
-            var imgFile = $"product-{index}.jpg";
-            <div class="single-product">
-                <div class="product-f-image">
-                    <img src="~/assets/user/img/@imgFile" alt="@item.TenSP" />
+                    <h2 class="section-title">Latest Products</h2>
+                    <div class="product-carousel">
+                        @{
+                            int index = 1; // đếm số thứ tự ảnh
+                        }
+                        @foreach (var item in Model)
+                        {
+                            var imgFile = $"product-{index}.jpg";
+                            <div class="single-product">
+                                <div class="product-f-image">
+                                    <img src="~/assets/user/img/@imgFile" alt="@item.TenSP" />
 
-                    <div class="product-hover">
-                        <a href="#" class="add-to-cart-link">
-                            <i class="fa fa-shopping-cart"></i> Add to cart
-                        </a>
-                        <a href="single-product.html" class="view-details-link">
-                            <i class="fa fa-link"></i> See details
-                        </a>
-                    </div>
-                </div>
+                                    <div class="product-hover">
+                                        <a href="#" class="add-to-cart-link">
+                                            <i class="fa fa-shopping-cart"></i> Add to cart
+                                        </a>
+                                        <a href="single-product.html" class="view-details-link">
+                                            <i class="fa fa-link"></i> See details
+                                        </a>
+                                    </div>
+                                </div>
 
                 <h2><a href="single-product.html">@item.TenSP</a></h2>
 
@@ -126,7 +128,7 @@
             </div>
         </div>
     </div>
-</div> <!-- End main content area -->
+</div> <!-- End main content area --><!-- End VqNam 4/10/2025 -->
 
 <div class="brands-area">
     <div class="zigzag-bottom"></div>
