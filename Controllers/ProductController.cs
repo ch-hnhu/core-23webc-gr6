@@ -2,13 +2,13 @@
 using core_23webc_gr6.Interfaces;
 using core_23webc_gr6.Models;
 using core_23webc_gr6.Repositories;
+using MySql.Data.MySqlClient;
 
 namespace core_23webc_gr6.Controllers
 {
     public class ProductController : Controller
     {
         private readonly IProductRepository _productRepository;
-
         public ProductController(IProductRepository productRepository)
         {
             _productRepository = productRepository;
@@ -18,7 +18,7 @@ namespace core_23webc_gr6.Controllers
             var products = _productRepository.GetAllProducts();
             return View(products);
         }
-        public IActionResult Details(string id)
+        public IActionResult Details(int id)
         {
             var product = _productRepository.GetProductById(id);
             if (product == null)

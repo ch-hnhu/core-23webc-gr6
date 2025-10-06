@@ -23,16 +23,20 @@
     @foreach (var product in Model)
     {
         <tr>
-            <td>@product.MaSP</td>
-            <td>@product.TenSP</td>
-            <td>@product.DonGia.ToString()</td>
-            <td>@product.DonGiaKhuyenMai.ToString()</td>
+            <td>@product.ProductID</td>
+            <td>@product.ProductName</td>
+            <td>@product.CategoryID.ToString()</td>
+            <td>@product.Price.ToString()</td>
+            <td>@product.DiscountPercentage.ToString()</td>
+            <td>@product.Stock.ToString()</td>
             <td>
-                <img src="@product.HinhAnh" alt="@product.TenSP" width="100" />
+                <img src="@product.Image" alt="@product.ProductName" width="100" />
             </td>
-            <td>@product.MoTa</td>
-            <td>@product.LoaiSP</td>
-            <td>| <a asp-area="@area" asp-controller="Product" asp-action="Details" asp-route-id="@product.MaSP">Xem chi tiết</a></td>
+            <td>@product.Description</td>
+            <td>@product.Status.ToString()</td>
+            <td>@product.CreatedAt.ToString("yyyy-MM-dd")</td>
+            <td>@product.UpdatedAt.ToString("yyyy-MM-dd")</td>
+            <td>| <a asp-area="@area" asp-controller="Product" asp-action="Details" asp-route-id="@product.ProductID">Xem chi tiết</a></td>
         </tr>
         //PNSon thêm asp-area="area" để quay lại đúng area gọi đến
     }

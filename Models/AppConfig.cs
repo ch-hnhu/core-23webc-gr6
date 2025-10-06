@@ -8,6 +8,7 @@ namespace core_23webc_gr6.Models
     {
         public long MaxFileSize { get; set; }
         public List<string> BannerIPs { get; set; } = new();
+        public string? ConnectionString { get; set; }
     }
     //endLTMKieu
 }

@@ -5,6 +5,7 @@ using core_23webc_gr6.Repositories;
 using core_23webc_gr6.Services;
 using Microsoft.Extensions.Options;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 //LTMKieu
@@ -12,8 +13,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOptions<AppConfig>().Bind(builder.Configuration.GetSection("AppConfig")).ValidateDataAnnotations().ValidateOnStart();
 // dang ky singleton de co the inject AppConfig vao trong controller
 builder.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<AppConfig>>().Value);
+//LTMKieu 06/10/2025
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
-builder.Services.AddSingleton<IProductRepository, ProductRepository>();
+builder.Services.Configure<AppConfig>(builder.Configuration.GetSection("AppConfig"));
+// Cho phép inject AppConfig trực tiếp
+builder.Services.AddSingleton(resolver =>resolver.GetRequiredService<IOptions<AppConfig>>().Value);
+//endLTMKieu 06/10/2025
 //endLTMKieu
 // Add services to the container.
 builder.Services.AddControllersWithViews();
