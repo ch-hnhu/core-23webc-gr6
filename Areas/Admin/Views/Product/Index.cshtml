@@ -41,13 +41,18 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>Mã SP</th>
-                    <th>Tên SP</th>
-                    <th>Đơn Giá</th>
-                    <th>Đơn Giá KM</th>
-                    <th>Hình Ảnh</th>
-                    <th>Mô Tả</th>
-                    <th>Loại SP</th>
+                    <th>Mã sản phẩm</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Mã danh mục</th>
+                    <th>Giá</th>
+                    <th>Giá khuyến mãi</th>
+                    <th>Số lượng tồn kho</th>
+                    <th>Hình ảnh</th>
+                    <th>Mô tả</th>
+                    <th>Trạng thái</th>
+                    <th>Ngày tạo</th>
+                    <th>Ngày cập nhật</th>
+                    <th>Chi tiết</th>
                 </tr>
             </thead>
             <tbody>
@@ -55,15 +60,21 @@
                 @foreach (var sp in Model)
                 {
                     <tr>
-                        <td>@sp.MaSP</td>
-                        <td>@sp.TenSP</td>
-                        <td>@sp.DonGia.ToString("N0")</td>
-                        <td>@sp.DonGiaKhuyenMai.ToString("N0")</td>
+                        <td>@sp.ProductID</td>
+                        <td>@sp.ProductName</td>
+                        <td>@sp.CategoryID</td>
+                        <td>@sp.Price.ToString()</td>
+                        <td>@sp.DiscountPercentage.ToString()</td>
+                        <td>@sp.Stock.ToString()</td>
                         <td>
-                            <img src="~/img/@sp.HinhAnh" alt="@sp.TenSP" />
+                            <img src="@sp.Image" alt="@sp.ProductName" width="100" />
                         </td>
-                        <td>@sp.MoTa</td>
-                        <td>@sp.LoaiSP</td>
+                        <td>@sp.Description</td>
+                        <td>@sp.Status.ToString()</td>
+                        <td>@sp.CreatedAt.ToString("dd/MM/yyyy")</td>
+                        <td>@sp.UpdatedAt.ToString("dd/MM/yyyy")</td>
+                        <td>| <a asp-controller="sp" asp-action="Details" asp-route-id="@sp.ProductID">Xem chi tiết</a></td>
+                    
                     </tr>
                 }
             </tbody>

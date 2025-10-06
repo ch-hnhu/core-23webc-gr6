@@ -32,43 +32,58 @@
             <div class="form-group">
                 <label>Mã SP</label>
                 @* Trường mã sản phẩm, chỉ đọc *@
-                <input asp-for="MaSP" class="form-control" readonly />
+                <input asp-for="ProductID" class="form-control" readonly />
             </div>
             <div class="form-group">
                 <label>Tên SP</label>
                 @* Tên sản phẩm, bắt buộc nhập *@
-                <input asp-for="TenSP" class="form-control" required />
+                <input asp-for="ProductName" class="form-control" required type="text"/>
             </div>
             <div class="form-group">
                 <label>Đơn Giá</label>
                 @* Đơn giá, chỉ nhận số, tối thiểu 1 *@
-                <input asp-for="DonGia" class="form-control" required type="number" min="1" />
+                <input asp-for="Price" class="form-control" required type="number" min="1" />
             </div>
             <div class="form-group">
                 <label>Đơn Giá Khuyến Mãi</label>
                 @* Đơn giá khuyến mãi, chỉ nhận số, tối thiểu 0 *@
-                <input asp-for="DonGiaKhuyenMai" class="form-control" required type="number" min="0" />
+                <input asp-for="DiscountPercentage" class="form-control" required type="number" min="0" />
+            </div>
+            <div class="form-group">
+                <label>Số lượng tồn kho</label>
+                @* Đơn giá khuyến mãi, chỉ nhận số, tối thiểu 0 *@
+                <input asp-for="Stock" class="form-control" required type="number" min="0" />
             </div>
             <div class="form-group">
                 <label>Hình Ảnh</label>
                 @* Trường upload file ảnh *@
                 <input type="file" name="HinhAnhFile" class="form-control" accept=".jpg,.jpeg,.png,.gif" />
                 @* Nếu đã có ảnh, hiển thị tên file và ảnh *@
-                @if (!string.IsNullOrEmpty(Model.HinhAnh))
+                @if (!string.IsNullOrEmpty(Model.Image))
                 {
-                    <input asp-for="HinhAnh" class="form-control mt-2" readonly />
-                    <img src="~/img/@Model.HinhAnh" alt="Ảnh sản phẩm" style="max-width:120px;margin-top:10px;" />
+                    <input asp-for="Image" class="form-control mt-2" readonly />
+                    <img src="~/img/@Model.Image" alt="Ảnh sản phẩm" style="max-width:120px;margin-top:10px;" />
                 }
             </div>
             <div class="form-group">
                 <label>Mô Tả</label>
                 @* Mô tả sản phẩm *@
-                <input asp-for="MoTa" class="form-control" />
+                <input asp-for="Description" class="form-control" required type="text" />
             </div>
             <div class="form-group">
-                <label>Loại SP</label>
-                @* Loại sản phẩm, bắt buộc nhập *@
-                <input asp-for="LoaiSP" class="form-control" required />
+                <label>Trạng thái</label>
+                @* Đơn giá khuyến mãi, chỉ nhận số, tối thiểu 0 *@
+                <input asp-for="Status" class="form-control" required type="number" min="0" />
+            </div>
+            <div class="form-group">
+                <label>Ngày tạo</label>
+                @* Đơn giá khuyến mãi, chỉ nhận số, tối thiểu 0 *@
+                <input asp-for="CreatedAt" class="form-control" required type="date" min="0" />
+            </div>
+            <div class="form-group">
+                <label>Ngày cập nhật</label>
+                @* Đơn giá khuyến mãi, chỉ nhận số, tối thiểu 0 *@
+                <input asp-for="UpdatedAt" class="form-control" required type="date" min="0" />
             </div>
             @* Nút submit và quay lại danh sách *@
             <button type="submit" class="btn btn-success">Thêm sản phẩm</button>

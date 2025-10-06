@@ -5,14 +5,16 @@
 @{
     <h2>Chi tiết sản phẩm</h2>
     <div>
-        <img src="@Model.HinhAnh" alt="@Model.TenSP" width="300" />
+        <img src="@Model.Image" alt="@Model.ProductName" width="300" />
     </div>
     <div>
-        <h3>@Model.TenSP</h3>
-        <p><strong>Giá:</strong> @Model.DonGia.ToString("C")</p>
-        <p><strong>Giá khuyến mãi:</strong> @Model.DonGiaKhuyenMai.ToString("C")</p>
-        <p><strong>Mô tả:</strong> @Model.MoTa</p>
-        <p><strong>Loại sản phẩm:</strong> @Model.LoaiSP</p>
+        <h3>@Model.ProductName</h3>
+        <p><strong>Giá:</strong> @Model.Price</p>
+        <p><strong>Giá khuyến mãi:</strong> @Model.DiscountPercentage</p>
+        <p><strong>Mã danh mục:</strong>@Model.CategoryID.ToString()</p>
+        <p><strong>Mô tả:</strong> @Model.Description</p>
+        <p><strong>Ngày tạo:</strong> @Model.CreatedAt.ToString("dd/MM/yyyy")</p>
+        <p><strong>Ngày cập nhật:</strong> @Model.UpdatedAt.ToString("dd/MM/yyyy")</p>
         <p>
             <a asp-controller="Product" asp-action="Index">Quay lại danh sách sản phẩm</a>
         </p>
