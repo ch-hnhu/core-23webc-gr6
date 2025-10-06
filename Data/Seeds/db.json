@@ -281,6 +281,24 @@
       "MoTa": "Laptop Dell siêu mỏng, hiệu năng cao",
       "LoaiSP": "Laptop",
       "HinhAnh": "dellxps13.jpg"
+    },
+    {
+      "MaSP": "SP3761AC",
+      "TenSP": "test them sp",
+      "DonGia": 30000,
+      "DonGiaKhuyenMai": 2000,
+      "MoTa": "oik",
+      "LoaiSP": "hêh",
+      "HinhAnh": ""
+    },
+    {
+      "MaSP": "SP14037B",
+      "TenSP": "test them sp 61025",
+      "DonGia": 22432432,
+      "DonGiaKhuyenMai": 0,
+      "MoTa": "hfdgd",
+      "LoaiSP": "hêh",
+      "HinhAnh": ""
     }
   ]
 }
