@@ -12,8 +12,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOptions<AppConfig>().Bind(builder.Configuration.GetSection("AppConfig")).ValidateDataAnnotations().ValidateOnStart();
 // dang ky singleton de co the inject AppConfig vao trong controller
 builder.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<AppConfig>>().Value);
-
-builder.Services.AddSingleton<IProductRepository, ProductRepository>();
+//LTMKieu 06/10/2025
+builder.Services.Configure<AppConfig>(builder.Configuration.GetSection("AppConfig"));
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+//endLTMKieu 06/10/2025
 //endLTMKieu
 // Add services to the container.
 builder.Services.AddControllersWithViews();

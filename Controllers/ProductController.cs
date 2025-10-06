@@ -18,7 +18,7 @@ namespace core_23webc_gr6.Controllers
             var products = _productRepository.GetAllProducts();
             return View(products);
         }
-        public IActionResult Details(string id)
+        public IActionResult Details(int id)
         {
             var product = _productRepository.GetProductById(id);
             if (product == null)

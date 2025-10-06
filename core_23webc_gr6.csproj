@@ -7,4 +7,8 @@
     <RootNamespace>core_23webc_gr6</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="9.4.0" />
+  </ItemGroup>
+
 </Project>
