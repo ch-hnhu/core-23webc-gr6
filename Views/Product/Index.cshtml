@@ -2,6 +2,7 @@
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+
 @{
     <h2>Danh sách sản phẩm</h2>
     <table>
@@ -43,3 +44,57 @@
         
     </table>
 }
+
+
+
+
+
+
+<style>
+    /* Định dạng bảng */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 14px;
+        text-align: center;
+        table-layout: auto;
+    }
+
+        /* Header */
+        table thead th {
+            background-color: #343a40;
+            color: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+            white-space: nowrap;
+        }
+
+        /* Ô dữ liệu */
+        table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            vertical-align: middle;
+            word-wrap: break-word;
+            max-width: 250px;
+        }
+
+            /* Ảnh sản phẩm */
+            table td img {
+                display: block;
+                margin: 0 auto;
+                border-radius: 6px;
+            }
+
+        /* Tô màu xen kẽ */
+        table tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        /* Hover */
+        table tbody tr:hover {
+            background-color: #e9ecef;
+            transition: 0.2s;
+        }
+</style>
+

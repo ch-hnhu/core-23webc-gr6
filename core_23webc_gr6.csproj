@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="9.4.0" />
+    <Folder Include="wwwroot\img\Products\" />
   </ItemGroup>
 
 </Project>

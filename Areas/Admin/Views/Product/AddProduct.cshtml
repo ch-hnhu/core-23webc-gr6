@@ -1,30 +1,15 @@
-﻿@*PNSon*@
-@model core_23webc_gr6.Models.Product
+﻿@model Product
 @{
-    // Đặt tiêu đề trang
     ViewData["Title"] = "Thêm sản phẩm";
 }
-<style>
-    /* CSS cho phần nội dung chính */
-    #page-wrapper {
-        margin-left: 220px;
-        padding: 20px;
-        min-height: 100vh;
-        background: #f8f9fa;
-    }
-</style>
+
+<!-- PNSon -->
 <div id="page-wrapper">
     <div class="container-fluid">
-        <h2>Thêm sản phẩm mới</h2>
-        @* Hiển thị lỗi nếu ModelState không hợp lệ *@
-        @if (!ViewData.ModelState.IsValid)
-        {
-            <div class="alert alert-danger">
-                @* Lặp qua tất cả lỗi và hiển thị *@
-                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
-                {
-                    <div>@error.ErrorMessage</div>
-                }
+        <!-- Tiêu đề trang -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Thêm sản phẩm</h1>
             </div>
         }
         @* Form thêm sản phẩm, sử dụng enctype để upload file *@
@@ -91,4 +76,4 @@
         </form>
     </div>
 </div>
-@*endPNSon*@
+<!-- endPNSon -->
