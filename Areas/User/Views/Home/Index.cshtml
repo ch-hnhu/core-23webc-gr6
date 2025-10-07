@@ -97,7 +97,7 @@
                             var imgFile = $"product-{index}.jpg";
                             <div class="single-product">
                                 <div class="product-f-image">
-                                    <img src="~/assets/user/img/@imgFile" alt="@item.TenSP" />
+                                    <img src="~/assets/user/img/@imgFile" alt="@item.ProductName" />
 
                                     <div class="product-hover">
                                         <a href="#" class="add-to-cart-link">
@@ -109,13 +109,13 @@
                                     </div>
                                 </div>
 
-                <h2><a href="single-product.html">@item.TenSP</a></h2>
+                <h2><a href="single-product.html">@item.ProductName</a></h2>
 
                 <div class="product-carousel-price">
-                    <ins>@item.DonGiaKhuyenMai.ToString("C0")</ins>
-                    @if (item.DonGiaKhuyenMai < item.DonGia)
+                    <ins>@item.DiscountPercentage.ToString("C0")</ins>
+                    @if (item.DiscountPercentage < item.Price)
                     {
-                        <del>@item.DonGia.ToString("C0")</del>
+                        <del>@item.Price.ToString("C0")</del>
                     }
                 </div>
             </div>
@@ -170,17 +170,17 @@
                         var imgFile = $"product-{topIndex}.jpg";
                         <div class="single-wid-product">
                             <a href="single-product.html">
-                                <img src="~/assets/user/img/@imgFile" alt="@item.TenSP" class="product-thumb product-thumb-uniform" />
+                                <img src="~/assets/user/img/@imgFile" alt="@item.ProductName" class="product-thumb product-thumb-uniform" />
                             </a>
-                            <h2><a href="single-product.html">@item.TenSP</a></h2>
+                            <h2><a href="single-product.html">@item.ProductName</a></h2>
                             <div class="product-wid-rating">
                                 <i class="fa fa-star"></i><i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i><i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
                             <div class="product-wid-price">
-                                <ins>@item.DonGiaKhuyenMai.ToString("N0") đ</ins>
-                                <del>@item.DonGia.ToString("N0") đ</del>
+                                <ins>@item.DiscountPercentage.ToString("N0") đ</ins>
+                                <del>@item.Price.ToString("N0") đ</del>
                             </div>
                         </div>
                         topIndex++;
@@ -201,17 +201,17 @@
                         var imgFile = $"product-{rvIndex}.jpg";
                         <div class="single-wid-product">
                             <a href="single-product.html">
-                                <img src="~/assets/user/img/@imgFile" alt="@item.TenSP" class="product-thumb product-thumb-uniform" />
+                                <img src="~/assets/user/img/@imgFile" alt="@item.ProductName" class="product-thumb product-thumb-uniform" />
                             </a>
-                            <h2><a href="single-product.html">@item.TenSP</a></h2>
+                            <h2><a href="single-product.html">@item.ProductName</a></h2>
                             <div class="product-wid-rating">
                                 <i class="fa fa-star"></i><i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i><i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
                             <div class="product-wid-price">
-                                <ins>@item.DonGiaKhuyenMai.ToString("N0") đ</ins>
-                                <del>@item.DonGia.ToString("N0") đ</del>
+                                <ins>@item.DiscountPercentage.ToString("N0") đ</ins>
+                                <del>@item.Price.ToString("N0") đ</del>
                             </div>
                         </div>
                         rvIndex++;
@@ -232,17 +232,17 @@
                         var imgFile = $"product-{tnIndex}.jpg";
                         <div class="single-wid-product">
                             <a href="single-product.html">
-                                <img src="~/assets/user/img/@imgFile" alt="@item.TenSP" class="product-thumb product-thumb-uniform" />
+                                <img src="~/assets/user/img/@imgFile" alt="@item.ProductName" class="product-thumb product-thumb-uniform" />
                             </a>
-                            <h2><a href="single-product.html">@item.TenSP</a></h2>
+                            <h2><a href="single-product.html">@item.ProductName</a></h2>
                             <div class="product-wid-rating">
                                 <i class="fa fa-star"></i><i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i><i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
                             <div class="product-wid-price">
-                                <ins>@item.DonGiaKhuyenMai.ToString("N0") đ</ins>
-                                <del>@item.DonGia.ToString("N0") đ</del>
+                                <ins>@item.DiscountPercentage.ToString("N0") đ</ins>
+                                <del>@item.Price.ToString("N0") đ</del>
                             </div>
                         </div>
                         tnIndex++;
