@@ -50,8 +50,58 @@
 
 
 <style>
-	/* Định dạng bảng */
-	table {
+	<<<<<<< HEAD
+
+		/* Định dạng bảng */
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 20px 0;
+			font-size: 14px;
+			text-align: center;
+			table-layout: auto;
+		}
+
+		/* Header */
+		table thead th {
+			background-color: #343a40;
+			color: #fff;
+			padding: 10px;
+			border: 1px solid #ddd;
+			white-space: nowrap;
+		}
+
+		/* Ô dữ liệu */
+		table td {
+			border: 1px solid #ddd;
+			padding: 8px;
+			vertical-align: middle;
+			word-wrap: break-word;
+			max-width: 250px;
+		}
+
+		/* Ảnh sản phẩm */
+		table td img {
+			display: block;
+			margin: 0 auto;
+			border-radius: 6px;
+		}
+
+		/* Tô màu xen kẽ */
+		table tbody tr:nth-child(even) {
+			background-color: #f8f9fa;
+		}
+
+		/* Hover */
+		table tbody tr:hover {
+			background-color: #e9ecef;
+			transition: 0.2s;
+		}
+
+		=======
+
+	/*  PNSon thêm 4/10/2024 Định dạng bảng chỉ áp dụng cho class product-table */
+	.product-table {
 		width: 100%;
 		border-collapse: collapse;
 		margin: 20px 0;
@@ -61,7 +111,7 @@
 	}
 
 	/* Header */
-	table thead th {
+	.product-table thead th {
 		background-color: #343a40;
 		color: #fff;
 		padding: 10px;
@@ -70,7 +120,7 @@
 	}
 
 	/* Ô dữ liệu */
-	table td {
+	.product-table td {
 		border: 1px solid #ddd;
 		padding: 8px;
 		vertical-align: middle;
@@ -79,20 +129,22 @@
 	}
 
 	/* Ảnh sản phẩm */
-	table td img {
+	.product-table td img {
 		display: block;
 		margin: 0 auto;
 		border-radius: 6px;
 	}
 
 	/* Tô màu xen kẽ */
-	table tbody tr:nth-child(even) {
+	.product-table tbody tr:nth-child(even) {
 		background-color: #f8f9fa;
 	}
 
 	/* Hover */
-	table tbody tr:hover {
+	.product-table tbody tr:hover {
 		background-color: #e9ecef;
 		transition: 0.2s;
 	}
+
+	>>>>>>>Son
 </style>
