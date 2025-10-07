@@ -112,11 +112,8 @@
                 <h2><a href="single-product.html">@item.ProductName</a></h2>
 
                 <div class="product-carousel-price">
-                    @{
-                        var discountedPrice = item.Price * (100 - item.DiscountPercentage) / 100;
-                    }
-                    <ins>@discountedPrice.ToString("C0")</ins>
-                    @if (item.DiscountPercentage > 0)
+                    <ins>@item.DiscountPercentage.ToString("C0")</ins>
+                    @if (item.DiscountPercentage < item.Price)
                     {
                         <del>@item.Price.ToString("C0")</del>
                     }
@@ -182,14 +179,8 @@
                                 <i class="fa fa-star"></i>
                             </div>
                             <div class="product-wid-price">
-                                @{
-                                    var discountedPrice = item.Price * (100 - item.DiscountPercentage) / 100;
-                                }
-                                <ins>@discountedPrice.ToString("N0") đ</ins>
-                                @if (item.DiscountPercentage > 0)
-                                {
-                                    <del>@item.Price.ToString("N0") đ</del>
-                                }
+                                <ins>@item.DiscountPercentage.ToString("N0") đ</ins>
+                                <del>@item.Price.ToString("N0") đ</del>
                             </div>
                         </div>
                         topIndex++;
@@ -219,14 +210,8 @@
                                 <i class="fa fa-star"></i>
                             </div>
                             <div class="product-wid-price">
-                                @{
-                                    var discountedPrice = item.Price * (100 - item.DiscountPercentage) / 100;
-                                }
-                                <ins>@discountedPrice.ToString("N0") đ</ins>
-                                @if (item.DiscountPercentage > 0)
-                                {
-                                    <del>@item.Price.ToString("N0") đ</del>
-                                }
+                                <ins>@item.DiscountPercentage.ToString("N0") đ</ins>
+                                <del>@item.Price.ToString("N0") đ</del>
                             </div>
                         </div>
                         rvIndex++;
@@ -256,14 +241,8 @@
                                 <i class="fa fa-star"></i>
                             </div>
                             <div class="product-wid-price">
-                                @{
-                                    var discountedPrice = item.Price * (100 - item.DiscountPercentage) / 100;
-                                }
-                                <ins>@discountedPrice.ToString("N0") đ</ins>
-                                @if (item.DiscountPercentage > 0)
-                                {
-                                    <del>@item.Price.ToString("N0") đ</del>
-                                }
+                                <ins>@item.DiscountPercentage.ToString("N0") đ</ins>
+                                <del>@item.Price.ToString("N0") đ</del>
                             </div>
                         </div>
                         tnIndex++;
