@@ -1,40 +1,59 @@
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using System.IO;
-using System.Linq;
-//VqNam 4/10/2025
+using core_23webc_gr6.Data;
+using core_23webc_gr6.Models;
+using MySql.Data.MySqlClient;
+using core_23webc_gr6.Data.Seeds; //VqNam Sửa toàn bộ trong productcontroller 7/10
+
 namespace core_23webc_gr6.Areas.User.Controllers
 {
     [Area("User")]
     public class ProductController : Controller
     {
-        private readonly IWebHostEnvironment _env;
-        public ProductController(IWebHostEnvironment env)
+        private readonly DatabaseHelper _db;
+
+        public ProductController(DatabaseHelper db)
         {
-            _env = env;
+            _db = db;
         }
 
-        public IActionResult Index(int page = 1)
+        // Load danh sách sản phẩm
+        public ActionResult Index()
         {
-            var folderPath = Path.Combine(_env.WebRootPath, "assets", "user", "img");
-            var files = Directory.GetFiles(folderPath)
-                                 .Select(Path.GetFileName)
-                                 .ToList();
+            List<Product> products = new();
 
-            int pageSize = 12; // 4x3
-            int maxPages = 5;  // chỉ cho 5 trang
-            int totalPages = (int)System.Math.Ceiling((double)files.Count / pageSize);
-            if (totalPages > maxPages) totalPages = maxPages;
+            using (var conn = _db.GetConnection())
+            {
+                conn.Open();
+                string sql = "SELECT * FROM products";  // tên bảng bạn có trong MySQL
+                using var cmd = new MySqlCommand(sql, conn);
+                using var reader = cmd.ExecuteReader();
 
-            var pagedFiles = files.Skip((page - 1) * pageSize)
-                                  .Take(pageSize)
-                                  .ToList();
+                while (reader.Read())
+                {
+                    products.Add(new Product
+                    {
+                        ProductID = reader.GetInt32("ProductID"),
+                        ProductName = reader.GetString("ProductName"),
+                        CategoryID = reader.GetInt32("CategoryID"),
+                        Price = reader.GetDecimal("Price"),
+                        DiscountPercentage = reader.GetInt32("DiscountPercentage"),
+                        Stock = reader.GetInt32("Stock"),
+                        Image = reader.GetString("Image"),
+                        Description = reader.GetString("Description"),
+                        Status = reader.GetByte("Status"),
+                        CreatedAt = reader.GetDateTime("CreatedAt"),
+                        UpdatedAt = reader.GetDateTime("UpdatedAt")
+                    });
+                }
+            }
 
-            ViewData["CurrentPage"] = page;
-            ViewData["TotalPages"] = totalPages;
-
-            return View(pagedFiles);
+            ViewData["BigTitle"] = "Shop";
+            return View(products); // Trả ra list cho Index.cshtml
+        }
+        public ActionResult Details(int id = 1)
+        {
+            ViewData["BigTitle"] = "Product Detail";
+            return View();
         }
     }
 }
-//End VqNam 4/10/2025

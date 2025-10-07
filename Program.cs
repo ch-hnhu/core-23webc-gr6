@@ -4,7 +4,9 @@ using core_23webc_gr6.Models;
 using core_23webc_gr6.Repositories;
 using core_23webc_gr6.Services;
 using Microsoft.Extensions.Options;
-
+//VqNam thêm phần .Data.Seeds 7/10/2025 dòng 7-->9
+using core_23webc_gr6.Data.Seeds;
+//end VqNam
 var builder = WebApplication.CreateBuilder(args);
 
 //LTMKieu
@@ -22,6 +24,9 @@ builder.Services.AddControllersWithViews();
 //Thao Nguyen
 // Đăng ký UserService (Scoped)
 builder.Services.AddScoped<IUserService, UserService>();
+//VqNam đăng ký DatabaseHelper để sử dụng kết nối database 7/10/2025 dòng 28-->30
+builder.Services.AddSingleton<DatabaseHelper>();
+//end VqNam 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
