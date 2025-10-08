@@ -29,7 +29,6 @@ namespace core_23webc_gr6.Middlewares
                     productRepository.SetProducts(products ?? new List<Product>());
                 }
             }
-
             await _next(context);
         }
     }
