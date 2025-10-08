@@ -7,13 +7,11 @@ namespace core_23webc_gr6.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        //LTMKieu
+        //LTMKieu 
         //LTMKieu 06/10/2025
-        private readonly AppConfig _appConfig;
         private readonly string _connString;
-        public ProductRepository(AppConfig appConfig, IConfiguration configuration)
+        public ProductRepository(IConfiguration configuration)
         {
-            _appConfig = appConfig;
             _connString = configuration.GetConnectionString("MySqlConnection") ?? "";
         }
         //endLTMKieu 06/10/2025
