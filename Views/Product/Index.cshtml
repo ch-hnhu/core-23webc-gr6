@@ -4,97 +4,145 @@
 *@
 
 @{
-    <h2>Danh sách sản phẩm</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Mã sản phẩm</th>
-                <th>Tên sản phẩm</th>
-                <th>Mã danh mục</th>
-                <th>Giá</th>
-                <th>Giá khuyến mãi</th>
-                <th>Số lượng tồn kho</th>
-                <th>Hình ảnh</th>
-                <th>Mô tả</th>
-                <th>Trạng thái</th>
-                <th>Ngày tạo</th>
-                <th>Ngày cập nhật</th>
-                <th>Chi tiết</th>
-            </tr>
-        </thead>
-        @foreach (var product in Model)
-        {
-            <tr>
-                <td>@product.ProductID</td>
-                <td>@product.ProductName</td>
-                <td>@product.CategoryID</td>
-                <td>@product.Price.ToString()</td>
-                <td>@product.DiscountPercentage.ToString()</td>
-                <td>@product.Stock.ToString()</td>
-                <td>
-                    <img src="@product.Image" alt="@product.ProductName" width="100" />
-                </td>
-                <td>@product.Description</td>
-                <td>@product.Status.ToString()</td>
-                <td>@product.CreatedAt.ToString("dd/MM/yyyy")</td>
-                <td>@product.UpdatedAt.ToString("dd/MM/yyyy")</td>
-                <td>| <a asp-controller="Product" asp-action="Details" asp-route-id="@product.ProductID">Xem chi tiết</a></td>
-            </tr>
-        }
-        
-    </table>
+	<h2>Danh sách sản phẩm</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Mã sản phẩm</th>
+				<th>Tên sản phẩm</th>
+				<th>Mã danh mục</th>
+				<th>Giá</th>
+				<th>Giá khuyến mãi</th>
+				<th>Số lượng tồn kho</th>
+				<th>Hình ảnh</th>
+				<th>Mô tả</th>
+				<th>Trạng thái</th>
+				<th>Ngày tạo</th>
+				<th>Ngày cập nhật</th>
+				<th>Chi tiết</th>
+			</tr>
+		</thead>
+		@foreach (var product in Model)
+		{
+			<tr>
+				<td>@product.ProductID</td>
+				<td>@product.ProductName</td>
+				<td>@product.CategoryID</td>
+				<td>@product.Price.ToString()</td>
+				<td>@product.DiscountPercentage.ToString()</td>
+				<td>@product.Stock.ToString()</td>
+				<td>
+					<img src="@product.Image" alt="@product.ProductName" width="100" />
+				</td>
+				<td>@product.Description</td>
+				<td>@product.Status.ToString()</td>
+				<td>@product.CreatedAt.ToString("dd/MM/yyyy")</td>
+				<td>@product.UpdatedAt.ToString("dd/MM/yyyy")</td>
+				<td>| <a asp-controller="Product" asp-action="Details" asp-route-id="@product.ProductID">Xem chi tiết</a></td>
+			</tr>
+		}
+
+	</table>
 }
 
 
 
 
 
-
 <style>
-    /* Định dạng bảng */
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 20px 0;
-        font-size: 14px;
-        text-align: center;
-        table-layout: auto;
-    }
+	/* Định dạng bảng */
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 20px 0;
+		font-size: 14px;
+		text-align: center;
+		table-layout: auto;
+	}
 
-        /* Header */
-        table thead th {
-            background-color: #343a40;
-            color: #fff;
-            padding: 10px;
-            border: 1px solid #ddd;
-            white-space: nowrap;
-        }
+	/* Header */
+	table thead th {
+		background-color: #343a40;
+		color: #fff;
+		padding: 10px;
+		border: 1px solid #ddd;
+		white-space: nowrap;
+	}
 
-        /* Ô dữ liệu */
-        table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            vertical-align: middle;
-            word-wrap: break-word;
-            max-width: 250px;
-        }
+	/* Ô dữ liệu */
+	table td {
+		border: 1px solid #ddd;
+		padding: 8px;
+		vertical-align: middle;
+		word-wrap: break-word;
+		max-width: 250px;
+	}
 
-            /* Ảnh sản phẩm */
-            table td img {
-                display: block;
-                margin: 0 auto;
-                border-radius: 6px;
-            }
+	/* Ảnh sản phẩm */
+	table td img {
+		display: block;
+		margin: 0 auto;
+		border-radius: 6px;
+	}
 
-        /* Tô màu xen kẽ */
-        table tbody tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
+	/* Tô màu xen kẽ */
+	table tbody tr:nth-child(even) {
+		background-color: #f8f9fa;
+	}
 
-        /* Hover */
-        table tbody tr:hover {
-            background-color: #e9ecef;
-            transition: 0.2s;
-        }
+	/* Hover */
+	table tbody tr:hover {
+		background-color: #e9ecef;
+		transition: 0.2s;
+	}
+
+	=======
+
+	/*  PNSon thêm 4/10/2024 Định dạng bảng chỉ áp dụng cho class product-table */
+	.product-table {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 20px 0;
+		font-size: 14px;
+		text-align: center;
+		table-layout: auto;
+	}
+
+	/* Header */
+	.product-table thead th {
+		background-color: #343a40;
+		color: #fff;
+		padding: 10px;
+		border: 1px solid #ddd;
+		white-space: nowrap;
+	}
+
+	/* Ô dữ liệu */
+	.product-table td {
+		border: 1px solid #ddd;
+		padding: 8px;
+		vertical-align: middle;
+		word-wrap: break-word;
+		max-width: 250px;
+	}
+
+	/* Ảnh sản phẩm */
+	.product-table td img {
+		display: block;
+		margin: 0 auto;
+		border-radius: 6px;
+	}
+
+	/* Tô màu xen kẽ */
+	.product-table tbody tr:nth-child(even) {
+		background-color: #f8f9fa;
+	}
+
+	/* Hover */
+	.product-table tbody tr:hover {
+		background-color: #e9ecef;
+		transition: 0.2s;
+	}
+
+	>>>>>>>Son
 </style>
-
