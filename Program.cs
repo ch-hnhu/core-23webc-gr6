@@ -4,7 +4,9 @@ using core_23webc_gr6.Models;
 using core_23webc_gr6.Repositories;
 using core_23webc_gr6.Services;
 using Microsoft.Extensions.Options;
-
+//VqNam thêm phần .Data.Seeds 7/10/2025 dòng 7-->9
+using core_23webc_gr6.Data.Seeds;
+//end VqNam
 var builder = WebApplication.CreateBuilder(args);
 
 //LTMKieu
@@ -12,14 +14,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOptions<AppConfig>().Bind(builder.Configuration.GetSection("AppConfig")).ValidateDataAnnotations().ValidateOnStart();
 // dang ky singleton de co the inject AppConfig vao trong controller
 builder.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<AppConfig>>().Value);
-
-builder.Services.AddSingleton<IProductRepository, ProductRepository>();
+//LTMKieu 06/10/2025
+builder.Services.Configure<AppConfig>(builder.Configuration.GetSection("AppConfig"));
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+//endLTMKieu 06/10/2025
 //endLTMKieu
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 //Thao Nguyen
 // Đăng ký UserService (Scoped)
 builder.Services.AddScoped<IUserService, UserService>();
+//VqNam đăng ký DatabaseHelper để sử dụng kết nối database 7/10/2025 dòng 28-->30
+builder.Services.AddSingleton<DatabaseHelper>();
+//end VqNam 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

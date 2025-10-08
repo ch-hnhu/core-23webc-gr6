@@ -7,4 +7,9 @@
     <RootNamespace>core_23webc_gr6</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot/img/Products/" />
+    <PackageReference Include="MySql.Data" Version="9.4.0" />
+  </ItemGroup>
+
 </Project>
