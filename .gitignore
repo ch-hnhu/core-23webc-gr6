@@ -4,5 +4,5 @@ bin/
 obj/
 /request.log
 .vscode
-appsettings.json
+# appsettings.json
 # endCHNhu
