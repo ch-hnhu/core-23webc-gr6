@@ -1,3 +1,5 @@
+@model core_23webc_gr6.Models.Product
+
 <!-- CHNhu -->
 <div class="single-product-area">
     <div class="zigzag-bottom"></div>
@@ -68,7 +70,7 @@
                         <div class="col-sm-6">
                             <div class="product-images">
                                 <div class="product-main-img">
-                                    <img src="~/assets/user/img/product-2.jpg" alt="">
+                                    <img src="@Url.Content(Model.Image ?? "~/assets/user/img/product-2.jpg")" alt="@Model.ProductName" />
                                 </div>
                                 
                                 <div class="product-gallery">
@@ -81,9 +83,14 @@
                         
                         <div class="col-sm-6">
                             <div class="product-inner">
-                                <h2 class="product-name">Sony Smart TV - 2015</h2>
+                                <h2 class="product-name">@Model.ProductName</h2>
                                 <div class="product-inner-price">
-                                    <ins>$700.00</ins> <del>$100.00</del>
+                                    <ins>@Model.Price.ToString("N0") VNĐ</ins>
+                                    @if (Model.DiscountPercentage > 0 && Model.DiscountPercentage < 100)
+                                    {
+                                        var oldPrice = Model.Price / (1 - (Model.DiscountPercentage / 100.0m));
+                                        <del>@oldPrice.ToString("N0") VNĐ</del>
+                                    }
                                 </div>    
                                 
                                 <form action="" class="cart">
@@ -105,9 +112,7 @@
                                     <div class="tab-content">
                                         <div role="tabpanel" class="tab-pane fade in active" id="home">
                                             <h2>Product Description</h2>  
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique, diam in consequat iaculis, est purus iaculis mauris, imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla risus, id maximus ex aliquet ut. Suspendisse potenti. Nulla varius lectus id turpis dignissim porta. Quisque magna arcu, blandit quis felis vehicula, feugiat gravida diam. Nullam nec turpis ligula. Aliquam quis blandit elit, ac sodales nisl. Aliquam eget dolor eget elit malesuada aliquet. In varius lorem lorem, semper bibendum lectus lobortis ac.</p>
-
-                                            <p>Mauris placerat vitae lorem gravida viverra. Mauris in fringilla ex. Nulla facilisi. Etiam scelerisque tincidunt quam facilisis lobortis. In malesuada pulvinar neque a consectetur. Nunc aliquam gravida purus, non malesuada sem accumsan in. Morbi vel sodales libero.</p>
+                                            <p>@Model.Description</p>
                                         </div>
                                         <div role="tabpanel" class="tab-pane fade" id="profile">
                                             <h2>Reviews</h2>
