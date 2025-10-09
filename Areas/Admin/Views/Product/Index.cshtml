@@ -12,13 +12,16 @@
 <div id="page-wrapper">
 	<div class="container-fluid">
 		<h2>Danh sách sản phẩm</h2>
-		@* Hiển thị thông báo thành công nếu có *@
-		@* 
-			FIX - 07/10/2025 - Sơn - Ý nghĩa? Message đâu mà binding vô ?
-		@if (!string.IsNullOrEmpty(message))
-        {
-            <div class="alert alert-success">@message</div>
-        } *@
+		@* 		
+			FIX - 07/10/2025 - SON
+			Ý nghĩa? Message đâu mà binding vô ?
+			
+			Hiển thị thông báo thành công nếu có
+			@if (!string.IsNullOrEmpty(message))
+			{
+				<div class="alert alert-success">@message</div>
+			} 
+		*@
 		@* Bảng hiển thị danh sách sản phẩm *@
 		<table class="table table-bordered">
 			<thead>
