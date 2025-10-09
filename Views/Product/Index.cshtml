@@ -4,6 +4,7 @@
 *@
 
 @{
+    <!--LTMKieu 6/10/2025-->
 	<h2>Danh sách sản phẩm</h2>
 	<table>
 		<thead>
@@ -19,7 +20,6 @@
 				<th>Trạng thái</th>
 				<th>Ngày tạo</th>
 				<th>Ngày cập nhật</th>
-				<th>Chi tiết</th>
 			</tr>
 		</thead>
 		@foreach (var product in Model)
@@ -38,111 +38,105 @@
 				<td>@product.Status.ToString()</td>
 				<td>@product.CreatedAt.ToString("dd/MM/yyyy")</td>
 				<td>@product.UpdatedAt.ToString("dd/MM/yyyy")</td>
-				<td>| <a asp-controller="Product" asp-action="Details" asp-route-id="@product.ProductID">Xem chi tiết</a></td>
 			</tr>
 		}
 
 	</table>
+    <!--endLTMKieu-->
 }
 
 
 
 
 
+<!--PNSon 8/10/2025 thêm CSS cho bảng-->
 <style>
-	/* Định dạng bảng */
-	table {
-		width: 100%;
-		border-collapse: collapse;
-		margin: 20px 0;
-		font-size: 14px;
-		text-align: center;
-		table-layout: auto;
-	}
+/* Định dạng bảng */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+    text-align: center;
+    table-layout: auto;
+}
 
-	/* Header */
-	table thead th {
-		background-color: #343a40;
-		color: #fff;
-		padding: 10px;
-		border: 1px solid #ddd;
-		white-space: nowrap;
-	}
+/* Header */
+table thead th {
+    background-color: #343a40;
+    color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    white-space: nowrap;
+}
 
-	/* Ô dữ liệu */
-	table td {
-		border: 1px solid #ddd;
-		padding: 8px;
-		vertical-align: middle;
-		word-wrap: break-word;
-		max-width: 250px;
-	}
+/* Ô dữ liệu */
+table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    vertical-align: middle;
+    word-wrap: break-word;
+    max-width: 250px;
+}
 
-	/* Ảnh sản phẩm */
-	table td img {
-		display: block;
-		margin: 0 auto;
-		border-radius: 6px;
-	}
+/* Ảnh sản phẩm */
+table td img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 6px;
+    width: 80px;
+    height: auto;
+    object-fit: cover;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
 
-	/* Tô màu xen kẽ */
-	table tbody tr:nth-child(even) {
-		background-color: #f8f9fa;
-	}
+/* Cột mô tả: cho phép xuống dòng và không bị tràn */
+table td:nth-child(8) {
+    text-align: left;
+    white-space: pre-wrap;
+}
 
-	/* Hover */
-	table tbody tr:hover {
-		background-color: #e9ecef;
-		transition: 0.2s;
-	}
+/* Cột giá, giá khuyến mãi, số lượng: canh giữa, đậm hơn 1 chút */
+table td:nth-child(4),
+table td:nth-child(5),
+table td:nth-child(6) {
+    font-weight: 500;
+    color: #212529;
+}
 
-	=======
+/* Cột trạng thái: in đậm nếu cần */
+table td:nth-child(9) {
+    font-weight: 600;
+    color: #17a2b8;
+}
 
-	/*  PNSon thêm 4/10/2024 Định dạng bảng chỉ áp dụng cho class product-table */
-	.product-table {
-		width: 100%;
-		border-collapse: collapse;
-		margin: 20px 0;
-		font-size: 14px;
-		text-align: center;
-		table-layout: auto;
-	}
+/* Cột ngày tạo, ngày cập nhật: format nhỏ hơn 1 chút */
+table td:nth-child(10),
+table td:nth-child(11) {
+    font-size: 13px;
+    color: #6c757d;
+}
 
-	/* Header */
-	.product-table thead th {
-		background-color: #343a40;
-		color: #fff;
-		padding: 10px;
-		border: 1px solid #ddd;
-		white-space: nowrap;
-	}
+/* Cột "Chi tiết": định dạng liên kết rõ hơn */
+table td:nth-child(12) a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+}
 
-	/* Ô dữ liệu */
-	.product-table td {
-		border: 1px solid #ddd;
-		padding: 8px;
-		vertical-align: middle;
-		word-wrap: break-word;
-		max-width: 250px;
-	}
+table td:nth-child(12) a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
 
-	/* Ảnh sản phẩm */
-	.product-table td img {
-		display: block;
-		margin: 0 auto;
-		border-radius: 6px;
-	}
+/* Tô màu xen kẽ */
+table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
 
-	/* Tô màu xen kẽ */
-	.product-table tbody tr:nth-child(even) {
-		background-color: #f8f9fa;
-	}
-
-	/* Hover */
-	.product-table tbody tr:hover {
-		background-color: #e9ecef;
-		transition: 0.2s;
-	}
-
-	>>>>>>>Son
+/* Hover */
+table tbody tr:hover {
+    background-color: #e9ecef;
+    transition: 0.2s;
+}
 </style>

@@ -1,88 +1,137 @@
 ﻿@using core_23webc_gr6.Models
 @model List<Product>
-
+<!--PNSon 8/10/2025 sửa toàn bộ để phù hợp -->
 @{
-	ViewData["Title"] = "Quản lý sản phẩm (Admin)";
-	ViewData["Area"] = "Admin"; // dòng này để phân biệt admin
-	var page = ViewBag.Page as int? ?? 1;
-	var totalPages = ViewBag.TotalPages as int? ?? 1;
+    ViewData["Title"] = "Danh sách sản phẩm";
+    int page = ViewBag.Page ?? 1;
+    int totalPages = ViewBag.TotalPages ?? 1;
+
+    // Hiển thị tối đa 5 số trang quanh trang hiện tại
+    int maxPagesToShow = 5;
+    int startPage = Math.Max(1, page - maxPagesToShow / 2);
+    int endPage = Math.Min(totalPages, startPage + maxPagesToShow - 1);
+    if (endPage - startPage < maxPagesToShow - 1)
+        startPage = Math.Max(1, endPage - maxPagesToShow + 1);
 }
 
-<!-- PNSon -->
 <div id="page-wrapper">
-	<div class="container-fluid">
-		<h2>Danh sách sản phẩm</h2>
-		@* Hiển thị thông báo thành công nếu có *@
-		@* 
-			FIX - 07/10/2025 - Sơn - Ý nghĩa? Message đâu mà binding vô ?
-		@if (!string.IsNullOrEmpty(message))
-        {
-            <div class="alert alert-success">@message</div>
-        } *@
-		@* Bảng hiển thị danh sách sản phẩm *@
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th>Mã sản phẩm</th>
-					<th>Tên sản phẩm</th>
-					<th>Mã danh mục</th>
-					<th>Giá</th>
-					<th>Giá khuyến mãi</th>
-					<th>Số lượng tồn kho</th>
-					<th>Hình ảnh</th>
-					<th>Mô tả</th>
-					<th>Trạng thái</th>
-					<th>Ngày tạo</th>
-					<th>Ngày cập nhật</th>
-					<th>Chi tiết</th>
-				</tr>
-			</thead>
-			<tbody>
-				@* Lặp qua từng sản phẩm trong Model *@
-				@foreach (var sp in Model)
-				{
-					<tr>
-						<td>@sp.ProductID</td>
-						<td>@sp.ProductName</td>
-						<td>@sp.CategoryID</td>
-						<td>@sp.Price.ToString()</td>
-						<td>@sp.DiscountPercentage.ToString()</td>
-						<td>@sp.Stock.ToString()</td>
-						<td>
-							<img src="@sp.Image" alt="@sp.ProductName" width="100" />
-						</td>
-						<td>@sp.Description</td>
-						<td>@sp.Status.ToString()</td>
-						<td>@sp.CreatedAt.ToString("dd/MM/yyyy")</td>
-						<td>@sp.UpdatedAt.ToString("dd/MM/yyyy")</td>
-						<td>| <a asp-controller="sp" asp-action="Details" asp-route-id="@sp.ProductID">Xem chi tiết</a></td>
+    <div class="container-fluid">
+        @*  Gọi lại View gốc ở /Views/Product/Index.cshtml *@
+        @await Html.PartialAsync("~/Views/Product/Index.cshtml", Model)
 
-					</tr>
-				}
-			</tbody>
-		</table>
-		@* Phân trang *@
-		<nav>
-			<ul class="pagination">
-				<li class="page-item @(page == 1 ? "disabled" : "")">
-					<a class="page-link"
-						href="@Url.Action("Index", "Product", new { area = "Admin", page = page - 1 })">«</a>
-				</li>
-				@for (int i = 1; i <= totalPages; i++)
-				{
-					<li class="page-item @(i == page ? "active" : "")">
-						<a class="page-link" href="@Url.Action("Index", "Product", new { area = "Admin", page = i })">@i</a>
-					</li>
-				}
-				<li class="page-item @(page == totalPages ? "disabled" : "")">
-					<a class="page-link"
-						href="@Url.Action("Index", "Product", new { area = "Admin", page = page + 1 })">»</a>
-				</li>
-			</ul>
-			<span>Trang @(page) / @(totalPages)</span>
-		</nav>
-		@* Nút chuyển sang trang thêm sản phẩm *@
-		<a class="btn btn-primary" href="@Url.Action("AddProduct", "Product", new { area = "Admin" })">Thêm sản phẩm</a>
-	</div>
+        @*  Phân trang *@
+        @if (totalPages > 1)
+        {
+            <nav aria-label="Phân trang sản phẩm">
+                <ul class="pagination">
+
+                    @* Trang đầu *@
+                    <li class="page-item @(page == 1 ? "disabled" : "")">
+                        <a class="page-link" href="@Url.Action("Index", "Product", new { area = "Admin", page = 1 })">« Đầu</a>
+                    </li>
+
+                    @* Lùi *@
+                    <li class="page-item @(page <= 1 ? "disabled" : "")">
+                        <a class="page-link" href="@Url.Action("Index", "Product", new { area = "Admin", page = page - 1 })">‹</a>
+                    </li>
+
+                    @for (int i = startPage; i <= endPage; i++)
+                    {
+                        <li class="page-item @(i == page ? "active" : "")">
+                            <a class="page-link" href="@Url.Action("Index", "Product", new { area = "Admin", page = i })">@i</a>
+                        </li>
+                    }
+
+                    @* Tiến *@
+                    <li class="page-item @(page >= totalPages ? "disabled" : "")">
+                        <a class="page-link" href="@Url.Action("Index", "Product", new { area = "Admin", page = page + 1 })">›</a>
+                    </li>
+
+                    @* Trang cuối *@
+                    <li class="page-item @(page == totalPages ? "disabled" : "")">
+                        <a class="page-link" href="@Url.Action("Index", "Product", new { area = "Admin", page = totalPages })">Cuối »</a>
+                    </li>
+                </ul>
+                <div class="text-center mt-2 text-muted">
+                    Trang <strong>@(page)</strong> / <strong>@(totalPages)</strong>
+                </div>
+            </nav>
+        }
+    </div>
+
+    @* Nút cố định góc phải dưới *@
+    <a class="floating-add-button" href="@Url.Action("AddProduct", "Product", new { area = "Admin" })">
+         Thêm sản phẩm
+    </a>
 </div>
-<!-- endPNSon -->
+
+
+<style>
+#page-wrapper {
+    margin-left: 220px;
+    padding: 20px;
+    min-height: 100vh;
+    background: #f8f9fa;
+    position: relative;
+}
+
+.pagination {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.pagination li {
+    margin: 0 2px;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #aaa;
+    pointer-events: none;
+    background-color: #f8f9fa;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+.pagination .page-link {
+    color: #007bff;
+    border: 1px solid #dee2e6;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.pagination .page-link:hover {
+    background-color: #e9ecef;
+}
+
+.floating-add-button {
+    position: fixed;
+    bottom: 25px;
+    right: 30px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 22px;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+    z-index: 999;
+    text-decoration: none;
+}
+
+.floating-add-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+</style>
+
