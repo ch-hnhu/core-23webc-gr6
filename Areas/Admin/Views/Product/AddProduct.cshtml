@@ -11,68 +11,58 @@
             <div class="col-lg-12">
                 <h1 class="page-header">Thêm sản phẩm</h1>
             </div>
-        @* Form thêm sản phẩm, sử dụng enctype để upload file *@
-        <form asp-action="AddProduct" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label>Mã SP</label>
-                @* Trường mã sản phẩm, chỉ đọc *@
-                <input asp-for="ProductID" class="form-control" readonly />
-            </div>
-            <div class="form-group">
-                <label>Tên SP</label>
-                @* Tên sản phẩm, bắt buộc nhập *@
-                <input asp-for="ProductName" class="form-control" required type="text"/>
-            </div>
-            <div class="form-group">
-                <label>Đơn Giá</label>
-                @* Đơn giá, chỉ nhận số, tối thiểu 1 *@
-                <input asp-for="Price" class="form-control" required type="number" min="1" />
-            </div>
-            <div class="form-group">
-                <label>Đơn Giá Khuyến Mãi</label>
-                @* Đơn giá khuyến mãi, chỉ nhận số, tối thiểu 0 *@
-                <input asp-for="DiscountPercentage" class="form-control" required type="number" min="0" />
-            </div>
-            <div class="form-group">
-                <label>Số lượng tồn kho</label>
-                @* Đơn giá khuyến mãi, chỉ nhận số, tối thiểu 0 *@
-                <input asp-for="Stock" class="form-control" required type="number" min="0" />
-            </div>
-            <div class="form-group">
-                <label>Hình Ảnh</label>
-                @* Trường upload file ảnh *@
-                <input type="file" name="HinhAnhFile" class="form-control" accept=".jpg,.jpeg,.png,.gif" />
-                @* Nếu đã có ảnh, hiển thị tên file và ảnh *@
-                @if (!string.IsNullOrEmpty(Model.Image))
-                {
-                    <input asp-for="Image" class="form-control mt-2" readonly />
-                    <img src="~/img/@Model.Image" alt="Ảnh sản phẩm" style="max-width:120px;margin-top:10px;" />
-                }
-            </div>
-            <div class="form-group">
-                <label>Mô Tả</label>
-                @* Mô tả sản phẩm *@
-                <input asp-for="Description" class="form-control" required type="text" />
-            </div>
-            <div class="form-group">
-                <label>Trạng thái</label>
-                @* Đơn giá khuyến mãi, chỉ nhận số, tối thiểu 0 *@
-                <input asp-for="Status" class="form-control" required type="number" min="0" />
-            </div>
-            <div class="form-group">
-                <label>Ngày tạo</label>
-                @* Đơn giá khuyến mãi, chỉ nhận số, tối thiểu 0 *@
-                <input asp-for="CreatedAt" class="form-control" required type="date" min="0" />
-            </div>
-            <div class="form-group">
-                <label>Ngày cập nhật</label>
-                @* Đơn giá khuyến mãi, chỉ nhận số, tối thiểu 0 *@
-                <input asp-for="UpdatedAt" class="form-control" required type="date" min="0" />
+        </div>
+
+        <!-- Form thêm sản phẩm -->
+        <div class="row">
+            <div class="col-lg-8">
+                <form asp-action="AddProduct" asp-controller="Product" asp-area="Admin"
+                      method="post" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label for="ProductID">Mã sản phẩm</label>
+                        <input asp-for="ProductID" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ProductID">Tên sản phẩm</label>
+                        <input asp-for="ProductID" class="form-control" />
+                        <span asp-validation-for="ProductID" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Price">Đơn giá</label>
+                        <input asp-for="Price" class="form-control" type="number" step="0.01" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="DiscountPercentage">Giá khuyến mãi</label>
+                        <input asp-for="DiscountPercentage" class="form-control" type="number" step="0.01" />
+                        <span asp-validation-for="DiscountPercentage" class="text-danger"></span>
+                    </div>
+
+                    
+
+                    <div class="form-group">
+                        <label for="Description">Mô tả</label>
+                        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="HinhAnhFile">Hình ảnh</label>
+                        <input type="file" name="HinhAnhFile" class="form-control" />
+                    </div>
+
+                    <button type="submit" class="btn btn-success">💾 Lưu sản phẩm</button>
+                    <a asp-area="Admin" asp-controller="Product" asp-action="Index"
+                       class="btn btn-default">↩ Quay lại</a>
+                </form>
             </div>
             @* Nút submit và quay lại danh sách *@
             <button type="submit" class="btn btn-success">Thêm sản phẩm</button>
             <a class="btn btn-secondary" href="@Url.Action("Index", "Product", new { area = "Admin" })">Quay lại</a>
-        </form>
     </div>
 </div>
 <!-- endPNSon -->
