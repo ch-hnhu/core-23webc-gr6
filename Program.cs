@@ -9,16 +9,10 @@ using core_23webc_gr6.Data.Seeds;
 //end VqNam
 var builder = WebApplication.CreateBuilder(args);
 
-//LTMKieu
-// dang ky cau hinh AppConfig de su dung trong toan bo ung dung
-builder.Services.AddOptions<AppConfig>().Bind(builder.Configuration.GetSection("AppConfig")).ValidateDataAnnotations().ValidateOnStart();
-// dang ky singleton de co the inject AppConfig vao trong controller
-builder.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<AppConfig>>().Value);
+
 //LTMKieu 06/10/2025
-builder.Services.Configure<AppConfig>(builder.Configuration.GetSection("AppConfig"));
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 //endLTMKieu 06/10/2025
-//endLTMKieu
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 //Thao Nguyen
@@ -78,13 +72,6 @@ app.UseUserLoading();
 app.UseProductMiddleware();
 //endNTNguyen
 
-// LTMKieu
-//Test config có đọc được không
-app.MapGet("/config", (AppConfig config) =>
-{
-    return Results.Json(config);
-});
-//endLTMKieu
 
 
 

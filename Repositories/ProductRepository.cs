@@ -1,19 +1,16 @@
 ﻿using core_23webc_gr6.Interfaces;
 using core_23webc_gr6.Models;
-using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 using System.Data;
 namespace core_23webc_gr6.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        //LTMKieu
+        //LTMKieu 
         //LTMKieu 06/10/2025
-        private readonly AppConfig _appConfig;
         private readonly string _connString;
-        public ProductRepository(AppConfig appConfig, IConfiguration configuration)
+        public ProductRepository(IConfiguration configuration)
         {
-            _appConfig = appConfig;
             _connString = configuration.GetConnectionString("MySqlConnection") ?? "";
         }
         //endLTMKieu 06/10/2025
@@ -26,31 +23,32 @@ namespace core_23webc_gr6.Repositories
             using (var connection = new MySqlConnection(_connString))
             {
                 connection.Open();
-                string query = "SELECT * FROM products";
-                using (var command = new MySqlCommand(query, connection))
-                using (var reader = command.ExecuteReader())
+
+                string query = "SELECT * FROM Products";
+                using (var comd = new MySqlCommand(query, connection))
+                using (var reader = comd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        products.Add(new Product
+                        var product = new Product
                         {
-                            ProductID = reader.GetInt32("ProductID"),
-                            ProductName = reader.GetString("ProductName"),
-                            CategoryID = reader.GetInt32("CategoryID"),
-                            Price = reader.GetDecimal("Price"),
-                            DiscountPercentage = reader.GetInt32("DiscountPercentage"),
-                            Stock = reader.GetInt32("Stock"),
-                            Image = reader.GetString("Image"),
-                            Description = reader.GetString("Description"),
-                            Status = reader.GetByte("Status"),
-                            CreatedAt = reader.GetDateTime("CreatedAt"),
-                            UpdatedAt = reader.GetDateTime("UpdatedAt")
-                        });
+                            ProductID = Convert.ToInt32(reader["ProductID"]),
+                            ProductName = reader["ProductName"].ToString() ?? string.Empty,
+                            CategoryID = reader["CategoryID"] as int?,
+                            Price = Convert.ToDecimal(reader["Price"]),
+                            DiscountPercentage = Convert.ToInt32(reader["DiscountPercentage"]),
+                            Stock = Convert.ToInt32(reader["Stock"]),
+                            Image = reader["Image"].ToString(),
+                            Description = reader["Description"].ToString(),
+                            Status = Convert.ToByte(reader["Status"]),
+                            CreatedAt = Convert.ToDateTime(reader["CreatedAt"]),
+                            UpdatedAt = Convert.ToDateTime(reader["UpdatedAt"])
+                        };
+                        products.Add(product);
                     }
                 }
             }
             return products;
-
         }
         public Product? GetProductById(int id)
         {
@@ -68,17 +66,17 @@ namespace core_23webc_gr6.Repositories
                         {
                             product = new Product
                             {
-                                ProductID = reader.GetInt32("ProductID"),
-                                ProductName = reader.GetString("ProductName"),
-                                CategoryID = reader.GetInt32("CategoryID"),
-                                Price = reader.GetDecimal("Price"),
-                                DiscountPercentage = reader.GetInt32("DiscountPercentage"),
-                                Stock = reader.GetInt32("Stock"),
-                                Image = reader.GetString("Image"),
-                                Description = reader.GetString("Description"),
-                                Status = reader.GetByte("Status"),
-                                CreatedAt = reader.GetDateTime("CreatedAt"),
-                                UpdatedAt = reader.GetDateTime("UpdatedAt")
+                                ProductID = Convert.ToInt32(reader["ProductID"]),
+                                ProductName = reader["ProductName"].ToString() ?? string.Empty,
+                                CategoryID = reader["CategoryID"] as int?,
+                                Price = Convert.ToDecimal(reader["Price"]),
+                                DiscountPercentage = Convert.ToInt32(reader["DiscountPercentage"]),
+                                Stock = Convert.ToInt32(reader["Stock"]),
+                                Image = reader["Image"].ToString(),
+                                Description = reader["Description"].ToString(),
+                                Status = Convert.ToByte(reader["Status"]),
+                                CreatedAt = Convert.ToDateTime(reader["CreatedAt"]),
+                                UpdatedAt = Convert.ToDateTime(reader["UpdatedAt"])
                             };
                         }
                     }

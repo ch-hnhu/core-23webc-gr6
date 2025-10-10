@@ -1,31 +1,35 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 using core_23webc_gr6.Models;
 
-namespace core_23webc_gr6.Controllers;
-
-public class HomeController : Controller
+namespace core_23webc_gr6.Controllers
 {
-    private readonly ILogger<HomeController> _logger;
+	public class HomeController : Controller
+	{
+		public IActionResult Index()
+		{
+			// Đường dẫn tới file db.json trong Data/Seeds
+			string filePath = Path.Combine(
+				Directory.GetCurrentDirectory(),
+				"Data", "Seeds", "db.json"
+			);
 
-    public HomeController(ILogger<HomeController> logger)
-    {
-        _logger = logger;
-    }
+			if (!System.IO.File.Exists(filePath))
+			{
+				throw new FileNotFoundException("Không tìm thấy file db.json tại: " + filePath);
+			}
 
-    public IActionResult Index()
-    {
-        return View();
-    }
+			string jsonData = System.IO.File.ReadAllText(filePath);
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+			using var doc = JsonDocument.Parse(jsonData);
+			var productsElement = doc.RootElement.GetProperty("products");
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
+			var products = JsonSerializer.Deserialize<List<Product>>(productsElement.GetRawText());
+
+			// Lấy 6 sản phẩm đầu tiên
+			var latestProducts = products?.Take(6).ToList() ?? new List<Product>();
+
+			return View(latestProducts);
+		}
+	}
 }
