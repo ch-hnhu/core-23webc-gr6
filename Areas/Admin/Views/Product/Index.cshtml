@@ -16,8 +16,141 @@
 
 <div id="page-wrapper">
 	<div class="container-fluid">
-		@*  Gọi lại View gốc ở /Views/Product/Index.cshtml *@
-		@await Html.PartialAsync("~/Views/Product/Index.cshtml", Model)
+		<!--LTMKieu 6/10/2025-->
+		<h2>Danh sách sản phẩm</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Mã sản phẩm</th>
+					<th>Tên sản phẩm</th>
+					<th>Mã danh mục</th>
+					<th>Giá</th>
+					<th>Giá khuyến mãi</th>
+					<th>Số lượng tồn kho</th>
+					<th>Hình ảnh</th>
+					<th>Mô tả</th>
+					<th>Trạng thái</th>
+					<th>Ngày tạo</th>
+					<th>Ngày cập nhật</th>
+				</tr>
+			</thead>
+			@foreach (var product in Model)
+			{
+				<tr>
+					<td>@product.ProductID</td>
+					<td>@product.ProductName</td>
+					<td>@product.CategoryID</td>
+					<td>@product.Price.ToString()</td>
+					<td>@product.DiscountPercentage.ToString()</td>
+					<td>@product.Stock.ToString()</td>
+					<td>
+						<img src="@product.Image" alt="@product.ProductName" width="100" />
+					</td>
+					<td>@product.Description</td>
+					<td>@product.Status.ToString()</td>
+					<td>@product.CreatedAt.ToString("dd/MM/yyyy")</td>
+					<td>@product.UpdatedAt.ToString("dd/MM/yyyy")</td>
+				</tr>
+			}
+
+		</table>
+		<!--endLTMKieu-->
+		}
+
+
+
+		<!--PNSon 8/10/2025 thêm CSS cho bảng-->
+		<style>
+			/* Định dạng bảng */
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin: 20px 0;
+				font-size: 14px;
+				text-align: center;
+				table-layout: auto;
+			}
+
+			/* Header */
+			table thead th {
+				background-color: #343a40;
+				color: #fff;
+				padding: 10px;
+				border: 1px solid #ddd;
+				white-space: nowrap;
+			}
+
+			/* Ô dữ liệu */
+			table td {
+				border: 1px solid #ddd;
+				padding: 8px;
+				vertical-align: middle;
+				word-wrap: break-word;
+				max-width: 250px;
+			}
+
+			/* Ảnh sản phẩm */
+			table td img {
+				display: block;
+				margin: 0 auto;
+				border-radius: 6px;
+				width: 80px;
+				height: auto;
+				object-fit: cover;
+				box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+			}
+
+			/* Cột mô tả: cho phép xuống dòng và không bị tràn */
+			table td:nth-child(8) {
+				text-align: left;
+				white-space: pre-wrap;
+			}
+
+			/* Cột giá, giá khuyến mãi, số lượng: canh giữa, đậm hơn 1 chút */
+			table td:nth-child(4),
+			table td:nth-child(5),
+			table td:nth-child(6) {
+				font-weight: 500;
+				color: #212529;
+			}
+
+			/* Cột trạng thái: in đậm nếu cần */
+			table td:nth-child(9) {
+				font-weight: 600;
+				color: #17a2b8;
+			}
+
+			/* Cột ngày tạo, ngày cập nhật: format nhỏ hơn 1 chút */
+			table td:nth-child(10),
+			table td:nth-child(11) {
+				font-size: 13px;
+				color: #6c757d;
+			}
+
+			/* Cột "Chi tiết": định dạng liên kết rõ hơn */
+			table td:nth-child(12) a {
+				color: #007bff;
+				text-decoration: none;
+				font-weight: 500;
+			}
+
+			table td:nth-child(12) a:hover {
+				text-decoration: underline;
+				color: #0056b3;
+			}
+
+			/* Tô màu xen kẽ */
+			table tbody tr:nth-child(even) {
+				background-color: #f8f9fa;
+			}
+
+			/* Hover */
+			table tbody tr:hover {
+				background-color: #e9ecef;
+				transition: 0.2s;
+			}
+		</style>
+
 
 		@*  Phân trang *@
 		@if (totalPages > 1)
