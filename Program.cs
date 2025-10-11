@@ -5,7 +5,7 @@ using core_23webc_gr6.Repositories;
 using core_23webc_gr6.Services;
 using Microsoft.Extensions.Options;
 //VqNam thêm phần .Data.Seeds 7/10/2025 dòng 7-->9
-using core_23webc_gr6.Data.Seeds;
+using core_23webc_gr6.Data;
 //end VqNam
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,9 +26,9 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+	app.UseExceptionHandler("/Home/Error");
+	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+	app.UseHsts();
 }
 
 app.UseHttpsRedirection();
@@ -41,14 +41,14 @@ app.UseAuthorization();
 // CHNhu
 // Định nghĩa route khi có area, đặt route cụ thể lên trên route mặc định
 app.MapControllerRoute(
-    name: "areas",
-    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+	name: "areas",
+	pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
 );
 // endCHNhu
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}"
+	name: "default",
+	pattern: "{controller=Home}/{action=Index}/{id?}"
 );
 
 
@@ -57,11 +57,11 @@ app.MapControllerRoute(
 // Middleware kiem tra url hop le
 app.Use(async (context, next) =>
 {
-    await next();
-    if (context.Response.StatusCode == 404)
-    {
-        context.Response.Redirect("/Home/Error");
-    }
+	await next();
+	if (context.Response.StatusCode == 404)
+	{
+		context.Response.Redirect("/Home/Error");
+	}
 });
 // endCHNhu
 
@@ -87,7 +87,7 @@ app.UseProductMiddleware();
 
 
 // Quoc Nam
-app.UseRequestLogging(); 
+app.UseRequestLogging();
 
 app.Run();
 
