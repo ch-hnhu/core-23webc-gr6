@@ -17,6 +17,13 @@ namespace core_23webc_gr6.Models
         public byte Status { get; set; }                // Trạng thái (1 = hoạt động, 0 = ẩn)
         public DateTime CreatedAt { get; set; }         // Ngày tạo
         public DateTime UpdatedAt { get; set; }
+
+
+
+        //PNSon thêm 11/10/2025 thuộc tính bổ sung để giữ dữ liệu JOIN
+        public string? CategoryName { get; set; }         // Tên danh mục JOIN từ bảng categories
+        public List<string>? Tags { get; set; } = new();  // Danh sách tag JOIN từ bảng tags
+        //endPNSon
     }
     //endLTMKieu
 }
