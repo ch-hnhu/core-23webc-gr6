@@ -59,13 +59,15 @@ namespace core_23webc_gr6.Repositories
                         p.DiscountPercentage, p.Stock, p.Image, p.Description, 
                         p.Status, p.CreatedAt, p.UpdatedAt,
                         c.CategoryName,
-                        GROUP_CONCAT(t.TagName ORDER BY t.TagName SEPARATOR ', ') AS TagNames
+                        STRING_AGG(t.TagName, ', ') WITHIN GROUP (ORDER BY t.TagName) AS TagNames
                     FROM products p
                     LEFT JOIN categories c ON p.CategoryID = c.CategoryID
                     LEFT JOIN producttags pt ON p.ProductID = pt.ProductID
                     LEFT JOIN tags t ON pt.TagID = t.TagID
                     WHERE p.ProductID = @id
-                    GROUP BY p.ProductID, c.CategoryName;";
+                    GROUP BY p.ProductID, p.ProductName, p.CategoryID, p.Price, 
+                            p.DiscountPercentage, p.Stock, p.Image, p.Description, 
+                            p.Status, p.CreatedAt, p.UpdatedAt, c.CategoryName;";
                 //endPNSon
                 using (var command = new SqlCommand(query, connection))
                 {
@@ -124,21 +126,16 @@ namespace core_23webc_gr6.Repositories
                 connection.Open();
 
                 string query = @"
-            SELECT DISTINCT 
-                p.ProductID, p.ProductName, p.Price, p.DiscountPercentage, p.Image,
-                GROUP_CONCAT(t.TagName ORDER BY t.TagName SEPARATOR ', ') AS TagNames
-            FROM products p
-            INNER JOIN producttags pt ON p.ProductID = pt.ProductID
-            INNER JOIN tags t ON pt.TagID = t.TagID
-            WHERE t.TagID IN (
-                SELECT TagID FROM producttags WHERE ProductID = @productId
-            )
-            AND p.ProductID <> @productId
-            AND p.Status = 1
-            GROUP BY p.ProductID
-            ORDER BY p.CreatedAt DESC
-            LIMIT 10;";
-
+                    SELECT TOP 10
+                        p.ProductID, p.ProductName, p.Price, p.DiscountPercentage, p.Image,
+                        STRING_AGG(t.TagName, ', ') WITHIN GROUP (ORDER BY t.TagName) AS TagNames
+                    FROM products p
+                    JOIN producttags pt ON p.ProductID = pt.ProductID
+                    JOIN tags t ON pt.TagID = t.TagID
+                    WHERE t.TagID IN (SELECT TagID FROM producttags WHERE ProductID = @productId)
+                    AND p.ProductID <> @productId AND p.Status = 1
+                    GROUP BY p.ProductID, p.ProductName, p.Price, p.DiscountPercentage, p.Image, p.CreatedAt
+                    ORDER BY p.CreatedAt DESC;";
                 using (var cmd = new SqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@productId", productId);
