@@ -11,10 +11,10 @@ namespace core_23webc_gr6.Repositories
 		{
 			_connString = configuration.GetConnectionString("SqlServerConnection") ?? "";
 		}
-		private List<Product> _products = new();
-		public List<Product> GetAllProducts()
+		private List<Products> _products = new();
+		public List<Products> GetAllProducts()
 		{
-			var products = new List<Product>();
+			var products = new List<Products>();
 			using (var connection = new SqlConnection(_connString))
 			{
 				connection.Open();
@@ -25,7 +25,7 @@ namespace core_23webc_gr6.Repositories
 				{
 					while (reader.Read())
 					{
-						var product = new Product
+						var product = new Products
 						{
 							ProductID = Convert.ToInt32(reader["ProductID"]),
 							ProductName = reader["ProductName"].ToString() ?? string.Empty,
@@ -46,9 +46,9 @@ namespace core_23webc_gr6.Repositories
 			return products;
 		}
 
-		public Product? GetProductById(int id)
+		public Products? GetProductById(int id)
 		{
-			Product? product = null;
+			Products? product = null;
 			using (var connection = new SqlConnection(_connString))
 			{
 				connection.Open();
@@ -60,7 +60,7 @@ namespace core_23webc_gr6.Repositories
 					{
 						if (reader.Read())
 						{
-							product = new Product
+							product = new Products
 							{
 								ProductID = Convert.ToInt32(reader["ProductID"]),
 								ProductName = reader["ProductName"].ToString() ?? string.Empty,
@@ -81,11 +81,11 @@ namespace core_23webc_gr6.Repositories
 			return product;
 		}
 
-		public void AddProduct(Product product)
+		public void AddProduct(Products product)
 		{
 			_products.Add(product);
 		}
-		public void SetProducts(List<Product> products)
+		public void SetProducts(List<Products> products)
 		{
 			_products.Clear();
 			_products.AddRange(products);

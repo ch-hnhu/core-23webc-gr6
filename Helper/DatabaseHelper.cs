@@ -2,7 +2,7 @@
 // CHNhu - 11/10/2025 - Chuyển từ mysql sang mssql
 using Microsoft.Data.SqlClient;
 
-namespace core_23webc_gr6.Data
+namespace core_23webc_gr6.Helper
 {
 	public class DatabaseHelper
 	{
@@ -17,6 +17,16 @@ namespace core_23webc_gr6.Data
 		public SqlConnection GetConnection()
 		{
 			return new SqlConnection(_connectionString);
+		}
+
+		public SqlDataReader ExcuteQuery(string query, SqlConnection conn)
+		{
+			return new SqlCommand(query, conn).ExecuteReader();
+		}
+
+		public int ExcuteNonQuery(string query, SqlConnection conn)
+		{
+			return new SqlCommand(query, conn).ExecuteNonQuery();
 		}
 	}
 }

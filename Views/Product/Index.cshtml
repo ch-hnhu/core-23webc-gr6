@@ -1,6 +1,6 @@
-@model List<core_23webc_gr6.Models.Product>
+@model List<core_23webc_gr6.Models.Products>
 <!-- VqNam chinh sửa giao diện để load danh sách sản phẩm 7/10 -->
-<!-- CHNhu -->
+<!-- CHNhu - 12/10/2025 - Sửa lại link để load được ảnh + css cho ảnh có size cố định -->
 <div class="single-product-area">
 	<div class="zigzag-bottom"></div>
 	<div class="container">
@@ -11,11 +11,10 @@
 				<div class="col-md-3 col-sm-6">
 					<div class="single-shop-product">
 						<div class="product-upper">
-							<img src="@Url.Content(item.Image ?? "~/assets/user/img/product-2.jpg")"
-								alt="@item.ProductName" />
+							<img class="product-img" src="~/img/Products/@item.Image" alt="@item.ProductName" />
 						</div>
 						<h2>
-							<a href="@Url.Action("Details", "Product", new { area = "User", id = item.ProductID })">
+							<a asp-controller="Product" asp-action="Details" asp-route-id="@item.ProductID">
 								@item.ProductName
 							</a>
 						</h2>
@@ -64,4 +63,12 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	.product-img {
+		width: 220px;
+		height: 220px;
+		object-fit: contain;
+	}
+</style>
 <!-- endCHNhu -->
