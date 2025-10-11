@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using core_23webc_gr6.Data;
 using core_23webc_gr6.Models;
 using Microsoft.Data.SqlClient;
+using core_23webc_gr6.Interfaces;
 
 //VqNam Sửa toàn bộ trong productcontroller 7/10
 // CHNhu - 11/10/2025 - Sửa 1 vài phần từ mysql sang mssql
@@ -10,13 +11,17 @@ namespace core_23webc_gr6.Controllers
 	public class ProductController : Controller
 	{
 		private readonly DatabaseHelper _db;
+		private readonly IProductRepository _productRepository; //PNSon 8/10/2025 thêm productRepository
 
-		public ProductController(DatabaseHelper db)
+		public ProductController(DatabaseHelper db, IProductRepository productRepository)
 		{
+			//PNSon 8/10/2025 thêm productRepository để lấy dữ liệu cho trang details
+			_productRepository = productRepository;
+			//endPNSon
 			_db = db;
 		}
 
-		// Load danh sách sản phẩm
+		//vqNam Load danh sách sản phẩm
 		public ActionResult Index()
 		{
 			List<Product> products = new();
@@ -50,10 +55,20 @@ namespace core_23webc_gr6.Controllers
 			ViewData["BigTitle"] = "Shop";
 			return View(products); // Trả ra list cho Index.cshtml
 		}
-		public ActionResult Details(int id = 1)
+		//endvqNam
+
+		//PNSon 8/10/2025 Load chi tiết sản phẩm
+		public ActionResult Details(int id)
 		{
+			var product = _productRepository.GetProductById(id);
+			// Kiểm tra null để tránh lỗi Model null trong View
+			if (product == null)
+			{
+				return NotFound("Sản phẩm không tồn tại hoặc đã bị xóa.");
+			}
 			ViewData["BigTitle"] = "Product Detail";
-			return View();
+			return View(product);
 		}
+		//endPNSon
 	}
 }

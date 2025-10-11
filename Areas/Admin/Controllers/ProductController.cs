@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using core_23webc_gr6.Interfaces;
+using core_23webc_gr6.Models;
 
 namespace core_23webc_gr6.Areas.Admin.Controllers
 {
@@ -11,11 +12,26 @@ namespace core_23webc_gr6.Areas.Admin.Controllers
 		{
 			_productRepository = productRepository;
 		}
-		public IActionResult Index()
+		public IActionResult Index(int page = 1, int pageSize = 5)
 		{
-			var products = _productRepository.GetAllProducts();
-			return View(products);
+			var allProducts = _productRepository.GetAllProducts();
+			int totalProducts = allProducts.Count();
+
+			int totalPages = (int)Math.Ceiling((double)totalProducts / pageSize);
+			if (page < 1) page = 1;
+			if (page > totalPages) page = totalPages;
+
+			var pagedProducts = allProducts
+				.Skip((page - 1) * pageSize)
+				.Take(pageSize)
+				.ToList();
+
+			ViewBag.Page = page;
+			ViewBag.TotalPages = totalPages;
+
+			return View(pagedProducts);
 		}
+
 		public IActionResult Details(int id)
 		{
 			var product = _productRepository.GetProductById(id);
@@ -23,11 +39,13 @@ namespace core_23webc_gr6.Areas.Admin.Controllers
 			{
 				return NotFound();
 			}
-
-			ViewData["Area"] = "";// Gửi thông tin area xuống view PNSon thêm để view biết nó đang ở area nào
-
 			return View(product);
 		}
+		public IActionResult AddProduct()
+		{
+			return View(new Product());
+		}
 
+		// : xử lý thêm sản phẩm ( tạm thời chưa thêm xử lý sau)
 	}
 }
