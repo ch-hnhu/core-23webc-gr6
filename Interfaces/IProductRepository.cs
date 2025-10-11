@@ -3,13 +3,13 @@
 namespace core_23webc_gr6.Interfaces
 {
 
-    //LTMKieu
-    public interface IProductRepository
-    {
-        List<Product> GetAllProducts();
-        Product? GetProductById(int id);
-        void AddProduct(Product product);
-        void SetProducts(List<Product> products); // Thêm method này cho middleware
-    }
-    //endLTMKieu
+	//LTMKieu
+	public interface IProductRepository
+	{
+		List<Products> GetAllProducts();
+		Products? GetProductById(int id);
+		void AddProduct(Products product);
+		void SetProducts(List<Products> products); // Thêm method này cho middleware
+	}
+	//endLTMKieu
 }

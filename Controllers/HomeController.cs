@@ -24,10 +24,10 @@ namespace core_23webc_gr6.Controllers
 			using var doc = JsonDocument.Parse(jsonData);
 			var productsElement = doc.RootElement.GetProperty("products");
 
-			var products = JsonSerializer.Deserialize<List<Product>>(productsElement.GetRawText());
+			var products = JsonSerializer.Deserialize<List<Products>>(productsElement.GetRawText());
 
 			// Lấy 6 sản phẩm đầu tiên
-			var latestProducts = products?.Take(6).ToList() ?? new List<Product>();
+			var latestProducts = products?.Take(6).ToList() ?? new List<Products>();
 
 			return View(latestProducts);
 		}

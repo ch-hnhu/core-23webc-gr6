@@ -1,69 +1,74 @@
-@model List<core_23webc_gr6.Models.Product>
+@model List<core_23webc_gr6.Models.Products>
 <!-- VqNam chinh sửa giao diện để load danh sách sản phẩm 7/10 -->
-<!-- CHNhu -->
+<!-- CHNhu - 12/10/2025 - Sửa lại link để load được ảnh + css cho ảnh có size cố định -->
 <div class="single-product-area">
-    <div class="zigzag-bottom"></div>
-    <div class="container">
-        <div class="row">
-            @* Lặp qua sản phẩm từ DB, mỗi sản phẩm một .col-md-3 như layout gốc *@
-            @foreach (var item in Model)
-            {
-                <div class="col-md-3 col-sm-6">
-                    <div class="single-shop-product">
-                        <div class="product-upper">
-                            <img src="@Url.Content(item.Image ?? "~/assets/user/img/product-2.jpg")" alt="@item.ProductName" />
-                        </div>
-                        <h2>
-                            <a href="@Url.Action("Details", "Product", new { area = "User", id = item.ProductID })">
-                                @item.ProductName
-                            </a>
-                        </h2>
-                        <div class="product-carousel-price">
-                            <ins>@item.Price.ToString("N0") VNĐ</ins>
-                            @if (item.DiscountPercentage > 0 && item.DiscountPercentage < 100)
-                            {
-                                var oldPrice = item.Price / (1 - (item.DiscountPercentage / 100.0m));
-                                <del>@oldPrice.ToString("N0") VNĐ</del>
-                            }
-                        </div>
+	<div class="zigzag-bottom"></div>
+	<div class="container">
+		<div class="row">
+			@* Lặp qua sản phẩm từ DB, mỗi sản phẩm một .col-md-3 như layout gốc *@
+			@foreach (var item in Model)
+			{
+				<div class="col-md-3 col-sm-6">
+					<div class="single-shop-product">
+						<div class="product-upper">
+							<img class="product-img" src="~/img/Products/@item.Image" alt="@item.ProductName" />
+						</div>
+						<h2>
+							<a asp-controller="Product" asp-action="Details" asp-route-id="@item.ProductID">
+								@item.ProductName
+							</a>
+						</h2>
+						<div class="product-carousel-price">
+							<ins>@item.Price.ToString("N0") VNĐ</ins>
+							@if (item.DiscountPercentage > 0 && item.DiscountPercentage < 100)
+							{
+								var oldPrice = item.Price / (1 - (item.DiscountPercentage / 100.0m));
+								<del>@oldPrice.ToString("N0") VNĐ</del>
+							}
+						</div>
 
-                        <div class="product-option-shop">
-                            <a class="add_to_cart_button"
-                               data-quantity="1"
-                               data-product_sku=""
-                               data-product_id="@item.ProductID"
-                               rel="nofollow"
-                               href="#">Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
+						<div class="product-option-shop">
+							<a class="add_to_cart_button" data-quantity="1" data-product_sku=""
+								data-product_id="@item.ProductID" rel="nofollow" href="#">Add to cart</a>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="product-pagination text-center">
-                    <nav>
-                        <ul class="pagination">
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="product-pagination text-center">
+					<nav>
+						<ul class="pagination">
+							<li>
+								<a href="#" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li>
+								<a href="#" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.product-img {
+		width: 220px;
+		height: 220px;
+		object-fit: contain;
+	}
+</style>
 <!-- endCHNhu -->

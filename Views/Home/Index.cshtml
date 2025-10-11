@@ -1,4 +1,4 @@
-@model List<core_23webc_gr6.Models.Product>//VqNam 4/10/2025 sửa LateProduct
+@model List<core_23webc_gr6.Models.Products>//VqNam 4/10/2025 sửa LateProduct
 
 
 <div class="slider-area">
@@ -97,7 +97,6 @@
 						<div class="single-product">
 							<div class="product-f-image">
 								<img src="~/assets/user/img/@imgFile" alt="@item.ProductName" />
-
 								<div class="product-hover">
 									<a href="#" class="add-to-cart-link">
 										<i class="fa fa-shopping-cart"></i> Add to cart
@@ -107,9 +106,7 @@
 									</a>
 								</div>
 							</div>
-
 							<h2><a href="single-product.html">@item.ProductName</a></h2>
-
 							<div class="product-carousel-price">
 								<ins>@item.DiscountPercentage.ToString("C0")</ins>
 								@if (item.DiscountPercentage < item.Price)
@@ -157,71 +154,81 @@
 	<div class="container">
 		<div class="row">
 			<!-- Top Sellers -->
-			<div class="col-md-4">
-				<div class="single-product-widget">
-					<h2 class="product-wid-title">Top Sellers</h2>
-					<a href="#" class="wid-view-more">View All</a>
-					@{
-						int topIndex = 1;
-					}
-					@foreach (var item in Model.Take(3))
-					{
-						var imgFile = $"product-{topIndex}.jpg";
-						<div class="single-wid-product">
-							<a href="single-product.html">
-								<img src="~/assets/user/img/@imgFile" alt="@item.ProductName"
-									class="product-thumb product-thumb-uniform" />
-							</a>
-							<h2><a href="single-product.html">@item.ProductName</a></h2>
-							<div class="product-wid-rating">
-								<i class="fa fa-star"></i><i class="fa fa-star"></i>
-								<i class="fa fa-star"></i><i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
+			<div class="col-md-12">
+				<div class="latest-product">
+					<h2 class="section-title" , style="margin-top:40px;">Top Sellers</h2>
+					<div class="product-carousel">
+						@{
+							int topIndex = 1;
+						}
+						@foreach (var item in Model.Take(5))
+						{
+							var imgFile = $"product-{topIndex}.jpg";
+
+							<div class="single-product">
+								<div class="product-f-image">
+									<img src="~/assets/user/img/@imgFile" alt="@item.ProductName" />
+									<div class="product-hover">
+										<a href="#" class="add-to-cart-link">
+											<i class="fa fa-shopping-cart"></i> Add to cart
+										</a>
+										<a href="single-product.html" class="view-details-link">
+											<i class="fa fa-link"></i> See details
+										</a>
+									</div>
+								</div>
+								<h2><a href="single-product.html">@item.ProductName</a></h2>
+								<div class="product-carousel-price">
+									<ins>@item.Price.ToString("N0") đ</ins>
+								</div>
 							</div>
-							<div class="product-wid-price">
-								<ins>@item.DiscountPercentage.ToString("N0") đ</ins>
-								<del>@item.Price.ToString("N0") đ</del>
-							</div>
-						</div>
-						topIndex++;
-					}
+						}
+					</div>
 				</div>
 			</div>
 
 			<!-- Recently Viewed -->
-			<div class="col-md-4">
-				<div class="single-product-widget">
-					<h2 class="product-wid-title">Recently Viewed</h2>
-					<a href="#" class="wid-view-more">View All</a>
-					@{
-						int rvIndex = 1;
-					}
-					@foreach (var item in Model.Take(3))
-					{
-						var imgFile = $"product-{rvIndex}.jpg";
-						<div class="single-wid-product">
-							<a href="single-product.html">
-								<img src="~/assets/user/img/@imgFile" alt="@item.ProductName"
-									class="product-thumb product-thumb-uniform" />
-							</a>
-							<h2><a href="single-product.html">@item.ProductName</a></h2>
-							<div class="product-wid-rating">
-								<i class="fa fa-star"></i><i class="fa fa-star"></i>
-								<i class="fa fa-star"></i><i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
+			<div class="col-md-12">
+				<div class="latest-product">
+					@* thêm  style="margin-top:40px;" để Recently Viewed xuống chính giữa *@
+					<h2 class="section-title" , style="margin-top:40px;">Recently Viewed</h2>
+					<div class="product-carousel">
+						@{
+							int rvIndex = 1;
+						}
+						@foreach (var item in Model.Take(5)) // lấy 5 sản phẩm gần đây
+						{
+							var imgFile = $"product-{rvIndex}.jpg";
+							var discountPrice = item.Price - (item.Price * item.DiscountPercentage / 100);
+
+							<div class="single-product">
+								<div class="product-f-image">
+									<img src="~/assets/user/img/@imgFile" alt="@item.ProductName" />
+									<div class="product-hover">
+										<a href="#" class="add-to-cart-link">
+											<i class="fa fa-shopping-cart"></i> Add to cart
+										</a>
+										<a href="single-product.html" class="view-details-link">
+											<i class="fa fa-link"></i> See details
+										</a>
+									</div>
+								</div>
+								<h2><a href="single-product.html">@item.ProductName</a></h2>
+								<div class="product-carousel-price">
+									<ins>@discountPrice.ToString("N0") đ</ins>
+									@if (item.DiscountPercentage > 0)
+									{
+										<del>@item.Price.ToString("N0") đ</del>
+									}
+								</div>
 							</div>
-							<div class="product-wid-price">
-								<ins>@item.DiscountPercentage.ToString("N0") đ</ins>
-								<del>@item.Price.ToString("N0") đ</del>
-							</div>
-						</div>
-						rvIndex++;
-					}
+						}
+					</div>
 				</div>
 			</div>
 
 			<!-- Top New -->
-			<div class="col-md-4">
+			@* <div class="col-md-4">
 				<div class="single-product-widget">
 					<h2 class="product-wid-title">Top New</h2>
 					<a href="#" class="wid-view-more">View All</a>
@@ -251,9 +258,9 @@
 					}
 				</div>
 			</div>
+		</div> *@
 		</div>
 	</div>
-</div>
 
 
 </div> <!-- End product widget area -->
