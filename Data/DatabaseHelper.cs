@@ -1,22 +1,24 @@
 //VqNam Tạo file databasehelper để kết nối database 7/10
-using MySql.Data.MySqlClient;
+// CHNhu - 11/10/2025 - Chuyển từ mysql sang mssql
+using Microsoft.Data.SqlClient;
 
-namespace core_23webc_gr6.Data.Seeds
+namespace core_23webc_gr6.Data
 {
-    public class DatabaseHelper
-    {
-        private readonly string _connectionString;
+	public class DatabaseHelper
+	{
+		private readonly string _connectionString;
 
-        public DatabaseHelper(IConfiguration configuration)
-        {
-            _connectionString = configuration.GetConnectionString("MySqlConnection")
-                                ?? throw new InvalidOperationException("Missing connection string: MySqlConnection");
-        }
+		public DatabaseHelper(IConfiguration configuration)
+		{
+			_connectionString = configuration.GetConnectionString("SqlServerConnection")
+								?? throw new InvalidOperationException("Missing connection string: SqlServerConnection");
+		}
 
-        public MySqlConnection GetConnection()
-        {
-            return new MySqlConnection(_connectionString);
-        }
-    }
+		public SqlConnection GetConnection()
+		{
+			return new SqlConnection(_connectionString);
+		}
+	}
 }
+// endCHNhu
 //VqNam Tạo file databasehelper để kết nối database 7/10
