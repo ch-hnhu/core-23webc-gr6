@@ -63,8 +63,7 @@
 					<!--PNSon 10/10/2025 lấy category , name theo id đã chọn-->
 					<div class="product-breadcroumb">
 						<a href="">Home</a>
-						<a href="">@Html.Raw(string.IsNullOrEmpty(Model.CategoryName)? "<span>Chưa phân loại</span>":
-														$"<a href='#'>{Model.CategoryName}</a>")</a>
+						@Html.Raw(string.IsNullOrEmpty(Model.CategoryName)? "<span>Chưa phân loại</span>": $"<a href='#'>{Model.CategoryName}</a>")
 						<a href="">@Model.ProductName</a>
 					</div>
 					<!--endPNSon-->
@@ -73,14 +72,13 @@
 						<div class="col-sm-6">
 							<div class="product-images">
 								<div class="product-main-img">
-									<img src="@Url.Content(Model.Image ?? "~/assets/user/img/product-2.jpg")"
-										alt="@Model.ProductName" />
+									<img src="~/img/Products/@Model.Image" alt="@Model.ProductName" />
 								</div>
 
 								<div class="product-gallery">
-									<img src="~/assets/user/img/product-thumb-1.jpg" alt="">
-									<img src="~/assets/user/img/product-thumb-2.jpg" alt="">
-									<img src="~/assets/user/img/product-thumb-3.jpg" alt="">
+									<img src="~/img/Products/@(Model.Image)" alt="">
+									<img src="~/img/Products/@(Model.Image)" alt="">
+									<img src="~/img/Products/@(Model.Image)" alt="">
 								</div>
 							</div>
 						</div>
@@ -99,27 +97,18 @@
 								</div>
 								<!--endPNSon-->
 
-																		<form action="" class="cart">
-																			<div class="quantity">
-																				<input type="number" size="4" class="input-text qty text" title="Qty" value="1"
-																					name="quantity" min="1" step="1">
-																			</div>
-																			<button class="add_to_cart_button" type="submit">Add to cart</button>
-																		</form>
+								<form action="" class="cart">
+									<div class="quantity">
+										<input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+									</div>
+									<button class="add_to_cart_button" type="submit">Add to cart</button>
+								</form>
 
-																		<!--PNSon 10/10/2025 lấy caregory với tag-->
-																		<div class="product-inner-category">
-																			<p>
-																				Category:
-																				@Html.Raw(string.IsNullOrEmpty(Model.CategoryName)
-																				? "<span>Chưa phân loại</span>"
-																				: $"<a href='#'>{Model.CategoryName}</a>")
-										.
-										Tags:
-										@Html.Raw((Model.Tags != null && Model.Tags.Any())
-																				? string.Join(", ", Model.Tags.Select(t => $"<a href='#'>{t}</a>"))
-																				: "<span>Không có tag</span>")
-										.
+								<!--PNSon 10/10/2025 lấy caregory với tag-->
+								<div class="product-inner-category">
+									<p>
+										Category: @Html.Raw(string.IsNullOrEmpty(Model.CategoryName)? "<span>Chưa phân loại</span>": $"<a href='#'>{Model.CategoryName}</a>").
+										Tags: @Html.Raw((Model.Tags != null && Model.Tags.Any())? string.Join(", ", Model.Tags.Select(t => $"<a href='#'>{t}</a>")): "<span>Không có tag</span>").
 									</p>
 								</div>
 								<!--endPNSon-->
@@ -161,7 +150,6 @@
 										</div>
 									</div>
 								</div>
-
 							</div>
 						</div>
 					</div>
@@ -171,34 +159,28 @@
 						<h2 class="related-products-title">Related Products</h2>
 						<div class="related-products-carousel">
 							<!--PNSon 11/10/2025 đã thêm phương thức lấy sản phẩm liên quan theo Tag-->
-							@if (ViewBag.RelatedProducts != null &&
-														((List<core_23webc_gr6.Models.Products>)ViewBag.RelatedProducts).Any())
+							@if (ViewBag.RelatedProducts != null && ((List<core_23webc_gr6.Models.Products>)ViewBag.RelatedProducts).Any())
 							{
-								foreach (var relatedProduct in
-								(List<core_23webc_gr6.Models.Products>)ViewBag.RelatedProducts)
+								foreach (var relatedProduct in (List<core_23webc_gr6.Models.Products>)ViewBag.RelatedProducts)
 								{
 									<div class="single-product">
 										<div class="product-f-image">
-											<img src="@Url.Content(relatedProduct.Image ?? "~/assets/user/img/no-image.jpg")"
-												alt="@relatedProduct.ProductName" />
+											<img src="~/img/Products/@relatedProduct.Image" alt="@relatedProduct.ProductName" />
 											<div class="product-hover">
-												<a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to
-													cart</a>
-												<a href="@Url.Action("Details", "Product", new { id = relatedProduct.ProductID })"
-													class="view-details-link">
+												<a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+												<a href="@Url.Action("Details", "Product", new { id = relatedProduct.ProductID })" class="view-details-link">
 													<i class="fa fa-link"></i> See details
 												</a>
 											</div>
 										</div>
-										<h2><a
-												href="@Url.Action("Details", "Product", new { id = relatedProduct.ProductID })">@relatedProduct.ProductName</a>
+										<h2>
+											<a href="@Url.Action("Details", "Product", new { id = relatedProduct.ProductID })">@relatedProduct.ProductName</a>
 										</h2>
 										<div class="product-carousel-price">
 											<ins>@relatedProduct.Price.ToString("N0") VNĐ</ins>
 											@if (relatedProduct.DiscountPercentage > 0)
 											{
-												var oldPrice = relatedProduct.Price / (1 - (relatedProduct.DiscountPercentage /
-												100.0m));
+												var oldPrice = relatedProduct.Price / (1 - (relatedProduct.DiscountPercentage / 100.0m));
 												<del>@oldPrice.ToString("N0") VNĐ</del>
 											}
 										</div>

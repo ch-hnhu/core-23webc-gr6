@@ -37,7 +37,7 @@ app.UseStaticFiles();
 app.Use(async (context, next) =>
 {
 	await next();
-	if (context.Response.StatusCode == 404)
+	if (context.Response.StatusCode == 404 && !context.Response.HasStarted)
 	{
 		context.Response.Redirect("/Home/Error");
 	}
