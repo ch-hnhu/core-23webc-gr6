@@ -5,7 +5,7 @@ namespace core_23webc_gr6.Controllers
 	public class CartController : Controller
 	{
 		// GET: CartController
-		public ActionResult Index()
+		public IActionResult Index()
 		{
 			ViewData["BigTitle"] = "Shopping Cart";
 
