@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using core_23webc_gr6.Data;
+using core_23webc_gr6.Helper;
 using core_23webc_gr6.Models;
 using Microsoft.Data.SqlClient;
 using core_23webc_gr6.Interfaces;
@@ -22,9 +22,9 @@ namespace core_23webc_gr6.Controllers
 		}
 
 		//vqNam Load danh sách sản phẩm
-		public ActionResult Index()
+		public IActionResult Index()
 		{
-			List<Product> products = new();
+			List<Products> products = new();
 
 			using (var conn = _db.GetConnection())
 			{
@@ -35,7 +35,7 @@ namespace core_23webc_gr6.Controllers
 
 				while (reader.Read())
 				{
-					products.Add(new Product
+					products.Add(new Products
 					{
 						ProductID = Convert.ToInt32(reader["ProductID"]),
 						ProductName = reader["ProductName"]?.ToString() ?? "",
@@ -58,7 +58,7 @@ namespace core_23webc_gr6.Controllers
 		//endvqNam
 
 		//PNSon 8/10/2025 Load chi tiết sản phẩm
-		public ActionResult Details(int id)
+		public IActionResult Details(int id)
 		{
 			var product = _productRepository.GetProductById(id);
 			// Kiểm tra null để tránh lỗi Model null trong View
@@ -66,7 +66,7 @@ namespace core_23webc_gr6.Controllers
 			{
 				return NotFound("Sản phẩm không tồn tại hoặc đã bị xóa.");
 			}
-			ViewData["BigTitle"] = "Product Detail";
+			ViewData["BigTitle"] = "Products Detail";
 			return View(product);
 		}
 		//endPNSon
