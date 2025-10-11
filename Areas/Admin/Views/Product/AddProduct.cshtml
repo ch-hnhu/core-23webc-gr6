@@ -1,68 +1,65 @@
-﻿@model Product
+﻿@model Products
 @{
-    ViewData["Title"] = "Thêm sản phẩm";
+	ViewData["Title"] = "Thêm sản phẩm";
 }
 
 <!-- PNSon 8/10/2025 Không chỉnh sửa để làm form giả test chức năng (sửa sau)-->
 <div id="page-wrapper">
-    <div class="container-fluid">
-        <!-- Tiêu đề trang -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Thêm sản phẩm</h1>
-            </div>
-        </div>
+	<div class="container-fluid">
+		<!-- Tiêu đề trang -->
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Thêm sản phẩm</h1>
+			</div>
+		</div>
 
-        <!-- Form thêm sản phẩm -->
-        <div class="row">
-            <div class="col-lg-8">
-                <form asp-action="AddProduct" asp-controller="Product" asp-area="Admin"
-                      method="post" enctype="multipart/form-data">
+		<!-- Form thêm sản phẩm -->
+		<div class="row">
+			<div class="col-lg-8">
+				<form asp-action="AddProduct" asp-controller="Products" asp-area="Admin" method="post"
+					enctype="multipart/form-data">
 
-                    <div class="form-group">
-                        <label for="ProductID">Mã sản phẩm</label>
-                        <input asp-for="ProductID" class="form-control" readonly />
-                    </div>
+					<div class="form-group">
+						<label for="ProductID">Mã sản phẩm</label>
+						<input asp-for="ProductID" class="form-control" readonly />
+					</div>
 
-                    <div class="form-group">
-                        <label for="ProductID">Tên sản phẩm</label>
-                        <input asp-for="ProductID" class="form-control" />
-                        <span asp-validation-for="ProductID" class="text-danger"></span>
-                    </div>
+					<div class="form-group">
+						<label for="ProductID">Tên sản phẩm</label>
+						<input asp-for="ProductID" class="form-control" />
+						<span asp-validation-for="ProductID" class="text-danger"></span>
+					</div>
 
-                    <div class="form-group">
-                        <label for="Price">Đơn giá</label>
-                        <input asp-for="Price" class="form-control" type="number" step="0.01" />
-                        <span asp-validation-for="Price" class="text-danger"></span>
-                    </div>
+					<div class="form-group">
+						<label for="Price">Đơn giá</label>
+						<input asp-for="Price" class="form-control" type="number" step="0.01" />
+						<span asp-validation-for="Price" class="text-danger"></span>
+					</div>
 
-                    <div class="form-group">
-                        <label for="DiscountPercentage">Giá khuyến mãi</label>
-                        <input asp-for="DiscountPercentage" class="form-control" type="number" step="0.01" />
-                        <span asp-validation-for="DiscountPercentage" class="text-danger"></span>
-                    </div>
+					<div class="form-group">
+						<label for="DiscountPercentage">Giá khuyến mãi</label>
+						<input asp-for="DiscountPercentage" class="form-control" type="number" step="0.01" />
+						<span asp-validation-for="DiscountPercentage" class="text-danger"></span>
+					</div>
 
-                    
 
-                    <div class="form-group">
-                        <label for="Description">Mô tả</label>
-                        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
-                        <span asp-validation-for="Description" class="text-danger"></span>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="HinhAnhFile">Hình ảnh</label>
-                        <input type="file" name="HinhAnhFile" class="form-control" />
-                    </div>
+					<div class="form-group">
+						<label for="Description">Mô tả</label>
+						<textarea asp-for="Description" class="form-control" rows="3"></textarea>
+						<span asp-validation-for="Description" class="text-danger"></span>
+					</div>
 
-                    <button type="submit" class="btn btn-success">💾 Lưu sản phẩm</button>
-                    <a asp-area="Admin" asp-controller="Product" asp-action="Index"
-                       class="btn btn-default">↩ Quay lại</a>
-                </form>
-            </div>
-            @* Nút submit và quay lại danh sách *@
-            <button type="submit" class="btn btn-success">Thêm sản phẩm</button>
-            <a class="btn btn-secondary" href="@Url.Action("Index", "Product", new { area = "Admin" })">Quay lại</a>
-    </div>
-</div>
-<!-- endPNSon -->
+					<div class="form-group">
+						<label for="HinhAnhFile">Hình ảnh</label>
+						<input type="file" name="HinhAnhFile" class="form-control" />
+					</div>
+					@* CHNhu - 12/10/2025 - Chỉnh lại link cho nút quay lại và xoá btn lưu + quay lại bị thừa *@
+					<button type="submit" class="btn btn-success">💾 Lưu sản phẩm</button>
+					<a asp-area="Admin" asp-controller="Product" asp-action="Index" class="btn btn-default">↩ Quay
+						lại</a>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- endPNSon -->
