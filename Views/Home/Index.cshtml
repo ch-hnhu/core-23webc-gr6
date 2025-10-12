@@ -93,10 +93,10 @@
 					}
 					@foreach (var item in Model)
 					{
-						var imgFile = $"product-{index}.jpg";
+
 						<div class="single-product">
 							<div class="product-f-image">
-								<img src="~/assets/user/img/@imgFile" alt="@item.ProductName" />
+								<img src="~/img/Products/@item.Image" alt="@item.ProductName" />
 								<div class="product-hover">
 									<a href="#" class="add-to-cart-link">
 										<i class="fa fa-shopping-cart"></i> Add to cart
@@ -165,11 +165,12 @@
 						}
 						@foreach (var item in Model.Take(5))
 						{
-							var imgFile = $"product-{topIndex}.jpg";
-
+							var imgFile = string.IsNullOrEmpty(item.Image) ? $"product-{topIndex}.jpg" :
+							item.Image.TrimStart('/');
+							topIndex++;
 							<div class="single-product">
 								<div class="product-f-image">
-									<img src="~/assets/user/img/@imgFile" alt="@item.ProductName" />
+									<img src="~/img/Products/@item.Image" alt="@item.ProductName" />
 									<div class="product-hover">
 										<a href="#" class="add-to-cart-link">
 											<i class="fa fa-shopping-cart"></i> Add to cart
@@ -188,7 +189,7 @@
 					</div>
 				</div>
 			</div>
-@* NTNguyen 11/10/2025 *@
+			@* NTNguyen 11/10/2025 *@
 			<!-- Recently Viewed -->
 			<div class="col-md-12">
 				<div class="latest-product">
@@ -200,12 +201,13 @@
 						}
 						@foreach (var item in Model.Take(5)) // lấy 5 sản phẩm gần đây
 						{
-							var imgFile = $"product-{rvIndex}.jpg";
+							var imgFile = string.IsNullOrEmpty(item.Image) ? $"product-{rvIndex}.jpg" :
+							item.Image.TrimStart('/');
 							var discountPrice = item.Price - (item.Price * item.DiscountPercentage / 100);
-
+							rvIndex++;
 							<div class="single-product">
 								<div class="product-f-image">
-									<img src="~/assets/user/img/@imgFile" alt="@item.ProductName" />
+									<img src="~/img/Products/@item.Image" alt="@item.ProductName" />
 									<div class="product-hover">
 										<a href="#" class="add-to-cart-link">
 											<i class="fa fa-shopping-cart"></i> Add to cart
@@ -228,7 +230,7 @@
 					</div>
 				</div>
 			</div>
-@* endNTNguyen *@
+			@* endNTNguyen *@
 
 			<!-- Top New -->
 			@* <div class="col-md-4">
