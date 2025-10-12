@@ -66,7 +66,12 @@ namespace core_23webc_gr6.Controllers
 			{
 				return NotFound("Sản phẩm không tồn tại hoặc đã bị xóa.");
 			}
-			ViewData["BigTitle"] = "Products Detail";
+
+			//PNSon 11/10/2025 Lấy danh sách sản phẩm liên quan dựa trên CategoryID
+			var relatedProducts = _productRepository.GetRelatedProducts(id);
+			ViewBag.RelatedProducts = relatedProducts;
+
+			ViewData["BigTitle"] = "Product Detail";
 			return View(product);
 		}
 		//endPNSon

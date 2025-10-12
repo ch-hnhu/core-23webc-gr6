@@ -1,4 +1,4 @@
-﻿//PNson
+﻿//PNson bản cũ ex1
 namespace core_23webc_gr6.Models
 {
     public class User

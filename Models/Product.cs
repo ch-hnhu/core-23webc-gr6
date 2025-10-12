@@ -16,6 +16,10 @@ namespace core_23webc_gr6.Models
 		public byte Status { get; set; }                // Trạng thái (1 = hoạt động, 0 = ẩn)
 		public DateTime CreatedAt { get; set; }         // Ngày tạo
 		public DateTime UpdatedAt { get; set; }
+
+		// PNSon - Thuộc tính bổ sung từ JOIN cho Details view
+		public string? CategoryName { get; set; }
+		public List<string>? Tags { get; set; } = new List<string>();
 	}
 	//endLTMKieu
 }
