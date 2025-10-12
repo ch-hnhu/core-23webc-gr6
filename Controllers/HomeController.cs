@@ -1,34 +1,23 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
 using core_23webc_gr6.Models;
+using core_23webc_gr6.Interfaces;
 
 namespace core_23webc_gr6.Controllers
 {
 	public class HomeController : Controller
 	{
+		private readonly IProductRepository _productRepository;
+
+		public HomeController(IProductRepository productRepository)
+		{
+			_productRepository = productRepository;
+		}
+
 		public IActionResult Index()
 		{
-			// Đường dẫn tới file db.json trong Data/Seeds
-			string filePath = Path.Combine(
-				Directory.GetCurrentDirectory(),
-				"Data", "Seeds", "db.json"
-			);
-
-			if (!System.IO.File.Exists(filePath))
-			{
-				throw new FileNotFoundException("Không tìm thấy file db.json tại: " + filePath);
-			}
-
-			string jsonData = System.IO.File.ReadAllText(filePath);
-
-			using var doc = JsonDocument.Parse(jsonData);
-			var productsElement = doc.RootElement.GetProperty("products");
-
-			var products = JsonSerializer.Deserialize<List<Products>>(productsElement.GetRawText());
-
-			// Lấy 6 sản phẩm đầu tiên
+			//  Lấy tất cả sản phẩm từ repository (SQL Server) và trả về sản phẩm đầu tiên
+			var products = _productRepository.GetAllProducts();
 			var latestProducts = products?.Take(6).ToList() ?? new List<Products>();
-
 			return View(latestProducts);
 		}
 	}

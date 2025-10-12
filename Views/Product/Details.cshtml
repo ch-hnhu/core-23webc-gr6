@@ -88,11 +88,15 @@
 								<!--PNSon 8/10/2025 load Name và Price-->
 								<h2 class="product-name">@Model.ProductName</h2>
 								<div class="product-inner-price">
-									<ins>@Model.Price.ToString("N0") VNĐ</ins>
-									@if (Model.DiscountPercentage > 0 && Model.DiscountPercentage < 100)
+									@if (Model.DiscountPercentage > 0 && Model.DiscountPercentage <= 100)
 									{
-										var oldPrice = Model.Price / (1 - (Model.DiscountPercentage / 100.0m));
-										<del>@oldPrice.ToString("N0") VNĐ</del>
+										var newPrice = Model.Price - (Model.Price * Model.DiscountPercentage / 100);
+										<ins>@newPrice.ToString("N0") VNĐ</ins>
+										<del>@Model.Price.ToString("N0") VNĐ</del>
+									}
+									else
+									{
+										<ins>@Model.Price.ToString("N0") VNĐ</ins>
 									}
 								</div>
 								<!--endPNSon-->
@@ -165,7 +169,7 @@
 								{
 									<div class="single-product">
 										<div class="product-f-image">
-											<img src="~/img/Products/@relatedProduct.Image" alt="@relatedProduct.ProductName" />
+											<img class="product-img" src="~/img/Products/@relatedProduct.Image" alt="@relatedProduct.ProductName" />
 											<div class="product-hover">
 												<a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
 												<a href="@Url.Action("Details", "Product", new { id = relatedProduct.ProductID })" class="view-details-link">
@@ -174,14 +178,18 @@
 											</div>
 										</div>
 										<h2>
-											<a href="@Url.Action("Details", "Product", new { id = relatedProduct.ProductID })">@relatedProduct.ProductName</a>
+											<a asp-controller="Product" asp-action="Details" asp-route-id="@relatedProduct.ProductID">@relatedProduct.ProductName</a>
 										</h2>
 										<div class="product-carousel-price">
-											<ins>@relatedProduct.Price.ToString("N0") VNĐ</ins>
-											@if (relatedProduct.DiscountPercentage > 0)
+											@if (relatedProduct.DiscountPercentage > 0 && relatedProduct.DiscountPercentage <= 100)
 											{
-												var oldPrice = relatedProduct.Price / (1 - (relatedProduct.DiscountPercentage / 100.0m));
-												<del>@oldPrice.ToString("N0") VNĐ</del>
+												var newPrice = relatedProduct.Price - (relatedProduct.Price * relatedProduct.DiscountPercentage / 100);
+												<ins>@newPrice.ToString("N0") VNĐ</ins>
+												<del>@relatedProduct.Price.ToString("N0") VNĐ</del>
+											}
+											else
+											{
+												<ins>@relatedProduct.Price.ToString("N0") VNĐ</ins>
 											}
 										</div>
 									</div>
@@ -200,4 +208,12 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	.product-img {
+		width: 220px;
+		height: 280px;
+		object-fit: contain;
+	}
+</style>
 <!-- endCHNhu -->
