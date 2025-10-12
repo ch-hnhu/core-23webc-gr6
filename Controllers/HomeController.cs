@@ -18,7 +18,6 @@ namespace core_23webc_gr6.Controllers
 			//  Lấy tất cả sản phẩm từ repository (SQL Server) và trả về sản phẩm đầu tiên
 			var products = _productRepository.GetAllProducts();
 			var latestProducts = products?.Take(6).ToList() ?? new List<Product>();
-
 			return View(latestProducts);
 		}
 	}
