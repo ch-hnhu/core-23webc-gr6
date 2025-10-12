@@ -4,9 +4,7 @@ using core_23webc_gr6.Models;
 using core_23webc_gr6.Repositories;
 using core_23webc_gr6.Services;
 using Microsoft.Extensions.Options;
-//VqNam thêm phần .Data.Seeds 7/10/2025 dòng 7-->9
-using core_23webc_gr6.Data;
-//end VqNam
+using core_23webc_gr6.Helper;
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -34,6 +32,18 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+// CHNhu
+// Middleware kiem tra url hop le
+app.Use(async (context, next) =>
+{
+	await next();
+	if (context.Response.StatusCode == 404)
+	{
+		context.Response.Redirect("/Home/Error");
+	}
+});
+// endCHNhu
+
 app.UseRouting();
 
 app.UseAuthorization();
@@ -53,17 +63,6 @@ app.MapControllerRoute(
 
 
 
-// CHNhu
-// Middleware kiem tra url hop le
-app.Use(async (context, next) =>
-{
-	await next();
-	if (context.Response.StatusCode == 404)
-	{
-		context.Response.Redirect("/Home/Error");
-	}
-});
-// endCHNhu
 
 // Thao Nguyen
 app.UseUserLoading();
