@@ -2,7 +2,6 @@
 using core_23webc_gr6.Middlewares;
 using core_23webc_gr6.Models;
 using core_23webc_gr6.Repositories;
-using core_23webc_gr6.Services;
 using Microsoft.Extensions.Options;
 using core_23webc_gr6.Helper;
 var builder = WebApplication.CreateBuilder(args);
@@ -11,11 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 //LTMKieu 06/10/2025
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 //endLTMKieu 06/10/2025
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-//Thao Nguyen
-// Đăng ký UserService (Scoped)
-builder.Services.AddScoped<IUserService, UserService>();
 //VqNam đăng ký DatabaseHelper để sử dụng kết nối database 7/10/2025 dòng 28-->30
 builder.Services.AddSingleton<DatabaseHelper>();
 //end VqNam 
@@ -64,8 +61,7 @@ app.MapControllerRoute(
 
 
 
-// Thao Nguyen
-app.UseUserLoading();
+
 
 //NTNguyen - Load products from JSON
 app.UseProductMiddleware();
