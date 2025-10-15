@@ -2,22 +2,17 @@
 using core_23webc_gr6.Middlewares;
 using core_23webc_gr6.Models;
 using core_23webc_gr6.Repositories;
-using core_23webc_gr6.Services;
 using Microsoft.Extensions.Options;
-//VqNam thêm phần .Data.Seeds 7/10/2025 dòng 7-->9
-using core_23webc_gr6.Data.Seeds;
-//end VqNam
+using core_23webc_gr6.Helper;
 var builder = WebApplication.CreateBuilder(args);
 
 
 //LTMKieu 06/10/2025
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 //endLTMKieu 06/10/2025
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-//Thao Nguyen
-// Đăng ký UserService (Scoped)
-builder.Services.AddScoped<IUserService, UserService>();
 //VqNam đăng ký DatabaseHelper để sử dụng kết nối database 7/10/2025 dòng 28-->30
 builder.Services.AddSingleton<DatabaseHelper>();
 //end VqNam 
@@ -26,13 +21,25 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+	app.UseExceptionHandler("/Home/Error");
+	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+	app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+// CHNhu
+// Middleware kiem tra url hop le
+app.Use(async (context, next) =>
+{
+	await next();
+	if (context.Response.StatusCode == 404 && !context.Response.HasStarted)
+	{
+		context.Response.Redirect("/Home/Error");
+	}
+});
+// endCHNhu
 
 app.UseRouting();
 
@@ -41,32 +48,20 @@ app.UseAuthorization();
 // CHNhu
 // Định nghĩa route khi có area, đặt route cụ thể lên trên route mặc định
 app.MapControllerRoute(
-    name: "areas",
-    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+	name: "areas",
+	pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
 );
 // endCHNhu
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}"
+	name: "default",
+	pattern: "{controller=Home}/{action=Index}/{id?}"
 );
 
 
 
-// CHNhu
-// Middleware kiem tra url hop le
-app.Use(async (context, next) =>
-{
-    await next();
-    if (context.Response.StatusCode == 404)
-    {
-        context.Response.Redirect("/Home/Error");
-    }
-});
-// endCHNhu
 
-// Thao Nguyen
-app.UseUserLoading();
+
 
 //NTNguyen - Load products from JSON
 app.UseProductMiddleware();
@@ -87,7 +82,7 @@ app.UseProductMiddleware();
 
 
 // Quoc Nam
-app.UseRequestLogging(); 
+app.UseRequestLogging();
 
 app.Run();
 

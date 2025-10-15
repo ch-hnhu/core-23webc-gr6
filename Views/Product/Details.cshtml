@@ -1,244 +1,233 @@
-@model core_23webc_gr6.Models.Product
+@model core_23webc_gr6.Models.Products
 
 <!-- CHNhu -->
 <div class="single-product-area">
-    <div class="zigzag-bottom"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="single-sidebar">
-                    <h2 class="sidebar-title">Search Products</h2>
-                    <form action="">
-                        <input type="text" placeholder="Search products...">
-                        <input type="submit" value="Search">
-                    </form>
-                </div>
-                
-                <div class="single-sidebar">
-                    <h2 class="sidebar-title">Products</h2>
-                    <div class="thubmnail-recent">
-                        <img src="~/assets/user/img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                        <h2><a href="">Sony Smart TV - 2015</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>$700.00</ins> <del>$100.00</del>
-                        </div>                             
-                    </div>
-                    <div class="thubmnail-recent">
-                        <img src="~/assets/user/img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                        <h2><a href="">Sony Smart TV - 2015</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>$700.00</ins> <del>$100.00</del>
-                        </div>                             
-                    </div>
-                    <div class="thubmnail-recent">
-                        <img src="~/assets/user/img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                        <h2><a href="">Sony Smart TV - 2015</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>$700.00</ins> <del>$100.00</del>
-                        </div>                             
-                    </div>
-                    <div class="thubmnail-recent">
-                        <img src="~/assets/user/img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                        <h2><a href="">Sony Smart TV - 2015</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>$700.00</ins> <del>$100.00</del>
-                        </div>                             
-                    </div>
-                </div>
-                
-                <div class="single-sidebar">
-                    <h2 class="sidebar-title">Recent Posts</h2>
-                    <ul>
-                        <li><a href="">Sony Smart TV - 2015</a></li>
-                        <li><a href="">Sony Smart TV - 2015</a></li>
-                        <li><a href="">Sony Smart TV - 2015</a></li>
-                        <li><a href="">Sony Smart TV - 2015</a></li>
-                        <li><a href="">Sony Smart TV - 2015</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="col-md-8">
-                <div class="product-content-right">
-                    <div class="product-breadcroumb">
-                        <a href="">Home</a>
-                        <a href="">Category Name</a>
-                        <a href="">Sony Smart TV - 2015</a>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="product-images">
-                                <div class="product-main-img">
-                                    <img src="@Url.Content(Model.Image ?? "~/assets/user/img/product-2.jpg")" alt="@Model.ProductName" />
-                                </div>
-                                
-                                <div class="product-gallery">
-                                    <img src="~/assets/user/img/product-thumb-1.jpg" alt="">
-                                    <img src="~/assets/user/img/product-thumb-2.jpg" alt="">
-                                    <img src="~/assets/user/img/product-thumb-3.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-sm-6">
-                            <div class="product-inner">
-                                <h2 class="product-name">@Model.ProductName</h2>
-                                <div class="product-inner-price">
-                                    <ins>@Model.Price.ToString("N0") VNĐ</ins>
-                                    @if (Model.DiscountPercentage > 0 && Model.DiscountPercentage < 100)
-                                    {
-                                        var oldPrice = Model.Price / (1 - (Model.DiscountPercentage / 100.0m));
-                                        <del>@oldPrice.ToString("N0") VNĐ</del>
-                                    }
-                                </div>    
-                                
-                                <form action="" class="cart">
-                                    <div class="quantity">
-                                        <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-                                    </div>
-                                    <button class="add_to_cart_button" type="submit">Add to cart</button>
-                                </form>   
-                                
-                                <div class="product-inner-category">
-                                    <p>Category: <a href="">Summer</a>. Tags: <a href="">awesome</a>, <a href="">best</a>, <a href="">sale</a>, <a href="">shoes</a>. </p>
-                                </div> 
-                                
-                                <div role="tabpanel">
-                                    <ul class="product-tab" role="tablist">
-                                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Description</a></li>
-                                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Reviews</a></li>
-                                    </ul>
-                                    <div class="tab-content">
-                                        <div role="tabpanel" class="tab-pane fade in active" id="home">
-                                            <h2>Product Description</h2>  
-                                            <p>@Model.Description</p>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane fade" id="profile">
-                                            <h2>Reviews</h2>
-                                            <div class="submit-review">
-                                                <p><label for="name">Name</label> <input name="name" type="text"></p>
-                                                <p><label for="email">Email</label> <input name="email" type="email"></p>
-                                                <div class="rating-chooser">
-                                                    <p>Your rating</p>
+	<div class="zigzag-bottom"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="single-sidebar">
+					<h2 class="sidebar-title">Search Products</h2>
+					<form action="">
+						<input type="text" placeholder="Search products...">
+						<input type="submit" value="Search">
+					</form>
+				</div>
 
-                                                    <div class="rating-wrap-post">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </div>
-                                                </div>
-                                                <p><label for="review">Your review</label> <textarea name="review" id="" cols="30" rows="10"></textarea></p>
-                                                <p><input type="submit" value="Submit"></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="related-products-wrapper">
-                        <h2 class="related-products-title">Related Products</h2>
-                        <div class="related-products-carousel">
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="~/assets/user/img/product-1.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
+				<div class="single-sidebar">
+					<h2 class="sidebar-title">Products</h2>
+					<div class="thubmnail-recent">
+						<img src="~/assets/user/img/product-thumb-1.jpg" class="recent-thumb" alt="">
+						<h2><a href="">Sony Smart TV - 2015</a></h2>
+						<div class="product-sidebar-price">
+							<ins>$700.00</ins> <del>$100.00</del>
+						</div>
+					</div>
+					<div class="thubmnail-recent">
+						<img src="~/assets/user/img/product-thumb-1.jpg" class="recent-thumb" alt="">
+						<h2><a href="">Sony Smart TV - 2015</a></h2>
+						<div class="product-sidebar-price">
+							<ins>$700.00</ins> <del>$100.00</del>
+						</div>
+					</div>
+					<div class="thubmnail-recent">
+						<img src="~/assets/user/img/product-thumb-1.jpg" class="recent-thumb" alt="">
+						<h2><a href="">Sony Smart TV - 2015</a></h2>
+						<div class="product-sidebar-price">
+							<ins>$700.00</ins> <del>$100.00</del>
+						</div>
+					</div>
+					<div class="thubmnail-recent">
+						<img src="~/assets/user/img/product-thumb-1.jpg" class="recent-thumb" alt="">
+						<h2><a href="">Sony Smart TV - 2015</a></h2>
+						<div class="product-sidebar-price">
+							<ins>$700.00</ins> <del>$100.00</del>
+						</div>
+					</div>
+				</div>
 
-                                <h2><a href="">Sony Smart TV - 2015</a></h2>
+				<div class="single-sidebar">
+					<h2 class="sidebar-title">Recent Posts</h2>
+					<ul>
+						<li><a href="">Sony Smart TV - 2015</a></li>
+						<li><a href="">Sony Smart TV - 2015</a></li>
+						<li><a href="">Sony Smart TV - 2015</a></li>
+						<li><a href="">Sony Smart TV - 2015</a></li>
+						<li><a href="">Sony Smart TV - 2015</a></li>
+					</ul>
+				</div>
+			</div>
 
-                                <div class="product-carousel-price">
-                                    <ins>$700.00</ins> <del>$100.00</del>
-                                </div> 
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="~/assets/user/img/product-2.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
+			<div class="col-md-8">
+				<div class="product-content-right">
+					<!--PNSon 10/10/2025 lấy category , name theo id đã chọn-->
+					<div class="product-breadcroumb">
+						<a href="">Home</a>
+						<a href="">@Html.Raw(string.IsNullOrEmpty(Model.CategoryName)? "<span>Chưa phân loại</span>":
+														$"{Model.CategoryName}")</a>
+						<a href="">@Model.ProductName</a>
+					</div>
+					<!--endPNSon-->
 
-                                <h2><a href="">Apple new mac book 2015 March :P</a></h2>
-                                <div class="product-carousel-price">
-                                    <ins>$899.00</ins> <del>$999.00</del>
-                                </div> 
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="~/assets/user/img/product-3.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="product-images">
+								<div class="product-main-img">
+									<img src="~/img/Products/@Model.Image" alt="@Model.ProductName" />
+								</div>
 
-                                <h2><a href="">Apple new i phone 6</a></h2>
+								<div class="product-gallery">
+									<img src="~/img/Products/@(Model.Image)" alt="">
+									<img src="~/img/Products/@(Model.Image)" alt="">
+									<img src="~/img/Products/@(Model.Image)" alt="">
+								</div>
+							</div>
+						</div>
 
-                                <div class="product-carousel-price">
-                                    <ins>$400.00</ins> <del>$425.00</del>
-                                </div>                                 
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="~/assets/user/img/product-4.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
+						<div class="col-sm-6">
+							<div class="product-inner">
+								<!--PNSon 8/10/2025 load Name và Price-->
+								<h2 class="product-name">@Model.ProductName</h2>
+								<div class="product-inner-price">
+									@if (Model.DiscountPercentage > 0 && Model.DiscountPercentage <= 100)
+									{
+										var newPrice = Model.Price - (Model.Price * Model.DiscountPercentage / 100);
+										<ins>@newPrice.ToString("N0") VNĐ</ins>
+										<del>@Model.Price.ToString("N0") VNĐ</del>
+									}
+									else
+									{
+										<ins>@Model.Price.ToString("N0") VNĐ</ins>
+									}
+								</div>
+								<!--endPNSon-->
 
-                                <h2><a href="">Sony playstation microsoft</a></h2>
+								<form action="" class="cart">
+									<div class="quantity">
+										<input type="number" size="4" class="input-text qty text" title="Qty" value="1"
+											name="quantity" min="1" step="1">
+									</div>
+									<button class="add_to_cart_button" type="submit">Add to cart</button>
+								</form>
 
-                                <div class="product-carousel-price">
-                                    <ins>$200.00</ins> <del>$225.00</del>
-                                </div>                            
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="~/assets/user/img/product-5.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
+								<!--PNSon 10/10/2025 lấy caregory với tag-->
+								<div class="product-inner-category">
+									<p>
+										Category: @Html.Raw(string.IsNullOrEmpty(Model.CategoryName)
+																				? "<span>Chưa phân loại</span>"
+																				: $"<a href='#'>{Model.CategoryName}</a>")
+										Tags: @Html.Raw((Model.Tags != null && Model.Tags.Any())
+																				? string.Join(", ", Model.Tags.Select(t => $"<a href='#'>{t}</a>"))
+																				: "<span>Không có tag</span>")
+									</p>
+								</div>
+								<!--endPNSon-->
 
-                                <h2><a href="">Sony Smart Air Condtion</a></h2>
 
-                                <div class="product-carousel-price">
-                                    <ins>$1200.00</ins> <del>$1355.00</del>
-                                </div>                                 
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="~/assets/user/img/product-6.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
+								<div role="tabpanel">
+									<ul class="product-tab" role="tablist">
+										<li role="presentation" class="active"><a href="#home" aria-controls="home"
+												role="tab" data-toggle="tab">Description</a></li>
+										<li role="presentation"><a href="#profile" aria-controls="profile" role="tab"
+												data-toggle="tab">Reviews</a></li>
+									</ul>
+									<div class="tab-content">
+										<div role="tabpanel" class="tab-pane fade in active" id="home">
+											<h2>Product Description</h2>
+											<p>@Model.Description</p>
+										</div>
+										<div role="tabpanel" class="tab-pane fade" id="profile">
+											<h2>Reviews</h2>
+											<div class="submit-review">
+												<p><label for="name">Name</label> <input name="name" type="text"></p>
+												<p><label for="email">Email</label> <input name="email" type="email">
+												</p>
+												<div class="rating-chooser">
+													<p>Your rating</p>
 
-                                <h2><a href="">Samsung gallaxy note 4</a></h2>
+													<div class="rating-wrap-post">
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+													</div>
+												</div>
+												<p><label for="review">Your review</label> <textarea name="review" id=""
+														cols="30" rows="10"></textarea></p>
+												<p><input type="submit" value="Submit"></p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
-                                <div class="product-carousel-price">
-                                    <ins>$400.00</ins>
-                                </div>                            
-                            </div>                                    
-                        </div>
-                    </div>
-                </div>                    
-            </div>
-        </div>
-    </div>
+
+					<div class="related-products-wrapper">
+						<h2 class="related-products-title">Related Products</h2>
+						<div class="related-products-carousel">
+							<!--PNSon 11/10/2025 đã thêm phương thức lấy sản phẩm liên quan theo Tag-->
+							@if (ViewBag.RelatedProducts != null &&
+														((List<core_23webc_gr6.Models.Products>)ViewBag.RelatedProducts).Any())
+							{
+								foreach (var relatedProduct in
+								(List<core_23webc_gr6.Models.Products>)ViewBag.RelatedProducts)
+								{
+									<div class="single-product">
+										<div class="product-f-image">
+											<img class="product-img" src="~/img/Products/@relatedProduct.Image"
+												alt="@relatedProduct.ProductName" />
+											<div class="product-hover">
+												<a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to
+													cart</a>
+												<a href="@Url.Action("Details", "Product", new { id = relatedProduct.ProductID })"
+													class="view-details-link">
+													<i class="fa fa-link"></i> See details
+												</a>
+											</div>
+										</div>
+										<h2>
+											<a asp-controller="Product" asp-action="Details"
+												asp-route-id="@relatedProduct.ProductID">@relatedProduct.ProductName</a>
+										</h2>
+										<div class="product-carousel-price">
+											@if (relatedProduct.DiscountPercentage > 0 && relatedProduct.DiscountPercentage <=
+																				100)
+											{
+												var newPrice = relatedProduct.Price - (relatedProduct.Price *
+												relatedProduct.DiscountPercentage / 100);
+												<ins>@newPrice.ToString("N0") VNĐ</ins>
+												<del>@relatedProduct.Price.ToString("N0") VNĐ</del>
+											}
+											else
+											{
+												<ins>@relatedProduct.Price.ToString("N0") VNĐ</ins>
+											}
+										</div>
+									</div>
+								}
+							}
+							else
+							{
+								<p>Không có sản phẩm liên quan.</p>
+							}
+							<!--endPNSon -->
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
+<style>
+	.product-img {
+		width: 220px;
+		height: 280px;
+		object-fit: contain;
+	}
+</style>
 <!-- endCHNhu -->
