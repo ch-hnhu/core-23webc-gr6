@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using core_23webc_gr6.Interfaces;
 using core_23webc_gr6.Models;
 using core_23webc_gr6.Helper;
 using Microsoft.Data.SqlClient;
@@ -11,10 +10,8 @@ namespace core_23webc_gr6.Areas.Admin.Controllers
 	{
 		// CHNhu - 12/10/2025 - Chỉnh lại lấy dssp từ db dùng DatabaseHelper
 		private readonly DatabaseHelper _db;
-		private readonly IProductRepository _productRepository;
-		public ProductController(DatabaseHelper db, IProductRepository productRepository)
+		public ProductController(DatabaseHelper db)
 		{
-			_productRepository = productRepository;
 			_db = db;
 		}
 		public IActionResult Index(int page = 1, int pageSize = 5)
@@ -63,15 +60,6 @@ namespace core_23webc_gr6.Areas.Admin.Controllers
 			return View(pagedProducts);
 		}
 
-		public IActionResult Details(int id)
-		{
-			var product = _productRepository.GetProductById(id);
-			if (product == null)
-			{
-				return NotFound();
-			}
-			return View(product);
-		}
 		public IActionResult AddProduct()
 		{
 			return View(new Products());

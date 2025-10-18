@@ -1,24 +1,28 @@
 using Microsoft.AspNetCore.Mvc;
 using core_23webc_gr6.Models;
-using core_23webc_gr6.Interfaces;
+using core_23webc_gr6.Helper;
 
 namespace core_23webc_gr6.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly IProductRepository _productRepository;
+		private readonly DatabaseHelper _db;
 
-		public HomeController(IProductRepository productRepository)
+		public HomeController(DatabaseHelper db)
 		{
-			_productRepository = productRepository;
+			_db = db;
 		}
-
 		public IActionResult Index()
 		{
-			//  Lấy tất cả sản phẩm từ repository (SQL Server) và trả về sản phẩm đầu tiên
-			var products = _productRepository.GetAllProducts();
+			//CHNhu 12/10/2025
+			//  Lấy tất cả sản phẩm từ model Product (SQL Server) và trả về sản phẩm đầu tiên
+			//LTMKieu 18/10/2025
+			var productsInstance = new Products();
+			var products = productsInstance.GetAllProducts(_db);
+			//end LTMKieu
 			var latestProducts = products?.Take(6).ToList() ?? new List<Products>();
 			return View(latestProducts);
+			//end CHNhu
 		}
 	}
 }
