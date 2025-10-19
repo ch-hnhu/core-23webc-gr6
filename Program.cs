@@ -13,8 +13,20 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// CHNhu - Thêm dịch vụ Session
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+	options.IdleTimeout = TimeSpan.FromMinutes(30);
+	options.Cookie.HttpOnly = true;
+	options.Cookie.IsEssential = true;
+});
+// endCHNhu
+
 //VqNam đăng ký DatabaseHelper để sử dụng kết nối database 7/10/2025 dòng 28-->30
 builder.Services.AddSingleton<DatabaseHelper>();
+
 //end VqNam 
 var app = builder.Build();
 
@@ -40,6 +52,11 @@ app.Use(async (context, next) =>
 	}
 });
 // endCHNhu
+
+// CHNhu - 20/10/2025 - Sử dụng Session
+app.UseSession();
+// CHNhu - 20/10/2025 - Sử dụng Middleware xác thực Admin
+app.UseMiddleware<AdminAuthMiddleware>();
 
 app.UseRouting();
 
