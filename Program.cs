@@ -1,15 +1,9 @@
-﻿using core_23webc_gr6.Interfaces;
-using core_23webc_gr6.Middlewares;
+﻿using core_23webc_gr6.Middlewares;
 using core_23webc_gr6.Models;
-using core_23webc_gr6.Repositories;
 using Microsoft.Extensions.Options;
 using core_23webc_gr6.Helper;
 var builder = WebApplication.CreateBuilder(args);
 
-
-//LTMKieu 06/10/2025
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-//endLTMKieu 06/10/2025
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
