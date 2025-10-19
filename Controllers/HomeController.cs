@@ -20,5 +20,10 @@ namespace core_23webc_gr6.Controllers
 			var latestProducts = products?.Take(6).ToList() ?? new List<Products>();
 			return View(latestProducts);
 		}
+
+		public IActionResult Error()
+		{
+			return View();
+		}
 	}
 }
