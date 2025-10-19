@@ -22,9 +22,23 @@ namespace core_23webc_gr6.Helper
 			return new SqlCommand(query, conn).ExecuteReader();
 		}
 
+		public SqlDataReader ExcuteQueryWithParameters(string query, SqlParameter[] parameters, SqlConnection conn)
+		{
+			SqlCommand cmd = new SqlCommand(query, conn);
+			cmd.Parameters.AddRange(parameters);
+			return cmd.ExecuteReader();
+		}
+
 		public int ExcuteNonQuery(string query, SqlConnection conn)
 		{
 			return new SqlCommand(query, conn).ExecuteNonQuery();
+		}
+
+		public int ExcuteScalar(string query, SqlParameter[] parameters, SqlConnection conn)
+		{
+			SqlCommand cmd = new SqlCommand(query, conn);
+			cmd.Parameters.AddRange(parameters);
+			return Convert.ToInt32(cmd.ExecuteScalar());
 		}
 	}
 }

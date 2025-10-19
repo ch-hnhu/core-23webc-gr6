@@ -17,8 +17,13 @@ namespace core_23webc_gr6.Middlewares
 			// Nếu truy cập Admin (trừ login) và chưa có session thì redirect
 			if (path != null && path.StartsWith("/admin") && !path.Contains("/auth/login"))
 			{
-				var isLoggedIn = context.Session.GetString("AdminLoggedIn") == "true";
-				if (!isLoggedIn)
+				var isLoggedIn = context.Session.GetString("AdminLoggedIn");
+				if (!string.IsNullOrEmpty(isLoggedIn))
+				{
+					await _next(context);
+					return;
+				}
+				else
 				{
 					context.Response.Redirect("/Admin/Auth/Login");
 					return;
