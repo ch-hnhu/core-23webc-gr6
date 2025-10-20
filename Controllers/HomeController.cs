@@ -17,10 +17,10 @@ namespace core_23webc_gr6.Controllers
 			//CHNhu 12/10/2025
 			//  Lấy tất cả sản phẩm từ model Product (SQL Server) và trả về sản phẩm đầu tiên
 			//LTMKieu 18/10/2025
-			var productsInstance = new Products();
+			var productsInstance = new Product();
 			var products = productsInstance.GetAllProducts(_db);
 			//end LTMKieu
-			var latestProducts = products?.Take(6).ToList() ?? new List<Products>();
+			var latestProducts = products?.Take(6).ToList() ?? new List<Product>();
 			return View(latestProducts);
 			//end CHNhu
 		}

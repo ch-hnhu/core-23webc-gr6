@@ -1,5 +1,5 @@
 @* CHNhu - 12/10/2025 - Sửa view cho trang chủ *@
-@model List<core_23webc_gr6.Models.Products>
+@model List<core_23webc_gr6.Models.Product>
 
 <div class="slider-area">
 	<!-- Slider -->
@@ -92,12 +92,12 @@
 						{
 							<div class="single-product">
 								<div class="product-f-image">
-									<img class="product-img" src="~/img/Products/@item.Image" alt="@item.ProductName" />
+									<img class="product-img" src="~/img/Products/@item.image" alt="@item.productName" />
 									<div class="product-hover">
 										<a href="#" class="add-to-cart-link">
 											<i class="fa fa-shopping-cart"></i> Add to cart
 										</a>
-										<a asp-controller="Product" asp-action="Details" asp-route-id="@item.ProductID"
+										<a asp-controller="Product" asp-action="Details" asp-route-id="@item.productId"
 											class="view-details-link">
 											<i class="fa fa-link"></i> See details
 										</a>
@@ -105,19 +105,19 @@
 								</div>
 
 								<h2>
-									<a asp-controller="Product" asp-action="Details" asp-route-id="@item.ProductID">
-										@item.ProductName
+									<a asp-controller="Product" asp-action="Details" asp-route-id="@item.productId">
+										@item.productName
 									</a>
 								</h2>
 
 								<div class="product-carousel-price">
 									@{
-										var discountPrice = item.Price - (item.Price * item.DiscountPercentage / 100);
+										var discountPrice = item.price - (item.price * item.discountPercentage / 100);
 									}
 									<ins>@discountPrice.ToString("N0") đ</ins>
-									@if (item.DiscountPercentage > 0)
+									@if (item.discountPercentage > 0)
 									{
-										<del>@item.Price.ToString("N0") đ</del>
+										<del>@item.price.ToString("N0") đ</del>
 									}
 								</div>
 							</div>
@@ -164,33 +164,34 @@
 						{
 							<div class="single-product">
 								<div class="product-f-image">
-									<img class="product-img" src="~/img/Products/@item.Image" alt="@item.ProductName" />
+									<img class="product-img" src="~/img/Products/@item.image" alt="@item.productName" />
 									<div class="product-hover">
 										<a href="#" class="add-to-cart-link">
 											<i class="fa fa-shopping-cart"></i> Add to cart
 										</a>
 										<a asp-controller="Pro
-														duct" asp-action="Details" asp-route-id="@item.ProductID" class="view-details-link">
+																																								duct" asp-action="Details" asp-route-id="@item.productId"
+											class="view-details-link">
 											<i class="
-															fa fa-link"></i> See details
+																																									fa fa-link"></i> See details
 										</a>
 									</div>
 								</div>
 
 								<h2>
-									<a asp-controller="Product" asp-action="Details" asp-route-id="@item.ProductID">
-										@item.ProductName
+									<a asp-controller="Product" asp-action="Details" asp-route-id="@item.productId">
+										@item.productName
 									</a>
 								</h2>
 
 								<div class="product-carousel-price">
 									@{
-										var discountPrice = item.Price - (item.Price * item.DiscountPercentage / 100);
+										var discountPrice = item.price - (item.price * item.discountPercentage / 100);
 									}
 									<ins>@discountPrice.ToString("N0") đ</ins>
-									@if (item.DiscountPercentage > 0)
+									@if (item.discountPercentage > 0)
 									{
-										<del>@item.Price.ToString("N0") đ</del>
+										<del>@item.price.ToString("N0") đ</del>
 									}
 								</div>
 							</div>
@@ -215,33 +216,34 @@
 						{
 							<div class="single-product">
 								<div class="product-f-image">
-									<img class="product-img" src="~/img/Products/@item.Image" alt="@item.ProductName" />
+									<img class="product-img" src="~/img/Products/@item.image" alt="@item.productName" />
 									<div class="product-hover">
 										<a href="#" class="add-to-cart-link">
 											<i class="fa fa-shopping-cart"></i> Add to cart
 										</a>
 										<a asp-controller="Pro
-														duct" asp-action="Details" asp-route-id="@item.ProductID" class="view-details-link">
+																																								duct" asp-action="Details" asp-route-id="@item.productId"
+											class="view-details-link">
 											<i class="
-															fa fa-link"></i> See details
+																																									fa fa-link"></i> See details
 										</a>
 									</div>
 								</div>
 
 								<h2>
-									<a asp-controller="Product" asp-action="Details" asp-route-id="@item.ProductID">
-										@item.ProductName
+									<a asp-controller="Product" asp-action="Details" asp-route-id="@item.productId">
+										@item.productName
 									</a>
 								</h2>
 
 								<div class="product-carousel-price">
 									@{
-										var discountPrice = item.Price - (item.Price * item.DiscountPercentage / 100);
+										var discountPrice = item.price - (item.price * item.discountPercentage / 100);
 									}
 									<ins>@discountPrice.ToString("N0") đ</ins>
-									@if (item.DiscountPercentage > 0)
+									@if (item.discountPercentage > 0)
 									{
-										<del>@item.Price.ToString("N0") đ</del>
+										<del>@item.price.ToString("N0") đ</del>
 									}
 								</div>
 							</div>

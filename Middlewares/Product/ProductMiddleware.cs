@@ -37,12 +37,12 @@ namespace core_23webc_gr6.Middlewares
 				{
 					var json = await File.ReadAllTextAsync(_productFile);
 					var doc = JsonDocument.Parse(json);
-					var products = JsonSerializer.Deserialize<List<Products>>(doc.RootElement.GetProperty("products").GetRawText());
+					var products = JsonSerializer.Deserialize<List<Product>>(doc.RootElement.GetProperty("products").GetRawText());
 
 					if (products != null && products.Any())
 					{
 						// Lấy các property của model (bỏ qua Id nếu có)
-						var props = typeof(Products).GetProperties(BindingFlags.Public | BindingFlags.Instance)
+						var props = typeof(Product).GetProperties(BindingFlags.Public | BindingFlags.Instance)
 													.Where(p => !string.Equals(p.Name, "Id", StringComparison.OrdinalIgnoreCase))
 													.ToArray();
 

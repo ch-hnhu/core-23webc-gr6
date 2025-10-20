@@ -1,5 +1,5 @@
 ﻿@using core_23webc_gr6.Models
-@model List<Products>
+@model List<Product>
 <!--PNSon 8/10/2025 sửa toàn bộ để phù hợp -->
 @{
 	ViewData["Title"] = "Danh sách sản phẩm";
@@ -36,19 +36,19 @@
 			@foreach (var product in Model)
 			{
 				<tr>
-					<td>@product.ProductID</td>
-					<td>@product.ProductName</td>
-					<td>@product.CategoryID</td>
-					<td>@product.Price.ToString()</td>
-					<td>@product.DiscountPercentage.ToString()</td>
-					<td>@product.Stock.ToString()</td>
+					<td>@product.productId</td>
+					<td>@product.productName</td>
+					<td>@product.categoryId</td>
+					<td>@product.price.ToString()</td>
+					<td>@product.discountPercentage.ToString()</td>
+					<td>@product.stock.ToString()</td>
 					<td>
-						<img src="@product.Image" alt="@product.ProductName" width="100" />
+						<img src="@product.image" alt="@product.productName" width="100" />
 					</td>
-					<td>@product.Description</td>
-					<td>@product.Status.ToString()</td>
-					<td>@product.CreatedAt.ToString("dd/MM/yyyy")</td>
-					<td>@product.UpdatedAt.ToString("dd/MM/yyyy")</td>
+					<td>@product.description</td>
+					<td>@product.status.ToString()</td>
+					<td>@product.createdAt.ToString("dd/MM/yyyy")</td>
+					<td>@product.updatedAt.ToString("dd/MM/yyyy")</td>
 				</tr>
 			}
 

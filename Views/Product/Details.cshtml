@@ -1,4 +1,4 @@
-@model core_23webc_gr6.Models.Products
+@model core_23webc_gr6.Models.Product
 
 <!-- CHNhu -->
 <div class="single-product-area">
@@ -63,9 +63,9 @@
 					<!--PNSon 10/10/2025 lấy category , name theo id đã chọn-->
 					<div class="product-breadcroumb">
 						<a href="">Home</a>
-						<a href="">@Html.Raw(string.IsNullOrEmpty(Model.CategoryName)? "<span>Chưa phân loại</span>":
-														$"{Model.CategoryName}")</a>
-						<a href="">@Model.ProductName</a>
+						<a href="">@Html.Raw(string.IsNullOrEmpty(Model.categoryName)? "<span>Chưa phân loại</span>":
+														$"{Model.categoryName}")</a>
+						<a href="">@Model.productName</a>
 					</div>
 					<!--endPNSon-->
 
@@ -73,13 +73,13 @@
 						<div class="col-sm-6">
 							<div class="product-images">
 								<div class="product-main-img">
-									<img src="~/img/Products/@Model.Image" alt="@Model.ProductName" />
+									<img src="~/img/Products/@Model.image" alt="@Model.productName" />
 								</div>
 
 								<div class="product-gallery">
-									<img src="~/img/Products/@(Model.Image)" alt="">
-									<img src="~/img/Products/@(Model.Image)" alt="">
-									<img src="~/img/Products/@(Model.Image)" alt="">
+									<img src="~/img/Products/@(Model.image)" alt="">
+									<img src="~/img/Products/@(Model.image)" alt="">
+									<img src="~/img/Products/@(Model.image)" alt="">
 								</div>
 							</div>
 						</div>
@@ -87,17 +87,17 @@
 						<div class="col-sm-6">
 							<div class="product-inner">
 								<!--PNSon 8/10/2025 load Name và Price-->
-								<h2 class="product-name">@Model.ProductName</h2>
+								<h2 class="product-name">@Model.productName</h2>
 								<div class="product-inner-price">
-									@if (Model.DiscountPercentage > 0 && Model.DiscountPercentage <= 100)
+									@if (Model.discountPercentage > 0 && Model.discountPercentage <= 100)
 									{
-										var newPrice = Model.Price - (Model.Price * Model.DiscountPercentage / 100);
+										var newPrice = Model.price - (Model.price * Model.discountPercentage / 100);
 										<ins>@newPrice.ToString("N0") VNĐ</ins>
-										<del>@Model.Price.ToString("N0") VNĐ</del>
+										<del>@Model.price.ToString("N0") VNĐ</del>
 									}
 									else
 									{
-										<ins>@Model.Price.ToString("N0") VNĐ</ins>
+										<ins>@Model.price.ToString("N0") VNĐ</ins>
 									}
 								</div>
 								<!--endPNSon-->
@@ -113,11 +113,11 @@
 								<!--PNSon 10/10/2025 lấy caregory với tag-->
 								<div class="product-inner-category">
 									<p>
-										Category: @Html.Raw(string.IsNullOrEmpty(Model.CategoryName)
+										Category: @Html.Raw(string.IsNullOrEmpty(Model.categoryName)
 																				? "<span>Chưa phân loại</span>"
-																				: $"<a href='#'>{Model.CategoryName}</a>")
-										Tags: @Html.Raw((Model.Tags != null && Model.Tags.Any())
-																				? string.Join(", ", Model.Tags.Select(t => $"<a href='#'>{t}</a>"))
+																				: $"<a href='#'>{Model.categoryName}</a>")
+										Tags: @Html.Raw((Model.Tag != null && Model.Tag.Any())
+																				? string.Join(", ", Model.Tag.Select(t => $"<a href='#'>{t}</a>"))
 																				: "<span>Không có tag</span>")
 									</p>
 								</div>
@@ -133,8 +133,8 @@
 									</ul>
 									<div class="tab-content">
 										<div role="tabpanel" class="tab-pane fade in active" id="home">
-											<h2>Product Description</h2>
-											<p>@Model.Description</p>
+											<h2>Product description</h2>
+											<p>@Model.description</p>
 										</div>
 										<div role="tabpanel" class="tab-pane fade" id="profile">
 											<h2>Reviews</h2>
@@ -170,19 +170,19 @@
 						<div class="related-products-carousel">
 							<!--PNSon 11/10/2025 đã thêm phương thức lấy sản phẩm liên quan theo Tag-->
 							@if (ViewBag.RelatedProducts != null &&
-														((List<core_23webc_gr6.Models.Products>)ViewBag.RelatedProducts).Any())
+														((List<core_23webc_gr6.Models.Product>)ViewBag.RelatedProducts).Any())
 							{
 								foreach (var relatedProduct in
-								(List<core_23webc_gr6.Models.Products>)ViewBag.RelatedProducts)
+								(List<core_23webc_gr6.Models.Product>)ViewBag.RelatedProducts)
 								{
 									<div class="single-product">
 										<div class="product-f-image">
-											<img class="product-img" src="~/img/Products/@relatedProduct.Image"
-												alt="@relatedProduct.ProductName" />
+											<img class="product-img" src="~/img/Products/@relatedProduct.image"
+												alt="@relatedProduct.productName" />
 											<div class="product-hover">
 												<a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to
 													cart</a>
-												<a href="@Url.Action("Details", "Product", new { id = relatedProduct.ProductID })"
+												<a href="@Url.Action("Details", "Product", new { id = relatedProduct.productId })"
 													class="view-details-link">
 													<i class="fa fa-link"></i> See details
 												</a>
@@ -190,20 +190,20 @@
 										</div>
 										<h2>
 											<a asp-controller="Product" asp-action="Details"
-												asp-route-id="@relatedProduct.ProductID">@relatedProduct.ProductName</a>
+												asp-route-id="@relatedProduct.productId">@relatedProduct.productName</a>
 										</h2>
 										<div class="product-carousel-price">
-											@if (relatedProduct.DiscountPercentage > 0 && relatedProduct.DiscountPercentage <=
+											@if (relatedProduct.discountPercentage > 0 && relatedProduct.discountPercentage <=
 																				100)
 											{
-												var newPrice = relatedProduct.Price - (relatedProduct.Price *
-												relatedProduct.DiscountPercentage / 100);
+												var newPrice = relatedProduct.price - (relatedProduct.price *
+												relatedProduct.discountPercentage / 100);
 												<ins>@newPrice.ToString("N0") VNĐ</ins>
-												<del>@relatedProduct.Price.ToString("N0") VNĐ</del>
+												<del>@relatedProduct.price.ToString("N0") VNĐ</del>
 											}
 											else
 											{
-												<ins>@relatedProduct.Price.ToString("N0") VNĐ</ins>
+												<ins>@relatedProduct.price.ToString("N0") VNĐ</ins>
 											}
 										</div>
 									</div>

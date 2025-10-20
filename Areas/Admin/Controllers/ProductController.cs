@@ -16,7 +16,7 @@ namespace core_23webc_gr6.Areas.Admin.Controllers
 		}
 		public IActionResult Index(int page = 1, int pageSize = 5)
 		{
-			List<Products> products = new();
+			List<Product> products = new();
 
 			string query = "select * from Products";
 
@@ -25,19 +25,19 @@ namespace core_23webc_gr6.Areas.Admin.Controllers
 			SqlDataReader dr = _db.ExcuteQuery(query, conn);
 			while (dr.Read())
 			{
-				products.Add(new Products
+				products.Add(new Product
 				{
-					ProductID = Convert.ToInt32(dr["ProductID"]),
-					ProductName = dr["ProductName"].ToString() ?? string.Empty,
-					CategoryID = dr["CategoryID"] as int?,
-					Price = Convert.ToDecimal(dr["Price"]),
-					DiscountPercentage = Convert.ToInt32(dr["DiscountPercentage"]),
-					Stock = Convert.ToInt32(dr["Stock"]),
-					Image = dr["Image"].ToString(),
-					Description = dr["Description"].ToString(),
-					Status = Convert.ToByte(dr["Status"]),
-					CreatedAt = Convert.ToDateTime(dr["CreatedAt"]),
-					UpdatedAt = Convert.ToDateTime(dr["UpdatedAt"])
+					productId = Convert.ToInt32(dr["productId"]),
+					productName = dr["productName"].ToString() ?? string.Empty,
+					categoryId = dr["categoryId"] as int?,
+					price = Convert.ToDecimal(dr["price"]),
+					discountPercentage = Convert.ToInt32(dr["discountPercentage"]),
+					stock = Convert.ToInt32(dr["stock"]),
+					image = dr["image"].ToString(),
+					description = dr["description"].ToString(),
+					status = Convert.ToByte(dr["status"]),
+					createdAt = Convert.ToDateTime(dr["createdAt"]),
+					updatedAt = Convert.ToDateTime(dr["updatedAt"])
 				});
 			}
 			dr.Close();
@@ -62,7 +62,7 @@ namespace core_23webc_gr6.Areas.Admin.Controllers
 
 		public IActionResult AddProduct()
 		{
-			return View(new Products());
+			return View(new Product());
 		}
 
 		// : xử lý thêm sản phẩm ( tạm thời chưa thêm xử lý sau)
