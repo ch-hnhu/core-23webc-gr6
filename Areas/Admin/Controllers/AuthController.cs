@@ -15,7 +15,6 @@ namespace core_23webc_gr6.Areas.Admin.Controllers
 		{
 			_dbHelper = dbHelper;
 		}
-
 		[HttpGet]
 		public IActionResult Login()
 		{
@@ -26,26 +25,28 @@ namespace core_23webc_gr6.Areas.Admin.Controllers
 		public IActionResult Login(string username, string password)
 		{
 			string? jsonUser = Models.User.GetUser(username, password, _dbHelper);
-
-			if (!string.IsNullOrEmpty(jsonUser))
+			if (jsonUser != null)
 			{
 				var user = JsonSerializer.Deserialize<User>(jsonUser);
-
 				if (user != null && user.role == "Admin")
 				{
+					// Đăng nhập thành công
 					HttpContext.Session.SetString("AdminLoggedIn", jsonUser);
-					return Redirect("/Admin/Home/Index");
+					return Redirect("/Admin/");
 				}
 				else
 				{
-					ViewBag.Error = "Bạn không có quyền truy cập trang quản trị.";
+					ViewBag.Error = "Tài khoản không có quyền truy cập.";
 					return View();
 				}
 			}
-
-			ViewBag.Error = "Sai tài khoản hoặc mật khẩu";
-			return View();
+			else
+			{
+				ViewBag.Error = "Tên đăng nhập hoặc mật khẩu không đúng.";
+				return View();
+			}
 		}
+
 	}
 }
 // endCHNhu

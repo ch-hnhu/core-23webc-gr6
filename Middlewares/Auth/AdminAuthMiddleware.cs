@@ -12,33 +12,22 @@ namespace core_23webc_gr6.Middlewares
 
 		public async Task InvokeAsync(HttpContext context)
 		{
-			var path = context.Request.Path.Value?.ToLower();
-
-			// Nếu truy cập Admin (trừ login) và chưa có session thì redirect
-			if (path != null && path.StartsWith("/admin") && !path.Contains("/auth/login"))
+			var url = context.Request.Path.ToString().ToLower();
+			if (url != null && url.StartsWith("/admin") && !url.Contains("/auth/login"))
 			{
 				var isLoggedIn = context.Session.GetString("AdminLoggedIn");
-				if (!string.IsNullOrEmpty(isLoggedIn))
-				{
-					await _next(context);
-					return;
-				}
-				else
+				if (string.IsNullOrEmpty(isLoggedIn))
 				{
 					context.Response.Redirect("/Admin/Auth/Login");
 					return;
 				}
+				else
+				{
+					await _next(context);
+					return;
+				}
 			}
-
 			await _next(context);
-		}
-	}
-
-	public static class AdminAuthMiddlewareExtensions
-	{
-		public static IApplicationBuilder UseAdminAuth(this IApplicationBuilder builder)
-		{
-			return builder.UseMiddleware<AdminAuthMiddleware>();
 		}
 	}
 }
