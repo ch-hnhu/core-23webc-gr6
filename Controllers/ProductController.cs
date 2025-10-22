@@ -18,7 +18,7 @@ namespace core_23webc_gr6.Controllers
 		//vqNam Load danh sách sản phẩm
 		public IActionResult Index()
 		{
-			var productsInstance = new Products();
+			var productsInstance = new Product();
 			var products = productsInstance.GetAllProducts(_db);
 			ViewData["BigTitle"] = "Shop";
 			return View(products); // Trả ra list cho Index.cshtml
@@ -28,7 +28,7 @@ namespace core_23webc_gr6.Controllers
 		//PNSon 8/10/2025 Load chi tiết sản phẩm
 		public IActionResult Details(int id)
 		{
-			var productsInstance = new Products();
+			var productsInstance = new Product();
 			var product = productsInstance.GetProductById(id, _db);
 			// Kiểm tra null để tránh lỗi Model null trong View
 			if (product == null)
@@ -36,7 +36,7 @@ namespace core_23webc_gr6.Controllers
 				return NotFound("Sản phẩm không tồn tại hoặc đã bị xóa.");
 			}
 
-			//PNSon 11/10/2025 Lấy danh sách sản phẩm liên quan dựa trên CategoryID
+			//PNSon 11/10/2025 Lấy danh sách sản phẩm liên quan dựa trên categoryId
 			var relatedProducts = productsInstance.GetRelatedProducts(id, _db);
 			ViewBag.RelatedProducts = relatedProducts;
 
