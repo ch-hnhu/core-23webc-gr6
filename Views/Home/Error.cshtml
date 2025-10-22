@@ -8,20 +8,26 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<div class="text-center" style="padding: 60px 0;">
-					<i class="fa fa-exclamation-triangle" aria-hidden="true"
-						style="font-size: 64px; color: #e74c3c;"></i>
-					<h1 style="margin-top: 15px;">Đã xảy ra lỗi</h1>
-					<p class="lead" style="margin: 10px 0 20px; color: #555;">
+				<div class="text-center error-page-content">
+					<!-- 404 Cat Image -->
+					<div class="error-image-container">
+						<img src="~/img/cat-404.png" alt="404 Error" class="error-404-image" />
+					</div>
+
+					<h1 style="margin-top: 25px; font-size: 36px; font-weight: 700; color: #333;">Đã xảy ra lỗi</h1>
+					<p class="lead" style="margin: 15px 0 25px; color: #555; font-size: 18px;">
 						@(ViewBag.Message ?? "URL không hợp lệ hoặc trang bạn tìm không tồn tại.")
 					</p>
 
 					@if (Model?.ShowRequestId == true)
 					{
-						<p style="color:#888;">Mã yêu cầu: <code>@Model.RequestId</code></p>
+						<p style="color:#888; font-size: 14px; margin-bottom: 20px;">
+							Mã yêu cầu: <code
+								style="background: #f5f5f5; padding: 3px 8px; border-radius: 3px;">@Model.RequestId</code>
+						</p>
 					}
 
-					<div style="margin-top: 25px;">
+					<div style="margin-top: 30px;">
 						<a asp-controller="Home" asp-action="Index" class="btn btn-primary" style="margin-right:10px;">
 							<i class="fa fa-home"></i> Về trang chủ
 						</a>
@@ -37,14 +43,69 @@
 
 @section Style {
 	<style>
+		.error-page-content {
+			max-width: 800px;
+			margin: 0 auto;
+		}
+
+		.error-image-container {
+			margin-bottom: 20px;
+			animation: float 3s ease-in-out infinite;
+		}
+
+		.error-404-image {
+			max-width: 400px;
+			width: 100%;
+			height: auto;
+			display: inline-block;
+		}
+
+		@@keyframes float {
+
+			0%,
+			100% {
+				transform: translateY(0px);
+			}
+
+			50% {
+				transform: translateY(-15px);
+			}
+		}
+
 		.btn.btn-default {
 			background: #f5f5f5;
 			border: 1px solid #ddd;
 			color: #333;
+			transition: all 0.3s ease;
 		}
 
 		.btn.btn-default:hover {
 			background: #eee;
+			border-color: #ccc;
+		}
+
+		.btn.btn-primary {
+			transition: all 0.3s ease;
+		}
+
+		.btn.btn-primary:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+		}
+
+		/* Responsive */
+		@@media (max-width: 768px) {
+			.error-404-image {
+				max-width: 280px;
+			}
+
+			.error-page-content h1 {
+				font-size: 28px !important;
+			}
+
+			.error-page-content .lead {
+				font-size: 16px !important;
+			}
 		}
 	</style>
 }
