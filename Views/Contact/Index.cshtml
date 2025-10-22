@@ -1,464 +1,354 @@
+<!-- CHNhu - Contact Page -->
+@* @await Html.PartialAsync("../Partials/_BigTitle.cshtml") *@
+
 <div class="single-product-area">
 	<div class="zigzag-bottom"></div>
 	<div class="container">
 		<div class="row">
-			<!-- Contact Information Section -->
+			<!-- Contact Information Sidebar -->
 			<div class="col-md-4">
-				<div class="contact-info-section">
-					<h3 class="section-title">Get in Touch</h3>
-
-					<div class="contact-info-item">
-						<div class="contact-info-icon">
+				<div class="single-sidebar">
+					<h2 class="sidebar-title">Contact Information</h2>
+					<div class="contact-info-wrapper">
+						<div class="contact-info-item">
 							<i class="fa fa-map-marker"></i>
+							<div>
+								<h4>Address</h4>
+								<p>123 Business Street<br>District 1, Ho Chi Minh City<br>Vietnam</p>
+							</div>
 						</div>
-						<div class="contact-info-content">
-							<h4>Our Address</h4>
-							<p>123 Business Street<br>
-								City Center, State 12345<br>
-								United States</p>
-						</div>
-					</div>
-
-					<div class="contact-info-item">
-						<div class="contact-info-icon">
+						<div class="contact-info-item">
 							<i class="fa fa-phone"></i>
+							<div>
+								<h4>Phone</h4>
+								<p>+84 (028) 1234 5678<br>+84 (028) 8765 4321</p>
+							</div>
 						</div>
-						<div class="contact-info-content">
-							<h4>Phone Numbers</h4>
-							<p>Main: +1 (555) 123-4567<br>
-								Support: +1 (555) 123-4568</p>
-						</div>
-					</div>
-
-					<div class="contact-info-item">
-						<div class="contact-info-icon">
+						<div class="contact-info-item">
 							<i class="fa fa-envelope"></i>
+							<div>
+								<h4>Email</h4>
+								<p>info@ustora.com<br>support@ustora.com</p>
+							</div>
 						</div>
-						<div class="contact-info-content">
-							<h4>Email Addresses</h4>
-							<p>info@ustora.com<br>
-								support@ustora.com</p>
-						</div>
-					</div>
-
-					<div class="contact-info-item">
-						<div class="contact-info-icon">
+						<div class="contact-info-item">
 							<i class="fa fa-clock-o"></i>
-						</div>
-						<div class="contact-info-content">
-							<h4>Business Hours</h4>
-							<p>Monday - Friday: 9:00 AM - 6:00 PM<br>
-								Saturday: 10:00 AM - 4:00 PM<br>
-								Sunday: Closed</p>
+							<div>
+								<h4>Business Hours</h4>
+								<p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 12:00 PM<br>Sunday: Closed
+								</p>
+							</div>
 						</div>
 					</div>
+				</div>
 
-					<div class="contact-social-links">
-						<h4>Follow Us</h4>
-						<div class="social-icons">
-							<a href="#" class="social-icon"><i class="fa fa-facebook"></i></a>
-							<a href="#" class="social-icon"><i class="fa fa-twitter"></i></a>
-							<a href="#" class="social-icon"><i class="fa fa-instagram"></i></a>
-							<a href="#" class="social-icon"><i class="fa fa-linkedin"></i></a>
-						</div>
+				<div class="single-sidebar">
+					<h2 class="sidebar-title">Follow Us</h2>
+					<div class="social-media-links">
+						<a href="#" class="social-link facebook"><i class="fa fa-facebook"></i> Facebook</a>
+						<a href="#" class="social-link twitter"><i class="fa fa-twitter"></i> Twitter</a>
+						<a href="#" class="social-link instagram"><i class="fa fa-instagram"></i> Instagram</a>
+						<a href="#" class="social-link youtube"><i class="fa fa-youtube"></i> YouTube</a>
 					</div>
 				</div>
 			</div>
 
 			<!-- Contact Form Section -->
 			<div class="col-md-8">
-				<div class="contact-form-section">
-					<div class="woocommerce-info">
-						<h3 class="section-title">Send us a Message</h3>
-						<p class="contact-form-intro">
-							Have questions about our products or need assistance? We'd love to hear from you.
-							Fill out the form below and our team will get back to you within 24 hours.
-						</p>
+				<div class="product-content-right">
+					<div class="contact-form-header">
+						<h2 class="section-title">Send us a Message</h2>
+						<p class="contact-intro">Have questions about our products or need assistance? We'd love to hear
+							from you. Fill out the form below and our team will get back to you within 24 hours.</p>
+					</div>
 
-						<form action="#" method="post" class="checkout contact-form">
-							<div id="customer_details" class="col2-set">
-								<div class="col-1">
-									<div class="woocommerce-billing-fields">
-										<div class="form-row-group">
-											<p class="form-row form-row-first validate-required">
-												<label for="first_name">First Name <abbr title="required"
-														class="required">*</abbr></label>
-												<input type="text" value="" placeholder="Enter your first name"
-													id="first_name" name="first_name" class="input-text" required>
-											</p>
+					<form action="#" method="post" class="contact-form">
+						<div class="row">
+							<div class="col-sm-6">
+								<label for="name">Full Name <abbr title="required" class="required">*</abbr></label>
+								<input type="text" id="name" name="name" placeholder="Enter your full name"
+									class="form-control" required>
+							</div>
+							<div class="col-sm-6">
+								<label for="email">Email Address <abbr title="required"
+										class="required">*</abbr></label>
+								<input type="email" id="email" name="email" placeholder="your.email@example.com"
+									class="form-control" required>
+							</div>
+						</div>
 
-											<p class="form-row form-row-last validate-required">
-												<label for="last_name">Last Name <abbr title="required"
-														class="required">*</abbr></label>
-												<input type="text" value="" placeholder="Enter your last name"
-													id="last_name" name="last_name" class="input-text" required>
-											</p>
-										</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<label for="phone">Phone Number</label>
+								<input type="tel" id="phone" name="phone" placeholder="+84 123 456 789"
+									class="form-control">
+							</div>
+							<div class="col-sm-6">
+								<label for="subject">Subject <abbr title="required" class="required">*</abbr></label>
+								<select id="subject" name="subject" class="form-control" required>
+									<option value="">Please select a subject</option>
+									<option value="general">General Inquiry</option>
+									<option value="product">Product Question</option>
+									<option value="order">Order Support</option>
+									<option value="technical">Technical Support</option>
+									<option value="billing">Billing Question</option>
+									<option value="other">Other</option>
+								</select>
+							</div>
+						</div>
 
-										<div class="clear"></div>
+						<div class="row">
+							<div class="col-sm-12">
+								<label for="content">Your Message <abbr title="required"
+										class="required">*</abbr></label>
+								<textarea id="content" name="content" rows="8"
+									placeholder="Please tell us how we can help you..." class="form-control"
+									required></textarea>
+							</div>
+						</div>
 
-										<div class="form-row-group">
-											<p class="form-row form-row-first validate-required validate-email">
-												<label for="email">Email Address <abbr title="required"
-														class="required">*</abbr></label>
-												<input type="email" value="" placeholder="your.email@example.com"
-													id="email" name="email" class="input-text" required>
-											</p>
-
-											<p class="form-row form-row-last validate-phone">
-												<label for="phone">Phone Number</label>
-												<input type="tel" value="" placeholder="+1 (555) 123-4567" id="phone"
-													name="phone" class="input-text">
-											</p>
-										</div>
-
-										<div class="clear"></div>
-
-										<p class="form-row form-row-wide">
-											<label for="subject">Subject <abbr title="required"
-													class="required">*</abbr></label>
-											<select id="subject" name="subject" class="input-text" required>
-												<option value="">Please select a subject</option>
-												<option value="general">General Inquiry</option>
-												<option value="product">Product Question</option>
-												<option value="order">Order Support</option>
-												<option value="technical">Technical Support</option>
-												<option value="billing">Billing Question</option>
-												<option value="other">Other</option>
-											</select>
-										</p>
-
-										<p class="form-row notes">
-											<label for="message">Your Message <abbr title="required"
-													class="required">*</abbr></label>
-											<textarea cols="5" rows="6"
-												placeholder="Please tell us how we can help you..." id="message"
-												class="input-text" name="message" required></textarea>
-										</p>
-
-										<div class="contact-form-footer">
-											<div class="form-privacy-notice">
-												<label class="checkbox-label">
-													<input type="checkbox" name="privacy_policy" required>
-													<span class="checkmark"></span>
-													I agree to the <a href="#" target="_blank">Privacy Policy</a> and <a
-														href="#" target="_blank">Terms of Service</a> <abbr
-														title="required" class="required">*</abbr>
-												</label>
-											</div>
-
-											<div class="form-newsletter">
-												<label class="checkbox-label">
-													<input type="checkbox" name="newsletter" value="1">
-													<span class="checkmark"></span>
-													Subscribe to our newsletter for updates and special offers
-												</label>
-											</div>
-
-											<p class="form-row form-submit">
-												<button type="submit" class="button alt">
-													<i class="fa fa-paper-plane"></i> Send Message
-												</button>
-												<button type="reset" class="button">
-													<i class="fa fa-refresh"></i> Reset Form
-												</button>
-											</p>
-										</div>
-									</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="form-actions">
+									<button type="submit" class="btn-submit">
+										<i class="fa fa-paper-plane"></i> Send Message
+									</button>
+									<button type="reset" class="btn-reset">
+										<i class="fa fa-refresh"></i> Reset Form
+									</button>
 								</div>
 							</div>
-						</form>
-					</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<!-- End Contact Page -->
 
 @section Style {
 	<style>
-		/* Contact Page Specific Styles */
-		.contact-info-section {
-			padding: 20px;
-			background: #f9f9f9;
-			border-radius: 5px;
-			margin-bottom: 30px;
+		/* Contact Page Specific Styles - Matching Ustora Theme */
+
+		/* Contact Information Sidebar */
+		.contact-info-wrapper {
+			padding: 0;
 		}
 
 		.contact-info-item {
 			display: flex;
 			align-items: flex-start;
-			margin-bottom: 25px;
+			margin-bottom: 20px;
 			padding-bottom: 20px;
-			border-bottom: 1px solid #eee;
+			border-bottom: 1px solid #f0f0f0;
 		}
 
 		.contact-info-item:last-child {
 			border-bottom: none;
 			margin-bottom: 0;
+			padding-bottom: 0;
 		}
 
-		.contact-info-icon {
-			width: 50px;
-			height: 50px;
-			background: #f39c12;
-			color: white;
+		.contact-info-item i {
+			font-size: 20px;
+			color: #f39c12;
+			margin-right: 15px;
+			margin-top: 2px;
+			min-width: 20px;
+		}
+
+		.contact-info-item h4 {
+			margin: 0 0 5px 0;
+			color: #5a5a5a;
+			font-size: 14px;
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+
+		.contact-info-item p {
+			margin: 0;
+			color: #5a5a5a;
+			line-height: 1.6;
+			font-size: 13px;
+		}
+
+		/* Social Media Links */
+		.social-media-links {
+			padding: 0;
+		}
+
+		.social-link {
 			display: flex;
 			align-items: center;
-			justify-content: center;
-			border-radius: 50%;
-			margin-right: 15px;
-			flex-shrink: 0;
+			padding: 10px 0;
+			color: #5a5a5a;
+			text-decoration: none;
+			transition: all 0.3s ease;
+			font-size: 14px;
 		}
 
-		.contact-info-icon i {
-			font-size: 18px;
-		}
-
-		.contact-info-content h4 {
-			margin: 0 0 8px 0;
-			color: #333;
+		.social-link i {
 			font-size: 16px;
+			margin-right: 10px;
+			width: 25px;
+		}
+
+		.social-link.facebook:hover {
+			color: #3b5998;
+		}
+
+		.social-link.twitter:hover {
+			color: #1da1f2;
+		}
+
+		.social-link.instagram:hover {
+			color: #e4405f;
+		}
+
+		.social-link.youtube:hover {
+			color: #ff0000;
+		}
+
+		/* Contact Form Header */
+		.contact-form-header {
+			margin-bottom: 30px;
+		}
+
+		.contact-form-header .section-title {
+			font-size: 20px;
+			color: #5a5a5a;
+			margin-bottom: 10px;
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+
+		.contact-intro {
+			color: #888;
+			line-height: 1.8;
+			font-size: 14px;
+			margin-bottom: 0;
+		}
+
+		/* Contact Form Styles */
+		.contact-form {
+			margin-top: 0;
+		}
+
+		.contact-form .row {
+			margin-bottom: 20px;
+		}
+
+		.contact-form label {
+			display: block;
+			margin-bottom: 8px;
+			color: #5a5a5a;
+			font-size: 14px;
 			font-weight: 600;
 		}
 
-		.contact-info-content p {
-			margin: 0;
-			color: #666;
-			line-height: 1.5;
+		.contact-form .required {
+			color: #f39c12;
+			font-weight: bold;
+			text-decoration: none;
 		}
 
-		.contact-social-links {
-			margin-top: 25px;
-			padding-top: 25px;
-			border-top: 1px solid #eee;
+		.contact-form .form-control {
+			width: 100%;
+			padding: 10px 15px;
+			border: 1px solid #e0e0e0;
+			background: #fff;
+			color: #5a5a5a;
+			font-size: 14px;
+			transition: all 0.3s ease;
+			height: auto;
 		}
 
-		.contact-social-links h4 {
-			margin-bottom: 15px;
-			color: #333;
+		.contact-form .form-control:focus {
+			outline: none;
+			border-color: #f39c12;
+			box-shadow: 0 0 5px rgba(243, 156, 18, 0.2);
 		}
 
-		.social-icons {
+		.contact-form textarea.form-control {
+			resize: vertical;
+			min-height: 150px;
+		}
+
+		.contact-form select.form-control {
+			cursor: pointer;
+			appearance: none;
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235a5a5a' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+			background-repeat: no-repeat;
+			background-position: right 15px center;
+			padding-right: 40px;
+		}
+
+		/* Form Actions */
+		.form-actions {
+			margin-top: 30px;
 			display: flex;
 			gap: 10px;
 		}
 
-		.social-icon {
-			display: inline-block;
-			width: 40px;
-			height: 40px;
-			background: #333;
-			color: white;
-			text-align: center;
-			line-height: 40px;
-			border-radius: 50%;
-			transition: background 0.3s ease;
-			text-decoration: none;
-		}
-
-		.social-icon:hover {
-			background: #f39c12;
-			color: white;
-			text-decoration: none;
-		}
-
-		.contact-form-section {
-			padding: 20px;
-		}
-
-		.contact-form-intro {
-			color: #666;
-			margin-bottom: 25px;
-			line-height: 1.6;
-		}
-
-		.form-row-group {
-			display: flex;
-			gap: 15px;
-		}
-
-		.form-row-group .form-row {
-			flex: 1;
-		}
-
-		.contact-form .input-text,
-		.contact-form select {
-			width: 100%;
-			padding: 12px 15px;
-			border: 1px solid #ddd;
-			border-radius: 4px;
-			font-size: 14px;
-			transition: border-color 0.3s ease;
-		}
-
-		.contact-form .input-text:focus,
-		.contact-form select:focus {
-			outline: none;
-			border-color: #f39c12;
-			box-shadow: 0 0 5px rgba(243, 156, 18, 0.3);
-		}
-
-		.contact-form textarea {
-			resize: vertical;
-			min-height: 120px;
-		}
-
-		.contact-form-footer {
-			margin-top: 20px;
-		}
-
-		.form-privacy-notice,
-		.form-newsletter {
-			margin-bottom: 15px;
-		}
-
-		.checkbox-label {
-			display: flex;
-			align-items: flex-start;
-			gap: 8px;
-			cursor: pointer;
-			font-size: 14px;
-			line-height: 1.5;
-		}
-
-		.checkbox-label input[type="checkbox"] {
-			margin: 0;
-		}
-
-		.form-submit {
-			display: flex;
-			gap: 15px;
-		}
-
-		.button {
+		.btn-submit,
+		.btn-reset {
 			display: inline-flex;
 			align-items: center;
 			gap: 8px;
-			padding: 12px 25px;
+			padding: 12px 30px;
 			border: none;
-			border-radius: 4px;
-			cursor: pointer;
 			font-size: 14px;
-			font-weight: 600;
-			text-decoration: none;
+			font-weight: 700;
+			text-transform: uppercase;
+			cursor: pointer;
 			transition: all 0.3s ease;
+			border-radius: 0;
 		}
 
-		.button.alt {
-			background: #f39c12;
-			color: white;
+		.btn-submit {
+			background-color: #f39c12;
+			color: #fff;
 		}
 
-		.button.alt:hover {
-			background: #e67e22;
-			color: white;
+		.btn-submit:hover {
+			background-color: #e67e22;
 		}
 
-		.button:not(.alt) {
-			background: #95a5a6;
-			color: white;
+		.btn-reset {
+			background-color: #95a5a6;
+			color: #fff;
 		}
 
-		.button:not(.alt):hover {
-			background: #7f8c8d;
-			color: white;
+		.btn-reset:hover {
+			background-color: #7f8c8d;
 		}
 
-		.contact-map-section {
-			margin-top: 40px;
-			padding: 30px 0;
-		}
-
-		.map-container {
-			margin-top: 20px;
-		}
-
-		.map-placeholder {
-			background: #f8f9fa;
-			border: 2px dashed #dee2e6;
-			padding: 60px 20px;
-			text-align: center;
-			border-radius: 8px;
-		}
-
-		.map-placeholder i {
-			color: #6c757d;
-			margin-bottom: 15px;
-		}
-
-		.map-placeholder h4 {
-			color: #495057;
-			margin-bottom: 10px;
-		}
-
-		.map-placeholder p {
-			color: #6c757d;
-			margin-bottom: 20px;
-		}
-
-		.contact-faq-section {
-			margin-top: 40px;
-			padding: 30px 0;
-			background: #f9f9f9;
-			border-radius: 8px;
-		}
-
-		.faq-item {
-			margin-bottom: 25px;
-			padding: 20px;
-			background: white;
-			border-radius: 5px;
-			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-		}
-
-		.faq-item h4 {
-			color: #333;
-			margin-bottom: 10px;
-			display: flex;
-			align-items: center;
-			gap: 10px;
-		}
-
-		.faq-item h4 i {
-			color: #f39c12;
-		}
-
-		.faq-item p {
-			color: #666;
-			margin: 0;
-			line-height: 1.6;
-		}
-
-		.section-title {
-			color: #333;
-			margin-bottom: 20px;
-			font-size: 24px;
-			font-weight: 600;
+		.btn-submit i,
+		.btn-reset i {
+			font-size: 14px;
 		}
 
 		/* Responsive Design */
+		@@media (max-width: 991px) {
+			.contact-form-header {
+				margin-top: 30px;
+			}
+		}
+
 		@@media (max-width: 768px) {
-			.form-row-group {
+			.form-actions {
 				flex-direction: column;
-				gap: 0;
 			}
 
-			.contact-info-item {
-				flex-direction: column;
-				text-align: center;
-			}
-
-			.contact-info-icon {
-				margin: 0 auto 15px auto;
-			}
-
-			.social-icons {
+			.btn-submit,
+			.btn-reset {
+				width: 100%;
 				justify-content: center;
 			}
 
-			.form-submit {
-				flex-direction: column;
+			.contact-info-item {
+				text-align: left;
 			}
 		}
 	</style>
