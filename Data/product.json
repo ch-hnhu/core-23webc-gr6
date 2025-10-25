@@ -1,0 +1,17 @@
+[
+  {
+    "ProductID": 0,
+    "ProductName": "aa",
+    "CategoryID": null,
+    "Price": 999,
+    "DiscountPercentage": 5,
+    "Stock": 0,
+    "Image": "20251026_013518_b1740c9b-2680-48a4-ad10-5c63b6212c96.jpg,20251026_013518_e384253e-b535-4fb6-86a2-58a42130251a.png,20251026_013518_2de7d6c2-e1d2-442a-9b62-4cdc7e2fff44.jpg",
+    "Description": null,
+    "Status": 0,
+    "CreatedAt": "0001-01-01T00:00:00",
+    "UpdatedAt": "0001-01-01T00:00:00",
+    "CategoryName": null,
+    "Tags": []
+  }
+]
