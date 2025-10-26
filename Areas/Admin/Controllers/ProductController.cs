@@ -15,6 +15,7 @@ namespace core_23webc_gr6.Areas.Admin.Controllers
 		{
 			_db = db;
 		}
+		//PNSon - 26/10/2025 - Đổi phương thức lấy danh sách sản phẩm và phân trang
 		public IActionResult Index(int page = 1, int pageSize = 5)
 		{
 			var productInstance = new Product();
@@ -23,6 +24,7 @@ namespace core_23webc_gr6.Areas.Admin.Controllers
 			int totalProducts = allProducts.Count;
 			int totalPages = (int)Math.Ceiling((double)totalProducts / pageSize);
 
+			if (totalPages == 0) totalPages = 1;
 			if (page < 1) page = 1;
 			if (page > totalPages) page = totalPages;
 
@@ -34,8 +36,14 @@ namespace core_23webc_gr6.Areas.Admin.Controllers
 			ViewBag.Page = page;
 			ViewBag.TotalPages = totalPages;
 
+			ViewData["Area"] = "Admin";
+			ViewData["Controller"] = "Product";
+			ViewData["Action"] = "Index";
+
+
 			return View(pagedProducts);
 		}
+		//endPNSon
 
 		public IActionResult AddProduct()
 		{
