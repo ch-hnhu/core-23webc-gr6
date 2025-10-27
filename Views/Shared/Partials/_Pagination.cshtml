@@ -1,0 +1,117 @@
+@* Views/Shared/Partials/_Pagination.cshtml *@
+@*PNSon - 26/10/2025 - Thêm phân trang cho danh sách sản phẩm view chung*@
+@{
+    int page = ViewBag.Page ?? 1;
+    int totalPages = ViewBag.TotalPages ?? 1;
+    string area = ViewData["Area"]?.ToString() ?? "";
+    string controller = ViewData["Controller"]?.ToString() ?? "Product";
+    string action = ViewData["Action"]?.ToString() ?? "Index";
+
+    // Giới hạn hiển thị 5 trang quanh trang hiện tại
+    int maxPagesToShow = 5;
+    int startPage = Math.Max(1, page - 2);
+    int endPage = Math.Min(totalPages, startPage + maxPagesToShow - 1);
+    if (endPage - startPage < maxPagesToShow - 1)
+        startPage = Math.Max(1, endPage - maxPagesToShow + 1);
+}
+
+@*  Phân trang *@
+@if (totalPages > 1)
+{
+    <nav aria-label="Phân trang sản phẩm">
+        <ul class="pagination">
+
+            @* Trang đầu *@
+            <li class="page-item @(page == 1 ? "disabled" : "")">
+                <a class="page-link"
+                   asp-area="@area"
+                   asp-controller="@controller"
+                   asp-action="@action"
+                   asp-route-page="1">« Đầu</a>
+            </li>
+
+            @* Lùi *@
+            <li class="page-item @(page <= 1 ? "disabled" : "")">
+                <a class="page-link"
+                   asp-area="@area"
+                   asp-controller="@controller"
+                   asp-action="@action"
+                   asp-route-page="@(page - 1)">‹</a>
+            </li>
+
+            @for (int i = startPage; i <= endPage; i++)
+            {
+                <li class="page-item @(i == page ? "active" : "")">
+                    <a class="page-link"
+                       asp-area="@area"
+                       asp-controller="@controller"
+                       asp-action="@action"
+                       asp-route-page="@i">@i</a>
+                </li>
+            }
+
+            @* Tiến *@
+            <li class="page-item @(page >= totalPages ? "disabled" : "")">
+                <a class="page-link"
+                   asp-area="@area"
+                   asp-controller="@controller"
+                   asp-action="@action"
+                   asp-route-page="@(page + 1)">›</a>
+            </li>
+
+            @* Trang cuối *@
+            <li class="page-item @(page == totalPages ? "disabled" : "")">
+                <a class="page-link"
+                   asp-area="@area"
+                   asp-controller="@controller"
+                   asp-action="@action"
+                   asp-route-page="@totalPages">Cuối »</a>
+            </li>
+        </ul>
+
+        <div class="text-center mt-2 text-muted">
+            Trang <strong>@(page)</strong> / <strong>@(totalPages)</strong>
+        </div>
+    </nav>
+}
+
+
+<style>
+	.pagination {
+		margin-top: 25px;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		list-style: none;
+		padding: 0;
+	}
+
+	.pagination li {
+		margin: 0 2px;
+	}
+
+	.page-link {
+		color: #007bff;
+		border: 1px solid #dee2e6;
+		padding: 6px 12px;
+		border-radius: 4px;
+		transition: .2s;
+		text-decoration: none;
+	}
+
+	.page-item.active .page-link {
+		background: #007bff;
+		color: #fff;
+		border-color: #007bff;
+	}
+
+	.page-item.disabled .page-link {
+		color: #aaa;
+		pointer-events: none;
+		background: #f8f9fa;
+	}
+
+	.page-link:hover {
+		background: #e9ecef;
+	}
+</style>
