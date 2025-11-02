@@ -1,6 +1,22 @@
 @* CHNhu - 12/10/2025 - Sửa view cho trang chủ *@
 @model List<core_23webc_gr6.Models.Product>
 
+@functions {
+	string GetFirstImage(string? images)
+	{
+		var imageList = new List<string>();
+		if (images != null && images.Trim().StartsWith("["))
+		{
+			imageList = System.Text.Json.JsonSerializer.Deserialize<List<string>>(images) ?? new List<string>();
+		}
+		else if (!string.IsNullOrEmpty(images))
+		{
+			imageList = images.Split(',').Select(s => s.Trim()).ToList();
+		}
+		return imageList != null && imageList.Count > 0 ? imageList[0] : "default.jpg";
+	}
+}
+
 <div class="slider-area">
 	<!-- Slider -->
 	<div class="block-slider block-slider4">
@@ -92,7 +108,8 @@
 						{
 							<div class="single-product">
 								<div class="product-f-image">
-									<img class="product-img" src="~/img/Products/@item.image" alt="@item.productName" />
+									<img class="product-img" src="~/img/Products/@GetFirstImage(item.images)"
+										alt="@item.productName" />
 									<div class="product-hover">
 										<a href="#" class="add-to-cart-link">
 											<i class="fa fa-shopping-cart"></i> Add to cart
@@ -164,16 +181,18 @@
 						{
 							<div class="single-product">
 								<div class="product-f-image">
-									<img class="product-img" src="~/img/Products/@item.image" alt="@item.productName" />
+									<img class="product-img"
+										src="~/img/Products/@item.images?.Split(',')[0].FirstOrDefault()"
+										alt="@item.productName" />
 									<div class="product-hover">
 										<a href="#" class="add-to-cart-link">
 											<i class="fa fa-shopping-cart"></i> Add to cart
 										</a>
 										<a asp-controller="Pro
-																																								duct" asp-action="Details" asp-route-id="@item.productId"
+																																												duct" asp-action="Details" asp-route-id="@item.productId"
 											class="view-details-link">
 											<i class="
-																																									fa fa-link"></i> See details
+																																													fa fa-link"></i> See details
 										</a>
 									</div>
 								</div>
@@ -216,16 +235,18 @@
 						{
 							<div class="single-product">
 								<div class="product-f-image">
-									<img class="product-img" src="~/img/Products/@item.image" alt="@item.productName" />
+									<img class="product-img"
+										src="~/img/Products/@item.images?.Split(',')[0].FirstOrDefault()"
+										alt="@item.productName" />
 									<div class="product-hover">
 										<a href="#" class="add-to-cart-link">
 											<i class="fa fa-shopping-cart"></i> Add to cart
 										</a>
 										<a asp-controller="Pro
-																																								duct" asp-action="Details" asp-route-id="@item.productId"
+																																												duct" asp-action="Details" asp-route-id="@item.productId"
 											class="view-details-link">
 											<i class="
-																																									fa fa-link"></i> See details
+																																													fa fa-link"></i> See details
 										</a>
 									</div>
 								</div>

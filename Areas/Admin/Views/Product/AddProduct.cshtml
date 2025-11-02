@@ -15,6 +15,20 @@
 			</div>
 		</div>
 
+		<!-- Hiển thị thông báo thành công hoặc lỗi -->
+		@if (TempData["SuccessMessage"] != null)
+		{
+			<div class="alert alert-success">
+				@TempData["SuccessMessage"]
+			</div>
+		}
+		@if (TempData["ErrorMessage"] != null)
+		{
+			<div class="alert alert-danger">
+				@TempData["ErrorMessage"]
+			</div>
+		}
+
 		<!-- Form thêm sản phẩm -->
 		<form asp-action="AddProduct" asp-controller="Product" asp-area="Admin" method="post"
 			enctype="multipart/form-data">
@@ -31,9 +45,9 @@
 									<div class="form-group">
 										<label><i class="fa fa-tag"></i> Tên sản phẩm <span
 												class="text-danger">*</span></label>
-										<input asp-for="productId" class="form-control"
+										<input asp-for="productName" class="form-control"
 											placeholder="Nhập tên sản phẩm..." />
-										<span asp-validation-for="productId" class="text-danger"></span>
+										<span asp-validation-for="productName" class="text-danger"></span>
 									</div>
 								</div>
 							</div>
@@ -45,11 +59,15 @@
 												class="text-danger">*</span></label>
 										<select asp-for="categoryId" class="form-control">
 											<option value="">-- Chọn danh mục --</option>
-											@* @foreach (var category in ViewBag.Categories as List<Category>)
+											@if (ViewBag.Categories != null)
 											{
-												<option value="@category.categoryId">@category.categoryName</option>
-											} *@
+												@foreach (var category in ViewBag.Categories as List<Category>)
+												{
+													<option value="@category.categoryId">@category.categoryName</option>
+												}
+											}
 										</select>
+										<span asp-validation-for="categoryId" class="text-danger"></span>
 									</div>
 								</div>
 								<div class="col-lg-6">
@@ -88,6 +106,15 @@
 									placeholder="Nhập mô tả chi tiết về sản phẩm..."></textarea>
 								<span asp-validation-for="description" class="text-danger"></span>
 							</div>
+
+							<div class="form-group">
+								<label><i class="fa fa-tags"></i> Trạng thái</label>
+								<select asp-for="status" class="form-control">
+									<option value="1">Hiển thị</option>
+									<option value="0">Ẩn</option>
+								</select>
+								<span asp-validation-for="status" class="text-danger"></span>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -102,21 +129,62 @@
 							<div class="form-group">
 								<label><i class="fa fa-camera"></i> Hình ảnh chính <span
 										class="text-danger">*</span></label>
-								<div class="text-center" style="margin-bottom: 10px;">
-									<img id="preview-main-image" src="~/img/default-product.png" alt="Preview"
-										class="img-thumbnail" style="max-width: 100%; max-height: 250px;">
+								<div class="text-center image-preview-container" style="margin-bottom: 10px;">
+									<div id="image-placeholder" class="image-placeholder">
+										<svg width="200" height="200" viewBox="0 0 200 200"
+											xmlns="http://www.w3.org/2000/svg">
+											<rect width="200" height="200" fill="#f5f5f5" />
+											<g transform="translate(100, 100)">
+												<!-- Camera Icon -->
+												<circle cx="0" cy="0" r="45" fill="#d0d0d0" />
+												<rect x="-32" y="-20" width="64" height="45" rx="6" fill="#ffffff" />
+												<circle cx="0" cy="2" r="16" fill="#d0d0d0" />
+												<rect x="-20" y="-32" width="20" height="10" rx="3" fill="#ffffff" />
+												<!-- Plus Icon -->
+												<g transform="translate(28, -28)">
+													<circle cx="0" cy="0" r="18" fill="#5cb85c" />
+													<line x1="-10" y1="0" x2="10" y2="0" stroke="white"
+														stroke-width="3.5" />
+													<line x1="0" y1="-10" x2="0" y2="10" stroke="white"
+														stroke-width="3.5" />
+												</g>
+											</g>
+											<text x="100" y="170" text-anchor="middle" fill="#999" font-size="14"
+												font-family="Arial">
+												Nhấn để chọn ảnh
+											</text>
+										</svg>
+									</div>
+									<img id="preview-main-image" src="" alt="Preview" class="img-thumbnail"
+										style="max-width: 100%; max-height: 250px; display: none;">
 								</div>
-								<input type="file" name="HinhAnhFile" id="main-image-input" class="form-control"
-									accept="image/*" />
-								<p class="help-block"><small>Chọn hình ảnh đại diện cho sản phẩm</small></p>
+								<div class="file-upload-wrapper">
+									<input type="file" name="main_image" id="main-image-input" class="file-input-hidden"
+										accept="image/*" />
+									<label for="main-image-input" class="btn-file-upload">
+										<i class="fa fa-upload"></i> Chọn file ảnh
+									</label>
+									<span id="file-name-display" class="file-name-display">Chưa có file nào được
+										chọn</span>
+								</div>
+								<p class="help-block"><small><i class="fa fa-info-circle"></i> Định dạng: JPG, PNG, GIF
+										(Tối đa 5MB)</small></p>
 							</div>
 
 							<div class="form-group">
 								<label><i class="fa fa-images"></i> Hình ảnh bổ sung</label>
 								<input type="hidden" id="num_img" value="1">
 								<div id="img_container">
-									<input type="file" class="form-control" id="img_1" name="img_1" accept="image/*"
-										style="margin-bottom: 10px;">
+									<div class="additional-image-item">
+										<div class="file-upload-wrapper">
+											<input type="file" class="file-input-hidden additional-image-input"
+												id="detail_image_1" name="detail_image_1" accept="image/*" />
+											<label for="detail_image_1" class="btn-file-upload-small">
+												<i class="fa fa-image"></i> Chọn ảnh
+											</label>
+											<span class="file-name-display additional-file-name">Chưa chọn file</span>
+										</div>
+									</div>
 								</div>
 								<button type="button" class="btn btn-info btn-block" id="btn_add_img">
 									<i class="fa fa-plus"></i> Thêm hình ảnh
@@ -125,7 +193,7 @@
 						</div>
 					</div>
 
-					<!-- Nút hành động -->
+					<!-- Nút submit -->
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<button type="submit" class="btn btn-success btn-block btn-lg">
@@ -144,67 +212,232 @@
 </div>
 @* endCHNhu *@
 
+@section Style {
+	<style>
+		.image-placeholder {
+			cursor: pointer;
+			transition: all 0.3s ease;
+			border: 2px dashed #d0d0d0;
+			border-radius: 8px;
+			padding: 10px;
+			background-color: #fafafa;
+			display: inline-block;
+		}
+
+		.image-placeholder:hover {
+			border-color: #5cb85c;
+			background-color: #f0f8f0;
+			transform: scale(1.02);
+		}
+
+		.image-placeholder svg {
+			display: block;
+		}
+
+		.image-preview-container {
+			min-height: 220px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		/* Custom File Upload Styles */
+		.file-upload-wrapper {
+			position: relative;
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			margin-bottom: 10px;
+		}
+
+		.file-input-hidden {
+			position: absolute;
+			width: 0.1px;
+			height: 0.1px;
+			opacity: 0;
+			overflow: hidden;
+			z-index: -1;
+		}
+
+		.btn-file-upload {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 10px 20px;
+			background: linear-gradient(135deg, #337ab7 0%, #2e6da4 100%);
+			color: white;
+			border: none;
+			border-radius: 6px;
+			cursor: pointer;
+			font-size: 14px;
+			font-weight: 600;
+			transition: all 0.3s ease;
+			box-shadow: 0 2px 5px rgba(51, 122, 183, 0.3);
+			white-space: nowrap;
+			margin: 0;
+		}
+
+		.btn-file-upload:hover {
+			background: linear-gradient(135deg, #2e6da4 0%, #265a88 100%);
+			box-shadow: 0 4px 8px rgba(51, 122, 183, 0.4);
+			transform: translateY(-1px);
+			color: white;
+		}
+
+		.btn-file-upload:active {
+			transform: translateY(0);
+			box-shadow: 0 2px 3px rgba(51, 122, 183, 0.3);
+		}
+
+		.btn-file-upload i {
+			font-size: 16px;
+		}
+
+		.file-name-display {
+			flex: 1;
+			padding: 8px 12px;
+			background-color: #f9f9f9;
+			border: 1px solid #e0e0e0;
+			border-radius: 4px;
+			color: #666;
+			font-size: 13px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			min-width: 0;
+		}
+
+		.file-name-display.has-file {
+			color: #333;
+			background-color: #e8f5e9;
+			border-color: #5cb85c;
+		}
+
+		/* Additional Images Styles */
+		.additional-image-item {
+			margin-bottom: 12px;
+			padding: 10px;
+			background-color: #f9f9f9;
+			border: 1px solid #e5e5e5;
+			border-radius: 6px;
+			transition: all 0.3s ease;
+		}
+
+		.additional-image-item:hover {
+			background-color: #f5f5f5;
+			border-color: #d0d0d0;
+		}
+
+		.btn-file-upload-small {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			padding: 8px 16px;
+			background: linear-gradient(135deg, #5bc0de 0%, #46b8da 100%);
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 13px;
+			font-weight: 600;
+			transition: all 0.3s ease;
+			box-shadow: 0 2px 4px rgba(91, 192, 222, 0.3);
+			white-space: nowrap;
+			margin: 0;
+		}
+
+		.btn-file-upload-small:hover {
+			background: linear-gradient(135deg, #46b8da 0%, #31b0d5 100%);
+			box-shadow: 0 3px 6px rgba(91, 192, 222, 0.4);
+			transform: translateY(-1px);
+			color: white;
+		}
+
+		.btn-file-upload-small:active {
+			transform: translateY(0);
+			box-shadow: 0 2px 3px rgba(91, 192, 222, 0.3);
+		}
+
+		.btn-file-upload-small i {
+			font-size: 14px;
+		}
+
+		.additional-file-name {
+			font-size: 12px;
+			padding: 6px 10px;
+		}
+
+		.additional-image-item .file-upload-wrapper {
+			margin-bottom: 0;
+		}
+	</style>
+}
+
 @* CHNhu - 20/10/2025 - Script xử lý form thêm sản phẩm *@
 @section Script {
 	<script>
-		$(document).ready(function () {
-			// Preview hình ảnh chính
-			$('#main-image-input').on('change', function (e) {
+		// Biến đếm số lượng ảnh bổ sung
+		let num_img = parseInt(document.getElementById("num_img").value);
+
+		// Xử lý thêm ảnh bổ sung
+		document.getElementById("btn_add_img").onclick = () => {
+			let wrapper = document.getElementById("img_container");
+			num_img++;
+			document.getElementById("num_img").value = num_img;
+
+			let child = document.createElement("div");
+			child.classList.add("additional-image-item");
+			child.innerHTML = `
+							<div class="file-upload-wrapper">
+								<input type="file" class="file-input-hidden additional-image-input"
+									id="detail_image_${num_img}" name="detail_image_${num_img}" accept="image/*" />
+								<label for="detail_image_${num_img}" class="btn-file-upload-small">
+									<i class="fa fa-image"></i> Chọn ảnh
+								</label>
+								<span class="file-name-display additional-file-name">Chưa chọn file</span>
+							</div>
+						`;
+			wrapper.appendChild(child);
+		}
+
+		// Xử lý thay đổi ảnh chính
+		document.getElementById("main-image-input").onchange = (e) => {
+			const file = e.target.files[0];
+			const fileNameDisplay = document.getElementById("file-name-display");
+			const placeholder = document.getElementById("image-placeholder");
+			const preview = document.getElementById("preview-main-image");
+
+			if (file) {
+				fileNameDisplay.innerText = file.name;
+				fileNameDisplay.classList.add("has-file");
+
+				// Preview ảnh
+				const reader = new FileReader();
+				reader.onload = (e) => {
+					placeholder.style.display = "none";
+					preview.src = e.target.result;
+					preview.style.display = "block";
+				}
+				reader.readAsDataURL(file);
+			}
+		}
+
+		// Click vào placeholder để chọn ảnh
+		document.getElementById("image-placeholder").onclick = () => {
+			document.getElementById("main-image-input").click();
+		}
+
+		// Xử lý thay đổi ảnh bổ sung (sử dụng event delegation)
+		document.getElementById("img_container").addEventListener("change", (e) => {
+			if (e.target.classList.contains("additional-image-input")) {
 				const file = e.target.files[0];
+				const fileNameDisplay = e.target.closest(".file-upload-wrapper").querySelector(".additional-file-name");
+
 				if (file) {
-					const reader = new FileReader();
-					reader.onload = function (e) {
-						$('#preview-main-image').attr('src', e.target.result);
-					}
-					reader.readAsDataURL(file);
+					fileNameDisplay.innerText = file.name;
+					fileNameDisplay.classList.add("has-file");
 				}
-			});
-
-			// Thêm hình ảnh bổ sung
-			$('#btn_add_img').on('click', function () {
-				var numImg = $('#num_img');
-				var currentNum = parseInt(numImg.val()) + 1;
-				numImg.val(currentNum);
-
-				var newInput = $('<input>')
-					.attr('type', 'file')
-					.attr('id', 'img_' + currentNum)
-					.attr('name', 'img_' + currentNum)
-					.attr('accept', 'image/*')
-					.addClass('form-control')
-					.css('margin-bottom', '10px');
-
-				$('#img_container').append(newInput);
-			});
-
-			// Validation form
-			$('form').on('submit', function (e) {
-				var isValid = true;
-				var errors = [];
-
-				if (!$('[name="productId"]').val().trim()) {
-					errors.push('Tên sản phẩm');
-					isValid = false;
-				}
-				if (!$('[name="categoryId"]').val()) {
-					errors.push('Danh mục');
-					isValid = false;
-				}
-				if (!$('[name="price"]').val() || parseFloat($('[name="price"]').val()) <= 0) {
-					errors.push('Giá bán');
-					isValid = false;
-				}
-				if (!$('[name="stock"]').val() || parseInt($('[name="stock"]').val()) < 0) {
-					errors.push('Số lượng tồn kho');
-					isValid = false;
-				}
-
-				if (!isValid) {
-					e.preventDefault();
-					alert('Vui lòng điền đầy đủ thông tin:\n- ' + errors.join('\n- '));
-					return false;
-				}
-			});
+			}
 		});
 	</script>
 }

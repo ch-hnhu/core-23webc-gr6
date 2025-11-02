@@ -34,7 +34,7 @@ namespace core_23webc_gr6.Models
 
 				SqlConnection conn = dbHelper.GetConnection();
 				conn.Open();
-				SqlDataReader dr = dbHelper.ExcuteQueryWithParameters(query, parameters, conn);
+				SqlDataReader dr = dbHelper.ExecuteQueryWithParameters(query, parameters, conn);
 				while (dr.Read())
 				{
 					user = new User
@@ -70,7 +70,7 @@ namespace core_23webc_gr6.Models
 				List<User> users = new List<User>();
 				SqlConnection conn = dbHelper.GetConnection();
 				conn.Open();
-				SqlDataReader dr = dbHelper.ExcuteQuery(query, conn);
+				SqlDataReader dr = dbHelper.ExecuteQuery(query, conn);
 				while (dr.Read())
 				{
 					users.Add(new User

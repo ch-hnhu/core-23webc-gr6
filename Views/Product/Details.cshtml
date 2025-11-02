@@ -1,5 +1,19 @@
 @model core_23webc_gr6.Models.Product
 
+@{
+	// Parse images JSON
+	var imageList = new List<string>();
+	if (Model.images != null && Model.images.Trim().StartsWith("["))
+	{
+		imageList = System.Text.Json.JsonSerializer.Deserialize<List<string>>(Model.images);
+	}
+	else if (!string.IsNullOrEmpty(Model.images))
+	{
+		imageList = Model.images.Split(',').Select(s => s.Trim()).ToList();
+	}
+	var mainImage = imageList != null && imageList.Count > 0 ? imageList[0] : "default.jpg";
+}
+
 <!-- CHNhu -->
 <div class="single-product-area">
 	<div class="zigzag-bottom"></div>
@@ -73,13 +87,16 @@
 						<div class="col-sm-6">
 							<div class="product-images">
 								<div class="product-main-img">
-									<img src="~/img/Products/@Model.image" alt="@Model.productName" />
+									<img src="~/img/Products/@mainImage" alt="@Model.productName" />
 								</div>
 
 								<div class="product-gallery">
-									<img src="~/img/Products/@(Model.image)" alt="">
-									<img src="~/img/Products/@(Model.image)" alt="">
-									<img src="~/img/Products/@(Model.image)" alt="">
+									<img src="~/img/Products/@(imageList.Count > 0 ? imageList[0] : "default.jpg")"
+										alt="">
+									<img src="~/img/Products/@(imageList.Count > 1 ? imageList[1] : "default.jpg")"
+										alt="">
+									<img src="~/img/Products/@(imageList.Count > 2 ? imageList[2] : "default.jpg")"
+										alt="">
 								</div>
 							</div>
 						</div>
@@ -175,9 +192,22 @@
 								foreach (var relatedProduct in
 								(List<core_23webc_gr6.Models.Product>)ViewBag.RelatedProducts)
 								{
+									var relatedImageList = new List<string>();
+									if (relatedProduct.images != null && relatedProduct.images.Trim().StartsWith("["))
+									{
+										relatedImageList =
+										System.Text.Json.JsonSerializer.Deserialize<List<string>>(relatedProduct.images);
+									}
+									else if (!string.IsNullOrEmpty(relatedProduct.images))
+									{
+										relatedImageList = relatedProduct.images.Split(',').Select(s => s.Trim()).ToList();
+									}
+									var relatedImage = relatedImageList != null && relatedImageList.Count > 0 ?
+									relatedImageList[0] : "default.jpg";
+
 									<div class="single-product">
 										<div class="product-f-image">
-											<img class="product-img" src="~/img/Products/@relatedProduct.image"
+											<img class="product-img" src="~/img/Products/@relatedImage"
 												alt="@relatedProduct.productName" />
 											<div class="product-hover">
 												<a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to

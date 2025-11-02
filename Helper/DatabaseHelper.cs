@@ -17,28 +17,41 @@ namespace core_23webc_gr6.Helper
 			return new SqlConnection(_connectionString);
 		}
 
-		public SqlDataReader ExcuteQuery(string query, SqlConnection conn)
+		public SqlDataReader ExecuteQuery(string query, SqlConnection conn)
 		{
 			return new SqlCommand(query, conn).ExecuteReader();
 		}
 
-		public SqlDataReader ExcuteQueryWithParameters(string query, SqlParameter[] parameters, SqlConnection conn)
+		public SqlDataReader ExecuteQueryWithParameters(string query, SqlParameter[] parameters, SqlConnection conn)
 		{
 			SqlCommand cmd = new SqlCommand(query, conn);
 			cmd.Parameters.AddRange(parameters);
 			return cmd.ExecuteReader();
 		}
 
-		public int ExcuteNonQuery(string query, SqlConnection conn)
+		public int ExecuteNonQuery(string query, SqlConnection conn)
 		{
 			return new SqlCommand(query, conn).ExecuteNonQuery();
 		}
+		public int ExecuteNonQueryWithParameters(string query, SqlParameter[] parameters, SqlConnection conn)
+		{
+			SqlCommand cmd = new SqlCommand(query, conn);
+			cmd.Parameters.AddRange(parameters);
+			return cmd.ExecuteNonQuery();
+		}
 
-		public int ExcuteScalar(string query, SqlParameter[] parameters, SqlConnection conn)
+		public int ExecuteScalar(string query, SqlParameter[] parameters, SqlConnection conn)
 		{
 			SqlCommand cmd = new SqlCommand(query, conn);
 			cmd.Parameters.AddRange(parameters);
 			return Convert.ToInt32(cmd.ExecuteScalar());
+		}
+
+		public object? ExecuteScalarWithParameters(string query, SqlParameter[] parameters, SqlConnection conn)
+		{
+			SqlCommand cmd = new SqlCommand(query, conn);
+			cmd.Parameters.AddRange(parameters);
+			return cmd.ExecuteScalar();
 		}
 	}
 }
