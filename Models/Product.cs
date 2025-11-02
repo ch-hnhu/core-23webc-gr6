@@ -8,12 +8,24 @@ namespace core_23webc_gr6.Models
 	public class Product
 	{
 		public int productId { get; set; }              // Khóa chính
+
+		[Required(ErrorMessage = "Vui lòng nhập tên sản phẩm")]
 		public string productName { get; set; } = string.Empty;      // Tên sản phẩm
+
+		[Required(ErrorMessage = "Vui lòng chọn danh mục")]
 		public int? categoryId { get; set; }            // Mã danh mục (có thể null)
+
+		[Required(ErrorMessage = "Vui lòng nhập giá sản phẩm")]
+		[Range(0.01, double.MaxValue, ErrorMessage = "Giá phải lớn hơn 0")]
 		public decimal price { get; set; }              // Giá
+
 		public int discountPercentage { get; set; }     // Phần trăm giảm giá
+
+		[Required(ErrorMessage = "Vui lòng nhập số lượng tồn kho")]
+		[Range(0, int.MaxValue, ErrorMessage = "Số lượng không được âm")]
 		public int stock { get; set; }                  // Số lượng tồn kho
-		public string? image { get; set; } = string.Empty;           // Ảnh
+
+		public string? images { get; set; } = string.Empty;           // Ảnh
 		public string? description { get; set; } = string.Empty;     // Mô tả
 		public byte status { get; set; }                // Trạng thái (1 = hoạt động, 0 = ẩn)
 		public DateTime createdAt { get; set; }         // Ngày tạo
@@ -32,7 +44,7 @@ namespace core_23webc_gr6.Models
 			{
 				connection.Open();
 
-				string query = "SELECT * FROM Products";
+				string query = "SELECT * FROM Products where status = 1";
 				using (var comd = new SqlCommand(query, connection))
 				using (var reader = comd.ExecuteReader())
 				{
@@ -46,7 +58,7 @@ namespace core_23webc_gr6.Models
 							price = Convert.ToDecimal(reader["price"]),
 							discountPercentage = Convert.ToInt32(reader["discountPercentage"]),
 							stock = Convert.ToInt32(reader["stock"]),
-							image = reader["image"].ToString(),
+							images = reader["image"].ToString() ?? string.Empty,
 							description = reader["description"].ToString(),
 							status = Convert.ToByte(reader["status"]),
 							createdAt = Convert.ToDateTime(reader["createdAt"]),
@@ -68,7 +80,7 @@ namespace core_23webc_gr6.Models
 				string query = @"
                     SELECT 
                         p.productId, p.productName, p.categoryId, p.price, 
-                        p.discountPercentage, p.stock, p.image, p.description, 
+                        p.discountPercentage, p.stock, p.images, p.description, 
                         p.status, p.createdAt, p.updatedAt,
                         c.categoryName,
                         STRING_AGG(t.tagName, ', ') WITHIN GROUP (ORDER BY t.tagName) AS TagNames
@@ -76,9 +88,9 @@ namespace core_23webc_gr6.Models
                     LEFT JOIN categories c ON p.categoryId = c.categoryId
                     LEFT JOIN producttags pt ON p.productId = pt.productId
                     LEFT JOIN tags t ON pt.tagId = t.tagId
-                    WHERE p.productId = @id
+                    WHERE p.productId = @id and p.status = 1
                     GROUP BY p.productId, p.productName, p.categoryId, p.price, 
-                            p.discountPercentage, p.stock, p.image, p.description, 
+                            p.discountPercentage, p.stock, p.images, p.description, 
                             p.status, p.createdAt, p.updatedAt, c.categoryName;";
 				//endPNSon
 				using (var command = new SqlCommand(query, connection))
@@ -96,7 +108,7 @@ namespace core_23webc_gr6.Models
 								price = Convert.ToDecimal(reader["price"]),
 								discountPercentage = Convert.ToInt32(reader["discountPercentage"]),
 								stock = Convert.ToInt32(reader["stock"]),
-								image = reader["image"].ToString(),
+								images = reader["images"].ToString() ?? string.Empty,
 								description = reader["description"].ToString(),
 								status = Convert.ToByte(reader["status"]),
 								createdAt = Convert.ToDateTime(reader["createdAt"]),
@@ -129,14 +141,14 @@ namespace core_23webc_gr6.Models
 
 				string query = @"
                     SELECT TOP 10
-                        p.productId, p.productName, p.price, p.discountPercentage, p.image,
+                        p.productId, p.productName, p.price, p.discountPercentage, p.images,
                         STRING_AGG(t.tagName, ', ') WITHIN GROUP (ORDER BY t.tagName) AS TagNames
                     FROM products p
                     JOIN producttags pt ON p.productId = pt.productId
                     JOIN tags t ON pt.tagId = t.tagId
                     WHERE t.tagId IN (SELECT tagId FROM producttags WHERE productId = @productId)
                     AND p.productId <> @productId AND p.status = 1
-                    GROUP BY p.productId, p.productName, p.price, p.discountPercentage, p.image, p.createdAt
+                    GROUP BY p.productId, p.productName, p.price, p.discountPercentage, p.images, p.createdAt
                     ORDER BY p.createdAt DESC;";
 				using (var cmd = new SqlCommand(query, connection))
 				{
@@ -152,7 +164,7 @@ namespace core_23webc_gr6.Models
 								productName = reader["productName"].ToString() ?? "",
 								price = Convert.ToDecimal(reader["price"]),
 								discountPercentage = Convert.ToInt32(reader["discountPercentage"]),
-								image = reader["image"].ToString(),
+								images = reader["images"].ToString() ?? string.Empty,
 								Tag = reader["TagNames"] != DBNull.Value
 									? reader["TagNames"].ToString()!.Split(',')
 										.Select(t => t.Trim())
@@ -169,6 +181,95 @@ namespace core_23webc_gr6.Models
 		}
 		//endPNSon
 		//endLTMKieu
+		// CHNhu - 28/10/2025 - Thêm sản phẩm mới
+		public int AddNewProduct(DatabaseHelper dbHelper)
+		{
+			try
+			{
+				string query = @"
+				insert into Products (
+					productName, 
+					categoryId, 
+					price, 
+					discountPercentage, 
+					stock, 
+					images, 
+					description, 
+					status
+				) values (
+					@productName, 
+					@categoryId, 
+					@price, 
+					@discountPercentage, 
+					@stock, 
+					@images, 
+					@description, 
+					@status
+				);
+				SELECT SCOPE_IDENTITY();";
+				SqlParameter[] parameters =
+				{
+				new SqlParameter("@productName", this.productName ?? (object)DBNull.Value),
+				new SqlParameter("@categoryId", this.categoryId ?? (object)DBNull.Value),
+				new SqlParameter("@price", this.price),
+				new SqlParameter("@discountPercentage", this.discountPercentage),
+				new SqlParameter("@stock", this.stock),
+				new SqlParameter("@images", (object)DBNull.Value),
+				new SqlParameter("@description", this.description ?? (object)DBNull.Value),
+				new SqlParameter("@status", this.status)
+			};
+				SqlConnection conn = dbHelper.GetConnection();
+				conn.Open();
+				object? result = dbHelper.ExecuteScalarWithParameters(query, parameters, conn);
+				conn.Close();
+				return result != null ? Convert.ToInt32(result) : 0;
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Lỗi thêm sản phẩm mới: " + ex.Message);
+			}
+		}
+		// CHNhu - 02/11/2025 - Cập nhật sản phẩm
+		public int UpdateProduct(DatabaseHelper dbHelper)
+		{
+			try
+			{
+				string query = @"
+				UPDATE Products SET
+					productName = @productName,
+					categoryId = @categoryId,
+					price = @price,
+					discountPercentage = @discountPercentage,
+					stock = @stock,
+					images = @images,
+					description = @description,
+					status = @status,
+					updatedAt = GETDATE()
+				WHERE productId = @productId;";
+				SqlParameter[] parameters =
+				{
+				new SqlParameter("@productId", this.productId),
+				new SqlParameter("@productName", this.productName ?? (object)DBNull.Value),
+				new SqlParameter("@categoryId", this.categoryId ?? (object)DBNull.Value),
+				new SqlParameter("@price", this.price),
+				new SqlParameter("@discountPercentage", this.discountPercentage),
+				new SqlParameter("@stock", this.stock),
+				new SqlParameter("@images", this.images ?? (object)DBNull.Value),
+				new SqlParameter("@description", this.description ?? (object)DBNull.Value),
+				new SqlParameter("@status", this.status)
+			};
+				SqlConnection conn = dbHelper.GetConnection();
+				conn.Open();
+				int rowsAffected = dbHelper.ExecuteNonQueryWithParameters(query, parameters, conn);
+				conn.Close();
+				return rowsAffected;
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Lỗi cập nhật sản phẩm: " + ex.Message);
+			}
+		}
+		// endCHNhu
 	}
 	//endLTMKieu
 }
