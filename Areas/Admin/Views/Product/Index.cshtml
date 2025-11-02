@@ -1,7 +1,7 @@
 ﻿<!--areas/Admin/Views/Product-->
-@using core_23webc_gr6.Models
-@model List<Product>
+@model List<core_23webc_gr6.Models.Entities.Product>
 <!--PNSon 8/10/2025 sửa toàn bộ để phù hợp -->
+<!--CHNhu 02/11/2025 Chuyển sang dùng EF Core model -->
 @{
 	ViewData["Title"] = "Danh sách sản phẩm";
 }
@@ -14,7 +14,7 @@
 				<tr>
 					<th>Mã sản phẩm</th>
 					<th>Tên sản phẩm</th>
-					<th>Mã danh mục</th>
+					<th>Tên danh mục</th>
 					<th>Giá</th>
 					<th>Giá khuyến mãi</th>
 					<th>Số lượng tồn kho</th>
@@ -28,37 +28,37 @@
 			@foreach (var product in Model)
 			{
 				var imageList = new List<string>();
-				if (product.images != null && product.images.Trim().StartsWith("["))
+				if (product.Images != null && product.Images.Trim().StartsWith("["))
 				{
-					imageList = System.Text.Json.JsonSerializer.Deserialize<List<string>>(product.images);
+					imageList = System.Text.Json.JsonSerializer.Deserialize<List<string>>(product.Images);
 				}
-				else if (!string.IsNullOrEmpty(product.images))
+				else if (!string.IsNullOrEmpty(product.Images))
 				{
-					imageList = product.images.Split(',').Select(s => s.Trim()).ToList();
+					imageList = product.Images.Split(',').Select(s => s.Trim()).ToList();
 				}
 				var displayImage = imageList != null && imageList.Count > 0 ? imageList[0] : "";
 
-				<tr>
-					<td>@product.productId</td>
-					<td>@product.productName</td>
-					<td>@product.categoryId</td>
-					<td>@product.price.ToString()</td>
-					<td>@product.discountPercentage.ToString()</td>
-					<td>@product.stock.ToString()</td>
+			<tr>
+				<td>@product.ProductId</td>
+				<td>@product.ProductName</td>
+				<td>@product.Category?.CategoryName</td>
+				<td>@product.Price.ToString("N0") ₫</td>
+				<td>@product.DiscountPercentage%</td>
+				<td>@product.Stock</td>
 					<td>
 						@if (!string.IsNullOrEmpty(displayImage))
 						{
-							<img src="~/img/Products/@displayImage" alt="@product.productName" />
+							<img src="~/img/Products/@displayImage" alt="@product.ProductName" />
 						}
 						else
 						{
 							<span class="text-muted">Không có ảnh</span>
 						}
 					</td>
-					<td>@product.description</td>
-					<td>@product.status.ToString()</td>
-					<td>@product.createdAt.ToString("dd/MM/yyyy")</td>
-					<td>@product.updatedAt.ToString("dd/MM/yyyy")</td>
+					<td>@product.Description</td>
+					<td>@(product.Status ? "Hoạt động" : "Ẩn")</td>
+					<td>@product.CreatedAt.ToString("dd/MM/yyyy")</td>
+					<td>@product.UpdatedAt.ToString("dd/MM/yyyy")</td>
 				</tr>
 			}
 		</table>
