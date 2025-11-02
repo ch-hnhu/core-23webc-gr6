@@ -9,6 +9,8 @@ namespace core_23webc_gr6.Controllers
 		{
 			ViewData["BigTitle"] = "Shopping Cart";
 
+			ViewBag.isActive = "Cart/Index";
+
 			return View();
 		}
 

@@ -21,6 +21,9 @@ namespace core_23webc_gr6.Controllers
 			var products = productsInstance.GetAllProducts(_db);
 			//end LTMKieu
 			var latestProducts = products?.Take(6).ToList() ?? new List<Product>();
+
+			ViewBag.isActive = "Home/Index";
+
 			return View(latestProducts);
 			//end CHNhu
 		}

@@ -8,6 +8,9 @@ namespace core_23webc_gr6.Controllers
 		public IActionResult Index()
 		{
 			ViewData["BigTitle"] = "Contact Us";
+
+			ViewBag.isActive = "Contact/Index";
+
 			return View();
 		}
 

@@ -22,6 +22,9 @@ namespace core_23webc_gr6.Controllers
 			var productsInstance = new Product();
 			var products = productsInstance.GetAllProducts(_db);
 			ViewData["BigTitle"] = "Shop";
+
+			ViewBag.isActive = "Product/Index";
+
 			return View(products); // Trả ra list cho Index.cshtml
 		}
 		//endvqNam
