@@ -2,11 +2,18 @@
 using core_23webc_gr6.Models;
 using Microsoft.Extensions.Options;
 using core_23webc_gr6.Helper;
-var builder = WebApplication.CreateBuilder(args);
+using core_23webc_gr6.Data;
+using Microsoft.EntityFrameworkCore;
 
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// CHNhu - 03/11/2025 - Thêm dịch vụ DBContext
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+	options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnection")));
+// endCHNhu
 
 // CHNhu - Thêm dịch vụ Session
 builder.Services.AddDistributedMemoryCache();

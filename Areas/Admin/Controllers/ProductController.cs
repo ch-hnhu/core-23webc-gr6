@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using core_23webc_gr6.Models;
+using core_23webc_gr6.Models.Entities;
 using core_23webc_gr6.Helper;
+using core_23webc_gr6.Data;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 
@@ -11,18 +13,26 @@ namespace core_23webc_gr6.Areas.Admin.Controllers
 	public class ProductController : Controller
 	{
 		// CHNhu - 12/10/2025 - Chỉnh lại lấy dssp từ db dùng DatabaseHelper
+		// CHNhu - 02/11/2025 - Thêm ApplicationDbContext để dùng EF Core
 		private readonly DatabaseHelper _db;
+		private readonly ApplicationDbContext _context;
 		private readonly IWebHostEnvironment _env;
-		public ProductController(DatabaseHelper db, IWebHostEnvironment env)
+		public ProductController(DatabaseHelper db, ApplicationDbContext context, IWebHostEnvironment env)
 		{
 			_db = db;
+			_context = context;
 			_env = env;
 		}
 		//PNSon - 26/10/2025 - Đổi phương thức lấy danh sách sản phẩm và phân trang
+		//CHNhu - 02/11/2025 - Chuyển từ ADO.NET sang EF Core
 		public IActionResult Index(int page = 1, int pageSize = 5)
 		{
-			var productInstance = new Product();
-			var allProducts = productInstance.GetAllProducts(_db);
+			// Lấy danh sách sản phẩm từ EF Core, bao gồm Category để tránh N+1 query
+			var allProducts = _context.Products
+				.Include(p => p.Category)
+				.Where(p => p.Status == true)
+				.OrderByDescending(p => p.CreatedAt)
+				.ToList();
 
 			int totalProducts = allProducts.Count;
 			int totalPages = (int)Math.Ceiling((double)totalProducts / pageSize);
@@ -43,29 +53,28 @@ namespace core_23webc_gr6.Areas.Admin.Controllers
 			ViewData["Controller"] = "Product";
 			ViewData["Action"] = "Index";
 
-
 			return View(pagedProducts);
 		}
-		//endPNSon
+		//endPNSon - endCHNhu
 
 		// CHNhu - 02/11/2025 - Thêm sản phẩm mới kèm nhiều ảnh
 		[HttpGet]
 		public IActionResult AddProduct()
 		{
 			// Load danh sách Category để hiển thị trong dropdown
-			var categoryModel = new Category();
+			var categoryModel = new Models.Category();
 			ViewBag.Categories = categoryModel.GetAllCategories(_db);
 			return View();
 		}
 
 		[HttpPost]
-		public IActionResult AddProduct(Product product)
+		public IActionResult AddProduct(Models.Product product)
 		{
 			// Kiểm tra validation
 			if (!ModelState.IsValid)
 			{
 				// Load lại danh sách categories để hiển thị form
-				var categoryModel = new Category();
+				var categoryModel = new Models.Category();
 				ViewBag.Categories = categoryModel.GetAllCategories(_db);
 				TempData["ErrorMessage"] = "Vui lòng điền đầy đủ thông tin bắt buộc!";
 				return View(product);
@@ -108,7 +117,7 @@ namespace core_23webc_gr6.Areas.Admin.Controllers
 			catch (Exception ex)
 			{
 				TempData["ErrorMessage"] = "Lỗi: " + ex.Message;
-				var categoryModel = new Category();
+				var categoryModel = new Models.Category();
 				ViewBag.Categories = categoryModel.GetAllCategories(_db);
 				return View(product);
 			}
