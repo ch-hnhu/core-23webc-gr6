@@ -1,7 +1,4 @@
 @using core_23webc_gr6.Models
-@model List<core_23webc_gr6.Models.ViewModels.CategoryWithProductVM>
-
-
 @{
 	ViewData["Title"] = "Dashboard Admin";
 }
@@ -12,52 +9,6 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">Dashboard Admin</h1>
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<th>Mã danh mục</th>
-							<th>Tên danh mục</th>
-							<th>Hình ảnh</th>
-							<th>Mô tả</th>
-							<th>Ngày tạo</th>
-							<th>Ngày cập nhật</th>
-							<th>Trạng thái</th>
-						</tr>
-					</thead>
-					<tbody>
-						@foreach (var category in Model)
-						{
-							<tr>
-								<td>@category.CategoryId</td>
-								<td>@category.CategoryName</td>
-								<td>
-									@if (!string.IsNullOrEmpty(category.ProductName))
-									{
-										<img src="~/img/Products/@category.ProductImage" alt="@category.ProductName"/>
-									}
-									else
-									{
-										<span class="text-muted">No image</span>
-									}
-								</td>
-								<td>@category.Description</td>
-								<td>@category.CreatedAt.ToString("dd/MM/yyyy")</td>
-								<td>@category.UpdatedAt.ToString("dd/MM/yyyy")</td>
-								<td>@(category.Status ? "Hoạt động" : "Không hoạt động")</td>
-							</tr>
-						}
-					</tbody>
-				</table>
-				@* View dùng chung  *@
-				@{
-					var View = new ViewDataDictionary(ViewData)
-					{
-						["Area"] = "Admin",
-						["Controller"] = "Home",
-						["Action"] = "Index"
-					};
-				}
-				@await Html.PartialAsync("~/Views/Shared/Partials/_Pagination.cshtml", View)
 			</div>
 			<!-- /.col-lg-12 -->
 		</div>
@@ -67,63 +18,3 @@
 </div>
 <!-- /#page-wrapper -->
 <!-- endCHNhu -->
-
-<style>
-	#page-wrapper {
-		margin-left: 220px;
-		padding: 20px;
-		min-height: 100vh;
-		background: #f8f9fa;
-		position: relative;
-	}
-
-@* Bảng *@
-	table {
-		width: 100%;
-		border-collapse: collapse;
-		margin: 20px 0;
-		font-size: 14px;
-		text-align: center;
-		table-layout: fixed;
-	}
-@* Tiêu đề *@
-thead th {
-	background: #3e96ed;
-	color: #ffffff;
-	padding: 10px;
-	border: 1px solid #f7f6f6;
-	white-space: nowrap;
-}
-
-@* Ô dữ liệu *@
-td {
-	border: 1px solid #ddd;
-	padding: 8px;
-	vertical-align: middle;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	text-overflow: ellipsis;
-	overflow: hidden;
-}
-
-@* Ảnh sản phẩm *@
-td img {
-	display: block;
-	margin: 0 auto;
-	width: 80px;
-	height: 80px;
-	object-fit: cover;
-	border-radius: 8px;
-	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Màu dòng */
-tr:nth-child(even) {
-	background: #f8f9fa;
-}
-
-tr:hover {
-	background: #d0e1f2;
-	transition: .2s;
-}
-</style>

@@ -1,0 +1,153 @@
+@* CongVuong *@
+@using core_23webc_gr6.Models
+@model List<Category>
+
+@{
+	ViewData["Title"] = " Quản lí danh mục";
+}
+
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Quản lí danh mục</h1>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Mã danh mục</th>
+							<th>Tên danh mục</th>
+							<th>Mô tả</th>
+							<th>Ngày tạo</th>
+							<th>Ngày cập nhật</th>
+							<th>Trạng thái</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var category in Model)
+						{
+							<tr>
+								<td>@category.categoryId</td>
+								<td>@category.categoryName</td>
+								<td>@category.description</td>
+								<td>@category.createdAt.ToString("dd/MM/yyyy")</td>
+								<td>@category.updatedAt.ToString("dd/MM/yyyy")</td>
+								<td>@(category.status ? "Hoạt động" : "Không hoạt động")</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+				@* View dùng chung  *@
+				@{
+					var View = new ViewDataDictionary(ViewData)
+					{
+						["Area"] = "Admin",
+						["Controller"] = "Category",
+						["Action"] = "Index"
+					};
+				}
+				@await Html.PartialAsync("~/Views/Shared/Partials/_Pagination.cshtml", View)
+			</div>
+		</div>
+	</div>
+</div>
+@* EndCongVuong *@
+<style>
+	#page-wrapper {
+		margin-left: 220px;
+		padding: 20px;
+		min-height: 100vh;
+		background: #f8f9fa;
+		position: relative;
+	}
+
+	/* Bảng */
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 20px 0;
+		font-size: 14px;
+		text-align: center;
+		table-layout: fixed;
+	}
+
+	thead th {
+		background: #343a40;
+		color: #fff;
+		padding: 10px;
+		border: 1px solid #ddd;
+		white-space: nowrap;
+	}
+
+	td {
+		border: 1px solid #ddd;
+		padding: 8px;
+		vertical-align: middle;
+		word-wrap: break-word;
+		
+	}
+
+	td img {
+		display: block;
+		margin: 0 auto;
+		width: 80px;
+		height: 80px;
+		object-fit: cover;
+		border-radius: 8px;
+		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+	}
+
+	tr:nth-child(even) {
+		background: #f8f9fa;
+	}
+
+	tr:hover {
+		background: #e9ecef;
+		transition: .2s;
+	}
+
+	/* Cột đặc biệt */
+	td:nth-child(8) {
+		text-align: left;
+		white-space: pre-wrap;
+	}
+
+	td:nth-child(4),
+	td:nth-child(5),
+	td:nth-child(6) {
+		font-weight: 500;
+		color: #212529;
+	}
+
+	td:nth-child(9) {
+		font-weight: 600;
+		color: #17a2b8;
+	}
+
+	td:nth-child(10),
+	td:nth-child(11) {
+		font-size: 13px;
+		color: #6c757d;
+	}
+
+	/* đã bỏ Css Phân trang */
+
+	/* Nút thêm sản phẩm */
+	.floating-add-button {
+		position: fixed;
+		bottom: 25px;
+		right: 30px;
+		background: #007bff;
+		color: #fff;
+		border-radius: 50px;
+		padding: 12px 22px;
+		font-weight: 600;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+		text-decoration: none;
+		transition: all .25s;
+	}
+
+	.floating-add-button:hover {
+		background: #0056b3;
+		transform: translateY(-2px);
+	}
+</style>

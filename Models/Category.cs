@@ -15,9 +15,7 @@ namespace core_23webc_gr6.Models
 		public bool status { get; set; } = true;       // Trạng thái hoạt động
 		public DateTime createdAt { get; set; } = DateTime.Now; // Ngày tạo
 		public DateTime updatedAt { get; set; } = DateTime.Now; // Ngày cập nhật
-		public List<Product> Products { get; set; } = new List<Product>(); //mỗi danh mục có nhiều sản phẩm 
-
-		public static List<Category> GetAllCategories(DatabaseHelper db)
+		public  List<Category> GetAllCategories(DatabaseHelper db)// Vương thêm 2/11/2025
         {
             var categories = new List<Category>();
 			using (var connection = db.GetConnection())
