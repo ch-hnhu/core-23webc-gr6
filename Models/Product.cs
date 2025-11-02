@@ -58,7 +58,7 @@ namespace core_23webc_gr6.Models
 							price = Convert.ToDecimal(reader["price"]),
 							discountPercentage = Convert.ToInt32(reader["discountPercentage"]),
 							stock = Convert.ToInt32(reader["stock"]),
-							images = reader["images"].ToString() ?? string.Empty,
+							images = reader["image"].ToString() ?? string.Empty,
 							description = reader["description"].ToString(),
 							status = Convert.ToByte(reader["status"]),
 							createdAt = Convert.ToDateTime(reader["createdAt"]),
