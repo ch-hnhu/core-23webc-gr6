@@ -88,7 +88,7 @@ namespace core_23webc_gr6.Models
                     LEFT JOIN categories c ON p.categoryId = c.categoryId
                     LEFT JOIN producttags pt ON p.productId = pt.productId
                     LEFT JOIN tags t ON pt.tagId = t.tagId
-                    WHERE p.productId = @id and status = 1
+                    WHERE p.productId = @id and p.status = 1
                     GROUP BY p.productId, p.productName, p.categoryId, p.price, 
                             p.discountPercentage, p.stock, p.images, p.description, 
                             p.status, p.createdAt, p.updatedAt, c.categoryName;";
