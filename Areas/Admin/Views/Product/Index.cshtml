@@ -27,6 +27,17 @@
 			</thead>
 			@foreach (var product in Model)
 			{
+				var imageList = new List<string>();
+				if (product.images != null && product.images.Trim().StartsWith("["))
+				{
+					imageList = System.Text.Json.JsonSerializer.Deserialize<List<string>>(product.images);
+				}
+				else if (!string.IsNullOrEmpty(product.images))
+				{
+					imageList = product.images.Split(',').Select(s => s.Trim()).ToList();
+				}
+				var displayImage = imageList != null && imageList.Count > 0 ? imageList[0] : "";
+
 				<tr>
 					<td>@product.productId</td>
 					<td>@product.productName</td>
@@ -35,35 +46,34 @@
 					<td>@product.discountPercentage.ToString()</td>
 					<td>@product.stock.ToString()</td>
 					<td>
-                            @if (!string.IsNullOrEmpty(product.image))
-                            {
-                                <img src="~/img/Products/@product.image" alt="@product.productName" />
-                            }
-                            else
-                            {
-                                <span class="text-muted">Không có ảnh</span>
-                            }
-                        </td>
+						@if (!string.IsNullOrEmpty(displayImage))
+						{
+							<img src="~/img/Products/@displayImage" alt="@product.productName" />
+						}
+						else
+						{
+							<span class="text-muted">Không có ảnh</span>
+						}
+					</td>
 					<td>@product.description</td>
 					<td>@product.status.ToString()</td>
 					<td>@product.createdAt.ToString("dd/MM/yyyy")</td>
 					<td>@product.updatedAt.ToString("dd/MM/yyyy")</td>
 				</tr>
 			}
-
 		</table>
 		@*PNSon - 26/10/2025 - Sửa phương thức phân trang (dùng view chung)*@
 		@* CHNhu - 12/10/2025 - Sửa lại link cho phân trang *@
 		@*  Phân trang *@
-   			@{
-				var vd = new ViewDataDictionary(ViewData)
-				{
-					["Area"] = "Admin",
-					["Controller"] = "Product",
-					["Action"] = "Index"
-				};
-			}
-			@await Html.PartialAsync("~/Views/Shared/Partials/_Pagination.cshtml", vd)
+		@{
+			var vd = new ViewDataDictionary(ViewData)
+			{
+				["Area"] = "Admin",
+				["Controller"] = "Product",
+				["Action"] = "Index"
+			};
+		}
+		@await Html.PartialAsync("~/Views/Shared/Partials/_Pagination.cshtml", vd)
 		@* endCHNhu *@
 		@* endPNSon *@
 	</div>
@@ -168,6 +178,7 @@
 	}
 
 	.floating-add-button:hover {
+		color: #fff;
 		background: #0056b3;
 		transform: translateY(-2px);
 	}
