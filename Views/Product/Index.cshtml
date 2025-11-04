@@ -3,78 +3,70 @@
 
 <div class="single-product-area">
 	<div class="zigzag-bottom"></div>
-	<div class="container">
-		<div class="row">
-			@foreach (var item in Model)
-			{
-				var imageList = new List<string>();
-
-				if (item.images != null && item.images.Trim().StartsWith("["))
+		<div class="container">
+			<div class="row">
+				@foreach (var item in Model)
 				{
-					imageList = System.Text.Json.JsonSerializer.Deserialize<List<string>>(item.images);
-				}
-				else if (!string.IsNullOrEmpty(item.images))
-				{
-					imageList = item.images.Split(',').ToList();
-				}
+					var imageList = new List<string>();
 
-				<div class="col-md-3 col-sm-6">
-					<div class="single-shop-product">
-						<div class="product-upper">
-							<img class="product-img"
-								src="~/img/Products/@(imageList != null && imageList.Count > 0 ? imageList[0] : "default.jpg")"
-								alt="@item.productName" />
-						</div>
-						<h2>
-							<a asp-controller="Product" asp-action="Details" asp-route-id="@item.productId">
-								@item.productName
-							</a>
-						</h2>
-						<div class="product-carousel-price">
-							@if (item.discountPercentage > 0 && item.discountPercentage <= 100)
-							{
-								var newPrice = item.price - (item.price * item.discountPercentage / 100);
-								<ins>@newPrice.ToString("N0") VNĐ</ins>
-								<del>@item.price.ToString("N0") VNĐ</del>
-							}
-							else
-							{
-								<ins>@item.price.ToString("N0") VNĐ</ins>
-							}
-						</div>
+					if (item.images != null && item.images.Trim().StartsWith("["))
+					{
+						imageList = System.Text.Json.JsonSerializer.Deserialize<List<string>>(item.images);
+					}
+					else if (!string.IsNullOrEmpty(item.images))
+					{
+						imageList = item.images.Split(',').ToList();
+					}
 
-						<div class="product-option-shop">
-							<a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70"
-								rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
+					<div class="col-md-3 col-sm-6">
+						<div class="single-shop-product">
+							<div class="product-upper">
+								<img class="product-img"
+									src="~/img/Products/@(imageList != null && imageList.Count > 0 ? imageList[0] : "default.jpg")"
+									alt="@item.productName" />
+							</div>
+							<h2>
+								<a asp-controller="Product" asp-action="Details" asp-route-id="@item.productId">
+									@item.productName
+								</a>
+							</h2>
+							<div class="product-carousel-price">
+								@if (item.discountPercentage > 0 && item.discountPercentage <= 100)
+								{
+									var newPrice = item.price - (item.price * item.discountPercentage / 100);
+									<ins>@newPrice.ToString("N0") VNĐ</ins>
+									<del>@item.price.ToString("N0") VNĐ</del>
+								}
+								else
+								{
+									<ins>@item.price.ToString("N0") VNĐ</ins>
+								}
+							</div>
+
+							<div class="product-option-shop">
+								<a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70"
+									rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
+							</div>
 						</div>
 					</div>
-				</div>
-			}
-		</div>
+				}
+		
 
-		<div class="row">
-			<div class="col-md-12">
-				<div class="product-pagination text-center">
-					<nav>
-						<ul class="pagination">
-							<li>
-								<a href="#" aria-label="Previous">
-									<span aria-hidden="true">&laquo;</span>
-								</a>
-							</li>
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li>
-								<a href="#" aria-label="Next">
-									<span aria-hidden="true">&raquo;</span>
-								</a>
-							</li>
-						</ul>
-					</nav>
+				<!--VQNam 3/11 Thêm phân trang -->
+				<div class="row">
+					<div class="col-md-12 text-center mt-4">
+						@{
+							var vd = new ViewDataDictionary(ViewData)
+							{
+								["Area"] = "", 
+								["Controller"] = "Product",
+								["Action"] = "Index"
+							};
+						}
+						@await Html.PartialAsync("~/Views/Shared/Partials/_Pagination.cshtml", vd)
+					</div>
 				</div>
+				<!--End VQNam 3/11 -->
 			</div>
 		</div>
 	</div>

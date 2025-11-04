@@ -16,18 +16,38 @@ namespace core_23webc_gr6.Controllers
 			_db = db;
 		}
 
-		//vqNam Load danh sách sản phẩm
-		public IActionResult Index()
+		//vqNam Load danh sách sản phẩm 
+		//vqNam 3/11 Thêm phân trang
+		public IActionResult Index(int page = 1, int pageSize = 8) 
 		{
 			var productsInstance = new Product();
 			var products = productsInstance.GetAllProducts(_db);
-			ViewData["BigTitle"] = "Shop";
 
+			int totalProducts = products.Count;
+			int totalPages = (int)Math.Ceiling((double)totalProducts / pageSize);
+
+
+			if (page < 1) page = 1;
+			if (page > totalPages) page = totalPages;
+
+		
+			var pagedProducts = products
+				.Skip((page - 1) * pageSize)
+				.Take(pageSize)
+				.ToList();
+
+	
+			ViewBag.Page = page;
+			ViewBag.TotalPages = totalPages;
+
+		
+			ViewData["BigTitle"] = "Shop";
 			ViewBag.isActive = "Product/Index";
 
-			return View(products); // Trả ra list cho Index.cshtml
+			return View(pagedProducts); 
 		}
 		//endvqNam
+		//endvqNam 3-11
 
 		//PNSon 8/10/2025 Load chi tiết sản phẩm
 		public IActionResult Details(int id)
